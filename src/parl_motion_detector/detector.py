@@ -38,8 +38,13 @@ class PhraseDetector(BaseModel):
 
     def score(self, text: str) -> bool:
         lower_text = process_text(text)
+        lower_no_space = lower_text.replace(" ", "")
         for criterion in self.criteria:
             if isinstance(criterion, str):
+                if " " in criterion:
+                    strip_space = criterion.replace(" ", "")
+                    if strip_space in lower_no_space:
+                        return True
                 if criterion in lower_text:
                     return True
             elif isinstance(criterion, re.Pattern):
