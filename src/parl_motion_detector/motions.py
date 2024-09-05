@@ -71,27 +71,47 @@ class MotionCollection(BaseModel):
     def dump_test_data(self, tests_data_path: Path):
         debate_date = self.motions[0].date
         with (tests_data_path / f"{debate_date}.json").open("w") as f:
-            json.dump(self.basic_dict(), f)
+            json.dump(self.basic_dict(), f, indent=2)
 
 
 motion_start = PhraseDetector(
     criteria=[
         "I beg to move",
+        "I beg move to move",
+        "I therefore beg to move,",
         "Amendment proposed: at the end of the Question to add:",
+        "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
         "Question again proposed",
+        "Motion made, and Question proposed",
+        "Motion made, Question put forthwith",
+        "Motion made , and Question proposed",
+        "Motion made and Question proposed",
+        "Motion made and Question put forthwith",
+        "Motion made, and Question put forthwith",
+        re.compile(r"amendment proposed: \(.+?\), at the end of the Question to add:"),
+        re.compile(r"amended proposed: \(.+?\)"),
+        re.compile(r"Amendment proposed to new clause \d+: \(.+?\),"),
     ]
 )
 
+
 one_line_motion = PhraseDetector(
     criteria=[
+        "Main Question again proposed.",
+        "Motion made, That the Bill be now read a Secondtime.",
+        "Motion made, That the Bill be read be now read a Second time.",
+        "Question put, That the Bill be read a Second time.",
+        "Question put, That the clause be a Second time.",
+        "That the Bill be now read a second time",
+        "That the Bill be now read a third time.",
+        "That the Bill be read the Third time.",
+        "That the Bill now be read a third time.",
+        "That the Bill will be now read a second time.",
+        "That the House sit in private.",
+        "That the clause be read a Second time.",
         "the Bill be now read a Second time.",
         "the Bill be now read the Third time.",
-        "That the House sit in private.",
-        "That the Bill be read the Third time.",
-        "That the clause be read a Second time.",
-        "Main Question again proposed.",
-        "Motion made, and Question proposed",
     ]
 )
 
