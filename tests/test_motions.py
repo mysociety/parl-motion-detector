@@ -22,10 +22,6 @@ def compare_date(debate_date: str):
     assert current_data == past_data
 
 
-# opposition_day_motions
-debate_date = "2023-06-27"
-
-
 def test_basic_motions():
     # from oppositon day 2023-06-27
     compare_date("2023-06-27")

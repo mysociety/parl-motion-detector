@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 
 from parl_motion_detector.detector import PhraseDetector, StartsWith, Stringifiable
 from parl_motion_detector.enum_helpers import StrEnum
+from parl_motion_detector.motion_title_extraction import extract_motion_title
 
 T = TypeVar("T")
 
@@ -24,17 +25,25 @@ class Flag(StrEnum):
     ASKED_IMMEDIATELY = "asked_immediately"
     INLINE_AMENDMENT = "inline_amendment"
     ONE_LINE_MOTION = "one_line_motion"
+    AFTER_DECISION = "after_decision"
 
 
 class Motion(BaseModel):
     date: str
+    motion_title: str = ""
     major_heading_id: str
     minor_heading_id: str
+    major_heading_title: str = ""
+    minor_heading_title: str = ""
     speech_start_pid: str
     speech_id: str
     end_reason: str = ""
     motion_lines: list[str] = Field(default_factory=list)
     flags: list[Flag] = Field(default_factory=list)
+
+    def add_title(self):
+        if not self.motion_title:
+            self.motion_title = extract_motion_title(self)
 
     def has_flag(self, flag: Flag) -> bool:
         return flag in self.flags
@@ -52,6 +61,7 @@ class Motion(BaseModel):
 
     def finish(self, collection: MotionCollection, end_reason: str):
         self.end_reason = end_reason
+        self.add_title()
         collection.motions.append(self)
         return None
 
@@ -66,13 +76,22 @@ class MotionCollection(BaseModel):
     motions: list[Motion] = []
 
     def basic_dict(self):
-        return {m.speech_id: str(m) for m in self.motions}
+        return {
+            m.speech_id: {"title": m.motion_title, "content": str(m)}
+            for m in self.motions
+        }
 
     def dump_test_data(self, tests_data_path: Path):
         debate_date = self.motions[0].date
         with (tests_data_path / f"{debate_date}.json").open("w") as f:
             json.dump(self.basic_dict(), f, indent=2)
 
+
+resolved_start = PhraseDetector(
+    criteria=[
+        re.compile(r"^Resolved,", re.IGNORECASE),
+    ]
+)
 
 motion_start = PhraseDetector(
     criteria=[
@@ -89,6 +108,7 @@ motion_start = PhraseDetector(
         "Motion made and Question proposed",
         "Motion made and Question put forthwith",
         "Motion made, and Question put forthwith",
+        re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"amendment proposed: \(.+?\), at the end of the Question to add:"),
         re.compile(r"amended proposed: \(.+?\)"),
         re.compile(r"Amendment proposed to new clause \d+: \(.+?\),"),
@@ -195,6 +215,8 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                 speech_start_pid=speech_start_pid,
                 speech_id=transcript_group.speech.id,
                 minor_heading_id=minor_heading_id,
+                minor_heading_title=str(transcript_group.minor_heading),
+                major_heading_title=str(transcript_group.major_heading),
                 major_heading_id=major_heading_id,
                 date=date_str,
             )
@@ -254,6 +276,8 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
             if current_motion is None and motion_start(paragraph):
                 debug_test(paragraph, "motion start")
                 current_motion = new_motion(paragraph.pid)
+                if resolved_start(paragraph):
+                    current_motion += Flag.AFTER_DECISION
 
             if current_motion is None:
                 # similarly if there's the shortform amendment (and) the amendment close language in the same line
