@@ -6,13 +6,18 @@ from pathlib import Path
 from typing import Optional, TypeVar
 
 from mysoc_validator import Transcript
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 
 from parl_motion_detector.detector import PhraseDetector, StartsWith, Stringifiable
 from parl_motion_detector.enum_helpers import StrEnum
 from parl_motion_detector.motion_title_extraction import extract_motion_title
 
 T = TypeVar("T")
+
+contentless_lines = [
+    "Question put forthwith (Standing Order No. 163).",
+    "The House proceeded to a Division.",
+]
 
 
 class Flag(StrEnum):
@@ -26,6 +31,9 @@ class Flag(StrEnum):
     INLINE_AMENDMENT = "inline_amendment"
     ONE_LINE_MOTION = "one_line_motion"
     AFTER_DECISION = "after_decision"
+    ABSTRACT_MOTION = "abstract_motion"  # use for when the question is entirely about 'the question' without actual content
+    MAIN_QUESTION = "main_question"
+    MOTION_AMENDMENT = "motion_amendment"
 
 
 class Motion(BaseModel):
@@ -37,9 +45,36 @@ class Motion(BaseModel):
     minor_heading_title: str = ""
     speech_start_pid: str
     speech_id: str
+    final_speech_id: str = ""
     end_reason: str = ""
     motion_lines: list[str] = Field(default_factory=list)
     flags: list[Flag] = Field(default_factory=list)
+
+    @classmethod
+    def merge(cls, motions: list[Motion]) -> Motion:
+        if len(motions) == 0:
+            raise ValueError("No motions to merge")
+        if len(motions) == 1:
+            return motions[0]
+        first = motions[0]
+        for motion in motions[1:]:
+            first.motion_lines.extend(motion.motion_lines)
+            first.flags.extend(motion.flags)
+        return first
+
+    @computed_field
+    @property
+    def gid(self) -> str:
+        if self.speech_start_pid:
+            paragraph = self.speech_start_pid.split("/")[-1]
+            return self.speech_id + "." + paragraph
+        return self.speech_id
+
+    def contentless(self) -> bool:
+        motion_lines = [
+            line for line in self.motion_lines if line not in contentless_lines
+        ]
+        return len(motion_lines) == 0
 
     def add_title(self):
         if not self.motion_title:
@@ -57,11 +92,29 @@ class Motion(BaseModel):
         return self
 
     def add(self, item: Stringifiable):
+        if hasattr(item, "id"):
+            self.final_speech_id = item.id  # type: ignore
+
         self.motion_lines.append(str(item))
+
+    def self_flag(self):
+        """
+        Any extra tags to add based on the final content
+        """
+        content = str(self).lower()
+        if len(self.motion_lines) < 3:
+            if abstract_motion(content):
+                self.add_flag(Flag.ABSTRACT_MOTION)
+
+        if amendment_flag(content):
+            self.add_flag(Flag.MOTION_AMENDMENT)
+        elif main_question(content):
+            self.add_flag(Flag.MAIN_QUESTION)
 
     def finish(self, collection: MotionCollection, end_reason: str):
         self.end_reason = end_reason
         self.add_title()
+        self.self_flag()
         collection.motions.append(self)
         return None
 
@@ -75,10 +128,18 @@ class Motion(BaseModel):
 class MotionCollection(BaseModel):
     motions: list[Motion] = []
 
+    def __len__(self):
+        return len(self.motions)
+
+    def prune(self):
+        self.motions = [m for m in self.motions if not m.contentless()]
+
+    def __iter__(self):
+        return iter(self.motions)
+
     def basic_dict(self):
         return {
-            m.speech_id: {"title": m.motion_title, "content": str(m)}
-            for m in self.motions
+            m.gid: {"title": m.motion_title, "content": str(m)} for m in self.motions
         }
 
     def dump_test_data(self, tests_data_path: Path):
@@ -87,9 +148,34 @@ class MotionCollection(BaseModel):
             json.dump(self.basic_dict(), f, indent=2)
 
 
+abstract_motion = PhraseDetector(
+    criteria=[
+        "That the proposed words be there added",
+        "That the original words stand part of the Question",
+        "Question put forthwith (Standing Order No. 33), That the amendment be made.",
+    ]
+)
+
+amendment_flag = PhraseDetector(
+    criteria=[
+        "I beg to move an amendment",
+        "Amendment proposed: at the end of the Question",
+    ]
+)
+
+main_question = PhraseDetector(
+    criteria=["I beg to move", "That the clause stand part of the Bill."]
+)
+
 resolved_start = PhraseDetector(
     criteria=[
         re.compile(r"^Resolved,", re.IGNORECASE),
+    ]
+)
+
+malformed_motion_start = PhraseDetector(
+    criteria=[
+        re.compile(r"^That the draft", re.IGNORECASE),
     ]
 )
 
@@ -101,7 +187,10 @@ motion_start = PhraseDetector(
         "Amendment proposed: at the end of the Question to add:",
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
+        "Question put accordingly",
         "Question again proposed",
+        "Question put forthwith",
+        "Question proposed",
         "Motion made, and Question proposed",
         "Motion made, Question put forthwith",
         "Motion made , and Question proposed",
@@ -111,7 +200,14 @@ motion_start = PhraseDetector(
         re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"amendment proposed: \(.+?\), at the end of the Question to add:"),
         re.compile(r"amended proposed: \(.+?\)"),
+        re.compile(r"^Amendment proposed: \(.+?\)"),
         re.compile(r"Amendment proposed to new clause \d+: \(.+?\),"),
+        re.compile(
+            r"^Amendments made:\s*\d+,\s*page\s*\d+,\s*line\s*\d+", re.IGNORECASE
+        ),
+        re.compile(
+            r"^Amendment\s*\d+\s*,\s*page\s*\d+\s*,\s*line\s*\d+\s*", re.IGNORECASE
+        ),
     ]
 )
 
@@ -119,6 +215,7 @@ motion_start = PhraseDetector(
 one_line_motion = PhraseDetector(
     criteria=[
         "Main Question again proposed.",
+        "Question put forthwith, That the Question be now put",
         "Motion made, That the Bill be now read a Secondtime.",
         "Motion made, That the Bill be read be now read a Second time.",
         "Question put, That the Bill be read a Second time.",
@@ -132,6 +229,9 @@ one_line_motion = PhraseDetector(
         "That the clause be read a Second time.",
         "the Bill be now read a Second time.",
         "the Bill be now read the Third time.",
+        "That the clause stand part of the Bill.",
+        "That the original words stand part of the Question",
+        re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
     ]
 )
 
@@ -172,6 +272,7 @@ in_line_amendment = PhraseDetector(
         re.compile(r"^new clause \d+—"),
         re.compile(r"^amendment \d+,"),
         re.compile(r"^amendment proposed\: \d+"),
+        re.compile(r"^amendment made\: \d+"),
     ]
 )
 
@@ -206,7 +307,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
     # iterate through the transcript
     # this returns a tuple of the major heading, minor heading speech, and speech index within a sub heading
     current_motion = None
-    for transcript_group in transcript.iter_headed_speeches():
+    previous_speech = None
+    transcript_groups = list(transcript.iter_headed_speeches())
+    for transcript_index, transcript_group in enumerate(transcript_groups):
 
         def new_motion(speech_start_pid: Optional[str]):
             if speech_start_pid is None:
@@ -235,6 +338,13 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
         # for formatting errors where part of a clause is being taken as the header
         add_minor_heading_to_motion = False
 
+        if current_motion and previous_speech:
+            if (
+                previous_speech.person_id != transcript_group.speech.person_id
+                and transcript_group.speech.person_id
+            ):
+                current_motion = current_motion.finish(collection, "new speaker")
+
         # iterate through paragraphs within a speech.
         # There is an assumption here that all of a relevant motion is *within* a speech
         # I think this holds
@@ -246,9 +356,16 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
             try:
                 next_item = transcript_group.speech.items[index + 1]
             except IndexError:
-                next_item = None
+                try:
+                    next_transcript_group = transcript_groups[transcript_index + 1]
+                except IndexError:
+                    next_item = None
+                next_item = next_transcript_group.speech.items[0]
 
             if discussion_mode(paragraph):
+                speech_is_discussion_mode = True
+
+            if in_line_amendment(paragraph):
                 speech_is_discussion_mode = True
 
             if add_minor_heading_to_motion:
@@ -273,7 +390,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
 
             # Here we're looking for ordinary phrases that herald the start of a motion
             # beg to move etc
-            if current_motion is None and motion_start(paragraph):
+            if current_motion is None and (
+                motion_start(paragraph) or malformed_motion_start(paragraph)
+            ):
                 debug_test(paragraph, "motion start")
                 current_motion = new_motion(paragraph.pid)
                 if resolved_start(paragraph):
@@ -410,5 +529,6 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                                 current_motion = current_motion.finish(
                                     collection, "next is none"
                                 )
-
+        previous_speech = transcript_group.speech
+    collection.prune()
     return collection

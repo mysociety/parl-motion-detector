@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import (
     Generic,
@@ -15,10 +16,11 @@ from mysoc_validator.models.transcripts import (
     MinorHeading,
     Speech,
 )
-from pydantic import BaseModel
+from pydantic import BaseModel, computed_field
 
-from parl_motion_detector.detector import PhraseDetector
-from parl_motion_detector.enum_helpers import StrEnum
+from .detector import PhraseDetector
+from .enum_helpers import StrEnum
+from .motions import Motion
 
 
 class Stringable(Protocol):
@@ -53,8 +55,89 @@ class Agreement(HasSpeechAndDate):
     agreement_pid: str = ""
     agreed_text: str
     preceeding_text: str
+    after_text: str
+
+    @property
+    def preceeding(self):
+        return self.preceeding_text
+
+    @property
+    def after(self):
+        return self.after_text
+
+    def construct_motion(self):
+        if "read a second time" in self.after_text.lower():
+            motion_lines = [self.agreed_text, self.after_text]
+        else:
+            motion_lines = [self.preceeding_text, self.agreed_text]
+
+        return Motion(
+            date=self.date,
+            major_heading_id=self.major_heading_id,
+            minor_heading_id=self.minor_heading_id,
+            speech_id=self.speech_id,
+            speech_start_pid=self.paragraph_pid,
+            motion_lines=motion_lines,
+        )
+
+    @computed_field
+    @property
+    def gid(self) -> str:
+        paragraph = self.paragraph_pid.split("/")[-1]
+        return self.speech_id + "." + paragraph
 
     def finish(self, collection: AgreementCollection, end_reason: str):
+        self.end_reason = end_reason
+        collection.motions.append(self)
+        return None
+
+    @property
+    def relevant_text(self):
+        return self.agreed_text
+
+
+class DivisionHolder(HasSpeechAndDate):
+    date: str
+    major_heading_id: str
+    minor_heading_id: str
+    minor_heading_text: str
+    speech_id: str  # actually the division id for these purposes
+    paragraph_pid: str = ""
+    preceding_speech: str
+    after_speech: str
+
+    @property
+    def preceeding(self):
+        return self.preceding_speech
+
+    @property
+    def after(self):
+        return self.after_speech
+
+    def construct_motion(self):
+        """
+        Sometimes (like for clauses) there isn't actually a perfect motion to hold onto
+        We're just going to cheat and make one.
+        """
+        return Motion(
+            date=self.date,
+            major_heading_id=self.major_heading_id,
+            minor_heading_id=self.minor_heading_id,
+            speech_id=self.speech_id,
+            speech_start_pid="",
+            motion_lines=[self.minor_heading_text, self.preceding_speech],
+        )
+
+    @computed_field
+    @property
+    def gid(self) -> str:
+        return self.speech_id
+
+    @property
+    def relevant_text(self):
+        return self.preceding_speech
+
+    def finish(self, collection: DivisionCollection, end_reason: str):
         self.end_reason = end_reason
         collection.motions.append(self)
         return None
@@ -63,6 +146,9 @@ class Agreement(HasSpeechAndDate):
 class Collection(BaseModel, Generic[T]):
     motions: list[T] = []
 
+    def __iter__(self):
+        return iter(self.motions)
+
     def basic_dict(self):
         return {m.speech_id: str(m) for m in self.motions}
 
@@ -70,6 +156,9 @@ class Collection(BaseModel, Generic[T]):
         debate_date = self.motions[0].date
         with (tests_data_path / f"{debate_date}.json").open("w") as f:
             json.dump(self.basic_dict(), f)
+
+    def __len__(self):
+        return len(self.motions)
 
 
 AgreementCollection = Collection[Agreement]
@@ -80,6 +169,17 @@ agreement_made = PhraseDetector(
         "Question put and agreed to.",
         "Question agreed to.",
         "read the First and Second time, and added to the Bill.",
+    ]
+)
+
+motion_amendment_agreed = PhraseDetector(
+    criteria=[re.compile(r"^Amendment.*?agreed to", re.IGNORECASE)]
+)
+
+amended_agreement = PhraseDetector(
+    criteria=[
+        "Main Question, as amended, put and agreed to",
+        "Main Question, as amended, put forthwith and agreed to",
     ]
 )
 
@@ -104,20 +204,12 @@ alts = [
 ]
 
 
-class DivisionHolder(HasSpeechAndDate):
-    date: str
-    major_heading_id: str
-    minor_heading_id: str
-    speech_id: str  # actually the division id for these purposes
-    preceding_speech: str
-
-
 def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
     previous = None
     major_heading = None
     minor_heading = None
     collection = DivisionCollection()
-    for item in transcript.items:
+    for index, item in enumerate(transcript.items):
         if isinstance(item, MajorHeading):
             major_heading = item
             minor_heading = None
@@ -128,12 +220,18 @@ def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
                 previous_speech = str(previous.items[-1])
             else:
                 previous_speech = ""
+            try:
+                next_speech = str(transcript.items[index + 1])
+            except IndexError:
+                next_speech = ""
             current_division = DivisionHolder(
                 date=date_str,
                 major_heading_id=major_heading.id if major_heading else "",
                 minor_heading_id=minor_heading.id if minor_heading else "",
+                minor_heading_text=str(minor_heading) if minor_heading else "",
                 speech_id=item.id,
                 preceding_speech=previous_speech,
+                after_speech=next_speech,
             )
             collection.motions.append(current_division)
 
@@ -158,8 +256,20 @@ def get_agreements(transcript: Transcript, date_str: str) -> AgreementCollection
                 previous_paragraph = str(transcript_group.speech.items[index - 1])
             except IndexError:
                 previous_paragraph = ""
+            try:
+                next_paragraph = str(transcript_group.speech.items[index + 1])
+            except IndexError:
+                next_paragraph = ""
 
+            end_reason = None
             if agreement_made(paragraph):
+                end_reason = "one_line_agreement"
+            if motion_amendment_agreed(paragraph):
+                end_reason = "amendment_agreed"
+            if amended_agreement(paragraph):
+                end_reason = "amended_motion_agreed"
+
+            if end_reason:
                 current_agreement = Agreement(
                     date=date_str,
                     major_heading_id=major_heading_id,
@@ -168,8 +278,8 @@ def get_agreements(transcript: Transcript, date_str: str) -> AgreementCollection
                     paragraph_pid=paragraph.pid or "",
                     agreed_text=str(paragraph),
                     preceeding_text=previous_paragraph,
+                    after_text=next_paragraph,
                 )
-                current_agreement = current_agreement.finish(
-                    collection, "one line agreement"
-                )
+                current_agreement = current_agreement.finish(collection, end_reason)
+
     return collection
