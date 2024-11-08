@@ -1,5 +1,7 @@
 import rich_click as click
 
+from .snapshot import generate_all_snapshots
+
 
 @click.group()
 def cli():
@@ -11,8 +13,8 @@ def main():
 
 
 @cli.command()
-def example():
-    print("This is an example function")
+def refresh_snapshot():
+    generate_all_snapshots()
 
 
 if __name__ == "__main__":
