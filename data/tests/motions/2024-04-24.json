@@ -1,289 +1,1233 @@
 {
-  "uk.org.publicwhip/debate/2024-04-24b.961.2": {
+  "uk.org.publicwhip/debate/2024-04-24b.961.2.1": {
     "title": "Leave for Bill: Heritage Public Houses",
     "content": "I beg to move,\nThat leave be given to bring in a Bill to require local authorities to maintain a register of heritage public houses in their area and to make provision in connection with the compilation and maintenance of such registers; to make provision relating to planning applications in respect of public houses on such a register; to place restrictions on the sale of heritage public houses; to make provision relating to the nomination of heritage public houses as assets of community value; to make provision about the listing of heritage public houses; and for connected purposes."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.964.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.964.3.1": {
     "title": "New Clause 15: Renters (Reform) Bill",
     "content": "New Clause 15 - Notices to quit by tenants under assured tenancies: timing\n\u201c(1) Section 5 of the Protection from Eviction Act 1977 (notices to quit) is amended as follows.\n(2) In subsection (1), for paragraph (b) substitute\u2014\n\u2018(b) it satisfies\u2014\n(i) subsection (1ZA), if it is given by a tenant in relation to premises let under an assured tenancy, or\n(ii) subsection (1ZC) in any other case;\nbut in relation to landlords under assured tenancies see section 5(1) of the Housing Act 1988 (notice to quit by landlord is of no effect).\u2019\n(3) After subsection (1) insert\u2014\n\u2018(1ZA) A notice to quit satisfies this subsection if\u2014\n(a) it is given not less than\u2014\n(i) any length of time before the date on which the notice is to take effect, not exceeding two months, that the landlord has agreed to in writing, or\n(ii) in the absence of agreement under sub-paragraph (i), two months before the date on which the notice is to take effect, and\n(b) it is in relation to premises let under a repeat tenancy or, if it is in relation to premises let under any other assured tenancy, it is to take effect\u2014\n(i) no earlier than any time, within the period of six months beginning with the day on which the terms of the tenancy provide for the tenancy to begin, that the landlord has agreed to in writing, or\n(ii) in the absence of agreement under sub-paragraph (i), on or after the last day of the period mentioned in that sub-paragraph.\n(1ZB) In subsection (1ZA)(b) \u201crepeat tenancy\u201d means an assured tenancy under which the tenant becomes entitled to possession of the premises within the period of one month beginning with the day after the last day of a previous assured tenancy\u2014\n(a) under which the same premises were let, and\n(b) which was between the same parties.\n(1ZC) A notice to quit satisfies this subsection if it is given not less than four weeks before the date on which it is to take effect.\u2019\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.964.4": {
+  "uk.org.publicwhip/debate/2024-04-24b.964.4.1": {
     "title": "Second Reading: Renters (Reform) Bill",
     "content": "I beg to move, That the clause be read a Second time."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.964.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.25": {
+    "title": "New Clause 1: Renters (Reform) Bill",
+    "content": "New clause 1\u2014Repeal of requirement for selective licensing\u2014\n\u201cPart 3 of the Housing Act 2004 (Selective licensing of other residential accommodation) is repealed.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.28": {
+    "title": "New Clause 2: Renters (Reform) Bill",
+    "content": "New clause 2\u2014Expanding the remit of rent repayment orders to company directors\u2014\n\u201cIn section 249A of the Housing Act 2004, after subsection (1) insert\u2014\n\u2018(1A) If a local housing authority believes that a relevant housing offence has been committed by a body corporate, it may impose a financial penalty on\u2014\n(a) a director, manager, secretary or other similar officer of the body corporate, or\n(b) a person purporting to act in such a capacity,\nif it is satisfied, beyond reasonable doubt, that the offence was committed with the consent or connivance of that person, or that the offence was attributable to any neglect on the part of that person.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.35": {
+    "title": "New Clause 3: Renters (Reform) Bill",
+    "content": "New clause 3\u2014Evidence to consider when granting possession order for anti-social behaviour\u2014\n\u201cIn section 9A of the 1988 Act, after subsection (2) insert\u2014\n\u2018(3) In considering evidence of conduct the court may consider evidence provided by way of hearsay and that evidence will be admissible without notice or permission of the court notwithstanding any rule of the court or the common law.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.39": {
+    "title": "New Clause 5: Renters (Reform) Bill",
+    "content": "New clause 5\u2014Review of changes to grounds for possession\u2014\n\u201c(1) The Secretary of State must, within two years of the date of Royal Assent to this Act, conduct and lay before Parliament a review of the grounds for possession in Schedule 2 of the Housing Act 1988, as amended by this Act."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.48": {
+    "title": "New Clause 6: Renters (Reform) Bill",
+    "content": "New clause 6\u2014Requirement to state the amount of rent when advertising residential premises\u2014\n\u201c(1) A landlord must not advertise or otherwise offer a tenancy of residential premises unless the amount of rent is stated in the advertisement or offer."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.52": {
+    "title": "New Clause 7: Renters (Reform) Bill",
+    "content": "New clause 7\u2014Not inviting or encouraging bids for rent\u2014\n\u201c(1) A landlord must not invite or encourage a prospective tenant or any other person to offer to pay an amount of rent for residential premises that exceeds the amount of rent stated as part of the advertisement or offer of the premises as required by section [requirement to state the amount of rent when advertising residential premises]."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.57": {
+    "title": "New Clause 8: Renters (Reform) Bill",
+    "content": "New clause 8\u2014Limit on amount of rent that a residential landlord can request in advance\u2014\n\u201cIn Schedule 1 to the Tenant Fees Act 2019, after paragraph 1(8) insert\u2014\n\u2018(9) Where rent is payable in advance, the maximum that may be charged is equivalent to the amount specified in paragraph 2(3).\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.61": {
+    "title": "New Clause 10: Renters (Reform) Bill",
+    "content": "New clause 10\u2014Extension of Awaab\u2019s law to the private rented sector\u2014\n\u201c(1) Section 10A of the Landlord and Tenant Act 1985 is amended as follows."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.66": {
+    "title": "New Clause 11: Renters (Reform) Bill",
+    "content": "New clause 11\u2014Ending blanket bans on renting to families with children or those in receipt of benefits\u2014\n\u201cThe Secretary of State may, by regulation, specify behaviour which, for the purposes of Part 4, Equality Act 2010, shall be considered unlawful discrimination unless the contrary is shown.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.69": {
+    "title": "New Clause 12: Renters (Reform) Bill",
+    "content": "New clause 12\u2014Discrimination relating to care-leaver status\u2014\n\u201c(1) The provisions of this section apply to individuals who are\u2014\n(a) a relevant child as defined by section 23A of the Children\u2019s Act 1989; or\n(b) a former relevant child as defined by section 23C of the Children\u2019s Act 1989.\n(2) A relevant person must not, in relation to a dwelling that is to be let on a relevant tenancy\u2014\n(a) on the basis that the individual meets either of the criteria set out in subsection (1), prevent the person from\u2014\n(i) enquiring whether the dwelling is available for let,\n(ii) accessing information about the dwelling,\n(iii) viewing the dwelling in order to consider whether to seek to rent it,\n(iv) entering into a tenancy of the dwelling, or\n(b) apply a provision, criterion or practice in order to make care leavers less likely to enter into a tenancy of the dwelling than people who are not care leavers.\n(3) Subsection (2) does not apply if the relevant person can show that the prospective landlord of the dwelling, or a person who would be a superior landlord in relation to the dwelling, is insured under a contract of insurance\u2014\n(a) to which section 33 does not apply, and\n(b) which contains a term which makes provision (however expressed) requiring the insured to prohibit a tenant under a relevant tenancy from being a care-leaver,\nand the conduct is a means of preventing the prospective landlord from breaching that term.\n(4) Conduct does not breach the prohibition in subsection (2) if it consists only of\u2014\n(a) one or more of the following things done by a person who does nothing in relation to the dwelling that is not mentioned in this paragraph\u2014\n(i) publishing advertisements or disseminating information;\n(ii) providing a means by which a prospective landlord can communicate directly with a prospective tenant;\n(iii) providing a means by which a prospective tenant can communicate directly with a prospective landlord, or\n(b) things of a description, or things done by a person of a description, specified for the purposes of this section in regulations made by the Secretary of State.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.90": {
+    "title": "New Clause 37: Renters (Reform) Bill",
+    "content": "New clause 37\u2014Extension of rent repayment orders\u2014\n\u201c(1) In Section 40(3) of the Housing and Planning Act 2016, at end of table insert\u2014\n8Housing Act 1988Section 16D, 16EDuties on landlords and agents as regards information provision and prohibition on reletting9Renters (Reform) Act 2024Sections 48Landlord redress provisions10Renters (Reform) Act 2024Section 69Active landlord database entry\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.96": {
+    "title": "New Clause 38: Renters (Reform) Bill",
+    "content": "New clause 38\u2014Continuing ability of tenants to sublet\u2014\n\u201c(1) In any lease of residential property which is not by virtue of this Act an assured tenancy\u2014\n(a) any provision which restricts subletting to assured shorthold tenancies shall be interpreted to refer to assured tenancies; and\n(b) any provision which would make the grant of an assured tenancy a breach of that provision shall be void unless\u2014\n(i) that provision is an absolute prohibition against subletting; or\n(ii) the lease has less than seven years unexpired.\n(2) Any provision which requires the consent of a landlord or other person to the grant of a subtenancy shall be interpreted so that consent may not be refused on the grounds that the subtenancy is an assured tenancy or on the grounds of any statutory provision of that tenancy.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.104": {
+    "title": "New Clause 39: Renters (Reform) Bill",
+    "content": "New clause 39\u2014Payment of relocation payment to tenant\u2014\n\u201cIn the Housing Act 1988, after section 11 insert\u2014\n\u201811A Payment of relocation payment in certain cases\n(1) Where a landlord issues a notice of proceedings for possession of a dwelling-house on any of the grounds in Schedule 2 to this Act (except Ground 7A or   Ground 14) within two years of the start of the tenancy, the landlord shall pay a relocation payment to the tenant.\n(2) A relocation payment shall be an amount equivalent to\u2014\n(a) one month\u2019s rent in the case of an order for possession on Ground 1 or Ground 1A;\n(b) two months\u2019 rent in the case of an order for possession on any other ground.\n(3) The relocation payment shall be made no less than two weeks before the date specified in the notice of proceedings for possession.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.113": {
+    "title": "New Clause 40: Renters (Reform) Bill",
+    "content": "New clause 40\u2014Guarantor to have no further liability following death of tenant\u2014\n\u201c(1) Subject to subsection (3), a guarantee agreement relating to a relevant tenancy ceases to have effect upon the death of a relevant tenant."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.125": {
+    "title": "New Clause 41: Renters (Reform) Bill",
+    "content": "New clause 41\u2014Prohibition of requirement for rent guarantors\u2014\n\u201c(1) A relevant person may not, in relation to a dwelling that is to be let on a relevant tenancy\u2014\n(a) require the provision of a rental guarantor or an equivalent upfront payment;\n(b) let the relevant tenancy on the basis of being offered a rental guarantor or an equivalent payment by a prospective tenant.\n(2) For the purposes of this section, \u2018relevant person\u2019 and \u2018relevant tenancy\u2019 have the meanings given in section 36 of this Act.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.132": {
+    "title": "Amendment 14: Renters (Reform) Bill",
+    "content": "Amendment 14, in clause 3, page 3, leave out lines 21 to 23 and insert\u2014\n\u201c1, 1A, 1B, 2, 2ZA, 2ZB, 4A, 6, 6Afour months beginning with the date of service of the notice5, 5A, 5B, 5C, 5D, 7, 9two months beginning with the date of service of the notice\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.136": {
+    "title": "Amendment 15: Renters (Reform) Bill",
+    "content": "Amendment 15, page 3, line 33, at end insert\u2014\n\u201c(4) The Secretary of State must lay before Parliament a review of the changes to grounds for possession made under this Act within two years of the date of Royal Assent.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.139": {
+    "title": "Amendment 21: Renters (Reform) Bill",
+    "content": "Amendment 21, in clause 6, page 7, line 4, at end insert\u2014\n\u201c13B Recovery of rent\n(1) Any increased rent which is paid otherwise than in accordance with section 13 or section 13A is recoverable from the landlord by the tenant as a debt claim in the courts.\n(2) The Secretary of State may, by regulations, provide for such claims to be recoverable by proceedings in the First-Tier Tribunal, rather than the courts.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.145": {
+    "title": "Amendment 261: Renters (Reform) Bill",
+    "content": "Amendment 261, in clause 7, page 8, line 2, at end insert\u2014\n\u201c(c) in paragraph (c), at end insert\u2014\n\u2018and,\n(d) that it was financed or part-financed by a means-tested grant\u2019.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.150": {
+    "title": "Amendment 22: Renters (Reform) Bill",
+    "content": "Amendment 22, page 8, line 9, at end insert\u2014\n\u201c(7A) After subsection (8) insert\u2014\n\u2018(8A) Where a notice under section 13(2) has been referred to the appropriate tribunal then, unless the landlord and the tenant otherwise agree, the rent determined by the appropriate tribunal (subject, in a case where subsection (5) above applies, to the addition of the appropriate amount in respect of rates) shall be the same or below the rent specified in the section 13 notice and the rent as determined by the tribunal shall only become payable once the decision of the tribunal has become final.\n(8B) A decision becomes final only on the latest of\u2014\n(a) the determination of any appeal;\n(b) if earlier, on the expiry of the time for bringing a subsequent appeal (if any); or\n(c) by its being abandoned or otherwise ceasing to have effect.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.158": {
+    "title": "Amendment 13: Renters (Reform) Bill",
+    "content": "Amendment 13, page 8, line 20, at end insert\u2014\n\u201c(c) no more than the rent proposed by the landlord in the notice served on the tenant under section 13 of the 1988 Act.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.161": {
+    "title": "Amendment 23: Renters (Reform) Bill",
+    "content": "Amendment 23, page 9, line 5, at end insert\n\u201cwhich must be no earlier than two months following the date of determination\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.164": {
+    "title": "Amendment 24: Renters (Reform) Bill",
+    "content": "Amendment 24, page 9, line 6, leave out subsection (4) and insert\u2014\n\u201c(4A) A date specified under subsection (3)(b) must be no earlier than the date on which the determination becomes final, with a decision only becoming final on the latest of\u2014\n(a) the determination of any appeal;\n(b) if earlier, on the expiry of the time for bringing a subsequent appeal (if any); or\n(c) by its being abandoned or otherwise ceasing to have effect.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.170": {
+    "title": "Amendment 31: Renters (Reform) Bill",
+    "content": "Amendment 31, in clause 9, page 9, line 29, leave out \u201c42nd\u201d and insert \u201c28th\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.172": {
+    "title": "Amendment 32: Renters (Reform) Bill",
+    "content": "Amendment 32, page 9, line 30, at and insert\u2014\n\u201c(d) the landlord may not review or withdraw consent once given.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.176": {
+    "title": "Amendment 38: Renters (Reform) Bill",
+    "content": "Amendment 38, in clause 12, page 14, line 18, at end insert\u2014\n\u201c(g) unreasonably refuse home adaptations for the purposes of a disabled person's access to or usage of the home.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.178": {
+    "title": "Amendment 11: Renters (Reform) Bill",
+    "content": "Amendment 11, page 14, line 21, after \u201cdwelling-house\u201d insert\n\u201cor the short-term let or holiday let\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.182": {
+    "title": "Amendment 1: Renters (Reform) Bill",
+    "content": "Amendment 1, page 14, line 26, after \u201cdwelling-house\u201d insert\n\u201cor the short-term let or holiday let\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.186": {
+    "title": "Amendment 2: Renters (Reform) Bill",
+    "content": "Amendment 2, page 14, line 28, after \u201cdwelling-house\u201d insert\n\u201cor the short-term let or holiday let\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.190": {
+    "title": "Amendment 3: Renters (Reform) Bill",
+    "content": "Amendment 3, page 15, line 15, leave out \u201cthree\u201d and insert \u201csix\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.192": {
+    "title": "Amendment 35: Renters (Reform) Bill",
+    "content": "Amendment 35, page 15, line 15, leave out \u201cthree\u201d and insert \u201ctwelve\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.194": {
+    "title": "Amendment 36: Renters (Reform) Bill",
+    "content": "Amendment 36, page 15, line 17, leave out subsection (b)."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.197": {
+    "title": "Amendment 6: Renters (Reform) Bill",
+    "content": "Amendment 6, in clause 17, page 25, line 18, after \u201cgiven\u201d insert\n\u201cnot earlier than four months after a tenant first occupies the premises and\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.201": {
+    "title": "Amendment 43: Renters (Reform) Bill",
+    "content": "Amendment 43, in clause 29, page 32, line 23, leave out \u201csection 27 or 28\u201d and insert\n\u201csections 27, 28 or [Discrimination relating to care-leaver status]\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.203": {
+    "title": "Amendment 44: Renters (Reform) Bill",
+    "content": "Amendment 44, in clause 30, page 34, line 21, at end insert\u2014\n\u201c(5) A term of a relevant tenancy or regulated tenancy is of no effect so far as the term makes provision (however expressed) prohibiting the tenant from being\u2014\n(a) a relevant child as defined by section 23A of the Children\u2019s Act 1989; or\n(b) a former relevant child as defined by section 23C of the Children\u2019s Act 1989.\n(6) Subsection (5) does not apply if the landlord or a superior landlord is insured under a contract of insurance\u2014\n(a) to which section 33 does not apply, and\n(b) which contains a term which makes provision (however expressed) requiring the insured to prohibit the tenant from being a relevant or former relevant child."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.211": {
+    "title": "Amendment 45: Renters (Reform) Bill",
+    "content": "Amendment 45, in clause 31, page 35, line 12, at end insert\u2014\n\u201c(4A) A term of a lease of premises that consist of or include a dwelling is of no effect so far as the term makes provision (however expressed) requiring a tenant under that or any inferior lease to prohibit a sub-tenant under a relevant tenancy or regulated tenancy from prohibiting the tenant from being\u2014\n(a) a relevant child as defined by section 23A of the Children\u2019s Act 1989; or\n(b) a former relevant child as defined by section 23C of the Children\u2019s Act 1989.\n(4B) Subsection (4A) does not apply if the landlord under the lease or a superior landlord is insured under a contract of insurance\u2014\n(a) to which section 33 does not apply, and\n(b) which contains a term which makes provision (however expressed) requiring the insured to prohibit a sub-tenant from being a relevant or former relevant child."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.219": {
+    "title": "Amendment 46: Renters (Reform) Bill",
+    "content": "Amendment 46, in clause 32, page 35, line 30, at end insert\u2014\n\u201c(3) A term of a mortgage of premises that consist of or include a dwelling is of no effect so far as the term makes provision (however expressed) requiring a mortgagor to prohibit a tenant under a relevant tenancy or regulated tenancy from being\u2014\n(a) a relevant child as defined by section 23A of the Children\u2019s Act 1989; or\n(b) a former relevant child as defined by section 23C of the Children\u2019s Act 1989.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.223": {
+    "title": "Amendment 47: Renters (Reform) Bill",
+    "content": "Amendment 47, in clause 33, page 36, line 2, at end insert\u2014\n\u201c(2A) A term of a contract of insurance to which this section applies is of no effect so far as the term makes provision (however expressed) requiring the insured to prohibit a tenant under a relevant tenancy or regulated tenancy from being\u2014\n(a) a relevant child as defined by section 23A of the Children\u2019s Act 1989; or\n(b) a former relevant child as defined by section 23C of the Children\u2019s Act 1989.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.230": {
+    "title": "Amendment 39: Renters (Reform) Bill",
+    "content": "Amendment 39, in clause 42, page 54, line 1, after \u201csection 1\u201d insert\u2014\n\u201c(a) omit subsection (3);\n(b) in subsection (3A) omit \u2018the landlord of a residential occupier or an agent of the landlord\u2019 and insert \u2018a person\u2019;\n(c) after subsection (3B) insert\u2014\n\u2018(3BA) For the purposes of this subsection, services which are reasonably required for the occupation of the premises as a household include, but are not limited to\u2014\n(a) water,\n(b) gas,\n(c) electricity, and\n(d) electronic communications networks and services\u2019;\n(d) omit subsection (3C);\n(e)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.242": {
+    "title": "Amendment 40: Renters (Reform) Bill",
+    "content": "Amendment 40, page 55, line 2, at end insert\u2014\n\u201c(3A) In section 3A, after subsection (9) insert\u2014\n\u2018(10) In any proceedings under any of the relevant statutory provisions in this Act, it shall be for the accused to prove that the tenancy or licence is excluded by virtue of subsections (2) or (3) above.\u2019\n(3B) After section 4 insert\u2014\n\u20184A Rebuttable presumption of landlord\n(1) In any action under Part 1 of this Act (including where a Financial Penalty Notice (FPN) is issued) there is a rebuttable presumption that the person to whom the residential occupier pays rent or other payments in respect of occupation of a dwelling is the landlord of the property.\u2019\n(3C) After section 7 insert\u2014\n\u20187A Notification by the police\n(1) Where a constable has reasonable cause to believe that an offence under the Protection from Eviction Act 1977 has occurred the constable must within  24 hours notify the authority named in section 6 as responsible for prosecution of offences in the area with the following information\u2014\n(a) the address where the alleged offence has happened;\n(b) if known, the name of the landlord;\n(c) if known, the name of the residential occupier;\n(d) any facts known to the constable about the alleged offence.\n(2) A police force has the power to assist an authority included in section 6 in the exercise of their functions under this Act.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.258": {
+    "title": "Amendment 4: Renters (Reform) Bill",
+    "content": "Amendment 4, in clause 45, page 59, line 36, after \u201clandlord\u201d insert\n\u201cwho is not otherwise a member of an independent redress scheme approved by the Secretary of State.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.262": {
+    "title": "Amendment 27: Renters (Reform) Bill",
+    "content": "Amendment 27, in clause 53, page 67, line 18, at end insert\u2014\n\u201c(ba) details, which may include copies, of all notices seeking possession served by the residential landlord in respect of each dwelling of which he is the landlord, and\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.265": {
+    "title": "Amendment 42: Renters (Reform) Bill",
+    "content": "Amendment 42, in clause 55, page 68, line 27, at end insert\u2014\n\u201c(ba) require the provision of information about the accessibility of the dwelling,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.267": {
+    "title": "Amendment 12: Renters (Reform) Bill",
+    "content": "Amendment 12, page 68, line 33, at end insert\u2014\n\u201c(2A) Regulations under subsection (1) must require\u2014\n(a) the energy performance certificate relating to a registrable dwelling to be provided to the database operator; and\n(b) details of the energy performance certificate to be recorded in a dwelling entry in the database.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.273": {
+    "title": "Amendment 37: Renters (Reform) Bill",
+    "content": "Amendment 37, in clause 76, page 84, line 34, at end insert\u2014\n\u201c(e) any accommodation which is provided by the Defence Infrastructure Organisation to service individuals and families.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.276": {
+    "title": "Amendment 7: Renters (Reform) Bill",
+    "content": "Amendment 7, page 85, line 26, leave out clause 78."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.277": {
+    "title": "Amendment 41: Renters (Reform) Bill",
+    "content": "Amendment 41, in clause 78, page 86, line 4, after \u201c(order),\u201d insert\u2014\n\u201c(a) in subsection (1), before \u2018The First-tier Tribunal\u2019 insert \u2018Apart from offences for which subsection (1A) applies,\u2019;\n(b) after subsection (1) insert\u2014\n\u2018(1A) The First-tier Tribunal may make a rent repayment order if satisfied on the balance of probabilities that the landlord has committed an offence under section 1(2), (3) or (3A) of the Protection from Eviction Act 1977 (whether or not the landlord has been convicted).\u2019;\n(c) at the end of subsection (3) insert\u2014\n\u2018(d) section 46A (where an order is made against more than one landlord or there has been a previous order)\u2019;\n(d)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.286": {
+    "title": "Amendment 8: Renters (Reform) Bill",
+    "content": "Amendment 8, in clause 116, page 111, line 19,  leave out \u201csubsection (2)\u201d and insert \u201csubsections (1A) and (2)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.288": {
+    "title": "Amendment 28: Renters (Reform) Bill",
+    "content": "Amendment 28, page 111, line 19, at end insert\n\u201c, save that section 2(b) comes into force on the day on which this Act is passed only to the extent that it repeals section 21 of the Housing Act 1988; such repeal will not affect the validity of any notices served under that provision on or before the day on which this Act is passed and the provisions of that section will continue to apply to any claims issued in respect of such a notice\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.291": {
+    "title": "Amendment 9: Renters (Reform) Bill",
+    "content": "Amendment 9, page 111, line 19, at end insert\u2014\n\u201c(1A) Prior to laying regulations under subsection (1) the Secretary of State must commission and publish a review into the operation of residential possession proceedings in the County Courts used by residential landlords and tenants and the enforcement of possession orders.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.297": {
+    "title": "Amendment 48: Renters (Reform) Bill",
+    "content": "Amendment 48, in schedule 1, page 114, line 10, leave out \u201c6 months\u201d and insert \u201cone year\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.298": {
+    "title": "Amendment 255: Renters (Reform) Bill",
+    "content": "Amendment 255, page 114, line 10, leave out \u201c6 months\u201d and insert \u201c2 years\u201d.\nAmendments 255 and 256 would prohibit evictions under grounds 1 and 1A within two years of the beginning of a tenancy."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.301": {
+    "title": "Amendment 49: Renters (Reform) Bill",
+    "content": "Amendment 49, page 115, line 8, leave out \u201c6 months\u201d and insert \u201cone year\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.302": {
+    "title": "Amendment 256: Renters (Reform) Bill",
+    "content": "Amendment 256, page 115, line 8, leave out \u201c6 months\u201d and insert \u201c2 years\u201d.\nAmendments 255 and 256 would prohibit evictions under grounds 1 and 1A within two years of the beginning of a tenancy."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.305": {
+    "title": "Amendment 33: Renters (Reform) Bill",
+    "content": "Amendment 33, page 115, line 32, leave out sub-paragraph (a) and insert\u2014\n\u201c(a) the landlord who is seeking possession intends to\u2014\n(i) sell a freehold or leasehold interest in the dwelling-house or to grant a lease of the dwelling-house for a term certain of more than 21 years which is not terminable before the end of that term by notice given by or to the landlord;\n(ii) re-let the dwelling house to another tenant pursuant to a Rent to Buy Agreement; or\n(iii) retain and convert the home to rented housing on either an affordable or market rent basis;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.312": {
+    "title": "Amendment 34: Renters (Reform) Bill",
+    "content": "Amendment 34, page 116, line 12, leave out sub-paragraph (b) and insert\u2014\n\u201c(b) allows the tenant to rent the dwelling house for a period stated in the agreement, which is not less than 5 years or, for dwelling houses in Greater London, 10 years from the beginning of the tenancy so as to enable the tenant to save for a deposit and, over time, purchase their first home.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.315": {
+    "title": "Amendment 29: Renters (Reform) Bill",
+    "content": "Amendment 29, page 116, line 29, after \u201ctenancy\u201d insert\n\u201c(including any tenancy at will or other tenancy arising on expiry of a fixed-term lease)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.319": {
+    "title": "Amendment 30: Renters (Reform) Bill",
+    "content": "Amendment 30, page 117, line 5, at end insert\u2014\n\u201c(c) where the intermediate landlord serves notice under this Ground, the intermediate landlord shall be deemed to continue to hold sufficient interest in the dwelling-house to maintain a continuing right to possession until conclusion of any possession proceedings.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.323": {
+    "title": "Amendment 5: Renters (Reform) Bill",
+    "content": "Amendment 5, page 118, line 4, after \u201cHMO\u201d insert\n\u201cor is occupied by one or two students\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.327": {
+    "title": "Amendment 260: Renters (Reform) Bill",
+    "content": "Amendment 260, page 118, line 12, at end insert\u2014\n\u201c(ca) the tenancy agreement was not signed earlier than March of the year in which the tenancy commenced.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.331": {
+    "title": "Amendment 52: Renters (Reform) Bill",
+    "content": "Amendment 52, page 122, line 34, leave out \u201cof an intention\u201d and insert\u2014\n\u201cthat the landlord may intend\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.333": {
+    "title": "Amendment 53: Renters (Reform) Bill",
+    "content": "Amendment 53, page 122, line 35, at end insert\u2014\n\u201cor the Court is of the opinion that it is just and equitable to dispose of the requirement to serve a written statement.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.335": {
+    "title": "Amendment 50: Renters (Reform) Bill",
+    "content": "Amendment 50, page 123, line 3, leave out lines 3  to 9."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.336": {
+    "title": "Amendment 51: Renters (Reform) Bill",
+    "content": "Amendment 51, page 125, line 13, at end insert\u2014\n\u201cGround 6AA\nA relevant social landlord granted a tenancy of the dwelling house to the tenant as temporary decant accommodation in order to demolish their original  home in the context of re-development and the landlord seeking possession requires vacant possession of the dwelling house because\u2014\n(a) the landlord has served the tenant with notice that the new home is ready to move into, or\n(b) the temporary use of the accommodation has otherwise come to an end.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.341": {
+    "title": "Amendment 16: Renters (Reform) Bill",
+    "content": "Amendment 16, page 125, leave out line 17."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.343": {
+    "title": "Amendment 55: Renters (Reform) Bill",
+    "content": "Amendment 55, page 125, line 17, at end insert\u2014\n\u201c(ab) At the end of the second unnumbered paragraph, insert\u2014\n\u2018This ground applies only where the landlord is a private registered provider of social housing.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.346": {
+    "title": "Amendment 17: Renters (Reform) Bill",
+    "content": "Amendment 17, page 125, line 18, at end insert\u2014\n\u201c(c) at the end of the last unnumbered paragraph insert\u2014\n\u2018This ground applies only where the landlord is a private registered provider of social housing.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.350": {
+    "title": "Amendment 18: Renters (Reform) Bill",
+    "content": "Amendment 18, page 125, line 30, leave out paragraph 23."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.352": {
+    "title": "Amendment 19: Renters (Reform) Bill",
+    "content": "Amendment 19, page 125, line 30, leave out \u201cAfter Ground 8\u201d and insert \u201cBefore Ground 9\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.354": {
+    "title": "Amendment 257: Renters (Reform) Bill",
+    "content": "Amendment 257, page 126, line 12, at end insert\u2014\n\u201c23A In Ground 12, after \u2018performed\u2019 insert \u2018provided that failure to carry out this obligation could\u2014\n(a) be reasonably expected to have a material adverse effect on the safety, health, or lives of any residents in that property or adjoining property; or\n(b) cause material damage to the property not contemplated in any form of property safety deposit scheme relating to the tenancy.\u2019\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.359": {
+    "title": "Amendment 20: Renters (Reform) Bill",
+    "content": "Amendment 20, page 126, line 14, leave out paragraph 24."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.362": {
+    "title": "Amendment 25: Renters (Reform) Bill",
+    "content": "Amendment 25, in schedule 2, page 128, line 29, leave out \u201comit subsection (5)\u201d and insert\n\u201cfor subsection (5) substitute\u2014\n(5) A person is also threatened with homelessness if\u2014\n(a) a valid notice has been given to the person under section 8 of the Housing Act 1988 in respect of the only accommodation the person has that is available for the person\u2019s occupation, and\n(b) that notice will expire within 56 days.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.964.5.369": {
     "title": "Amendment 26: Renters (Reform) Bill",
     "content": "Amendment 26, page 129, line 1, leave out \u201comit subsection (6)\u201d and insert\n\u201cfor subsection (6) substitute\u2014\n(6) But the authority may not give notice to the applicant under subsection (5) on the basis that the circumstances in subsection (8)(b) apply if a valid notice has been given to the applicant under section 8 of the Housing Act 1988 that\u2014\n(a) will expire within 56 days or has expired, and\n(b) is in respect of the only accommodation that is available for the applicant\u2019s occupation.\u201d"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1003.0": {
+  "uk.org.publicwhip/debate/2024-04-24b.1003.0.3": {
+    "title": "Amendment 3: Renters (Reform) Bill",
+    "content": "Amendment 3, tabled by my hon. Friend the Member for North Shropshire, would increase the time that must elapse between a landlord\u2019s taking ownership of a property and making the property available for rent to six months, from the currently proposed three. This six-month period is designed to act as a more effective deterrent for landlords wishing to evict tenants in order to remarket a property quickly, or \u201cflip\u201d it into a holiday let. I note that a similar amendment tabled by the Opposition  would extend the time to 12 months. The Liberal Democrats believe that would risk driving landlords from the market, and that six months strikes the right balance between protecting tenants from sharp practice and not driving reputable landlords away.\n\u201cFlipping\u201d, or quickly remarketing property for holiday letting, has caused serious injustice in some of the most beautiful places in the country, such as Cumbria. Local people living in tourist hotspots often struggle to afford a home in their area because of the rapid increase in the number of properties taken out of residential let and used solely as short-term holiday lets. That has a knock-on impact in terms of workforce pressures, especially in the hospitality and care sectors. Of course there needs to be some holiday accommodation in beautiful areas that benefit economically from attracting tourism, but we must find a balance between holiday and private rented sector accommodation."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1003.0.6": {
     "title": "Amendment 37: Renters (Reform) Bill",
     "content": "Amendment 37, which was tabled by my hon. Friend the Member for North Shropshire, would ensure that accommodation rented from the Defence Infrastructure Organisation by service individuals and their families is subject to the decent homes standard. Servicemen and women are housed in accommodation rented from the DIO, which is currently not subject to a minimum standard. This means that individuals who have put their lives on the line for our country are not necessarily guaranteed a warm and safe place to live in return. Across the country, and specifically at RAF Shawbury and Tern Hill barracks in north Shropshire, there have been reports of service family accommodation being plagued by black mould, rat infestations and chronic overcrowding. That is no way to treat people who have put their lives on the line to serve this country. Frankly, they deserve better.\nAmendment 37 would ensure that all accommodation rented from the DIO meets minimum housing standards, such as being in a reasonable state of repair and providing a reasonable degree of thermal comfort. Without the amendment, the Government would miss out on a crucial opportunity to finally bring service accommodation up to a decent standard. I am sure that Members on both sides of the House will agree that this is the absolute minimum we should be offering to service individuals, so I hope that the Minister can offer reassurance from the Dispatch Box that he and his Department are willing to move on this issue, ahead of the Bill moving to the other place, by working with my hon. Friend  the Member for North Shropshire to ensure that the decent homes standard is applied to all military service accommodation. Otherwise, we will push the amendment to a vote."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1028.0": {
+  "uk.org.publicwhip/debate/2024-04-24b.1028.0.7": {
     "title": "Amendment 37: Renters (Reform) Bill",
     "content": "Amendment 37, tabled by the hon. Member for North Shropshire (Helen Morgan) and given voice today by the hon. Member for Twickenham (Munira Wilson), seeks to bring accommodation provided by the Defence Infrastructure Organisation into scope of the decent homes standard. I make it clear that everyone deserves a safe and decent home, none more so than the heroes who serve in our armed forces. Although 96% of service family accommodation already meets the decent homes standard, bringing such accommodation within scope could provide a further safeguard to ensure that all service personnel and their families have a home of the quality they deserve. We therefore strongly agree with the intent of the amendment.\nService family accommodation has unique features, however, including a significant portion being located on secure military sites where there will be issues around security and access for inspections. This would create a challenge in applying and enforcing the decent homes standard. The Government intend to ensure that service accommodation meets the decent homes standard, while recognising that work is needed to determine the appropriate monitoring and reporting arrangements given the unique nature of this accommodation. My Department will therefore work closely with the Ministry of Defence to explore these challenges and how we can best ensure that there are strong safeguards for service personnel and their families that work effectively in practice."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1035.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1035.1.1": {
     "title": "New Clause 30: Renters (Reform) Bill",
     "content": "New Clause 30 - Assessment of operation of possession process\n\u201c(1) The Lord Chancellor must prepare an assessment of the operation of the process by which\u2014\n(a) on applications made by landlords, the county court is able to make orders for the possession of dwellings in England that are let under assured and regulated tenancies, and\n(b) such orders are enforced.\n(2) The Lord Chancellor must publish the assessment at such time, and in such manner, as the Lord Chancellor thinks appropriate.\n(3) In this section\u2014\n\u2018assured tenancy\u2019 means an assured tenancy within the meaning of the 1988 Act;\n\u2018dwelling\u2019 means a building or part of a building which is occupied or intended to be occupied as a separate dwelling;\n\u2018regulated tenancy\u2019 means a regulated tenancy within the meaning of the Rent Act 1977.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1039.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1039.1.1": {
     "title": "New Clause 13: Renters (Reform) Bill",
     "content": "New Clause 13 - Sections 1 and 2: effect of superior leases\n\u201c(1) Where, immediately before the commencement date, the lessee under an existing lease of premises that consist of or include a dwelling\u2014\n(a) could sub-let the dwelling under a fixed term assured tenancy without breaching the lease, but\n(b) could not sub-let the dwelling under a relevant assured tenancy without breaching the lease,\nthe lease has effect on and after the commencement date as if it provided that the lessee may sub-let the dwelling under a relevant assured tenancy in the same circumstances and on the same terms as the lessee could previously sub-let it under a fixed term assured tenancy, except so far as it would be inconsistent with any provision made by or under this Act for the lease to have effect in that way.\n(2) Where, immediately before the commencement date, the lessee under an existing lease of premises that consist of or include a dwelling\u2014\n(a) could sub-let the dwelling under an assured shorthold tenancy without breaching the lease, but\n(b) could not sub-let the dwelling under a relevant assured tenancy without breaching the lease,\nthe lease has effect on and after the commencement date as if it provided that the lessee may sub-let the dwelling under a relevant assured tenancy in the same circumstances and on the same terms as the lessee could previously sub-let it under an assured shorthold tenancy, except so far as it would be inconsistent with any provision made by or under this Act for the lease to have effect in that way.\n(3) Where\u2014\n(a) an existing lease which is\u2014\n(i) periodic, or\n(ii) a fixed term lease of a term certain not exceeding 21 years,\nis modified by subsection (1) or (2),\n(b) a dwelling is sub-let under the lease on a tenancy (entered into before or after the commencement date) which is (or becomes on or after that date, by virtue of this Act or otherwise) a relevant assured tenancy, and\n(c) the tenancy was entered into in accordance with the terms of the lease as they stood when the tenancy was entered into (or, if it was not, the breach has been waived by the landlord),\nthe existing lease has effect as if it provided that a failure by the lessee at the end of the lease to return the premises to the landlord free from the relevant assured tenancy does not constitute a breach of the lease.\n(4) Subsection (5) applies where, immediately before the commencement date, the lessee under an existing lease of premises that consist of or include a dwelling could sub-let the dwelling under a relevant assured tenancy without breaching the lease.\n(5) On and after the commencement date, the circumstances in which and terms on which the lessee may so sub-let the dwelling remain the same as they were immediately before the commencement date, except so far as that would be inconsistent with provision made by or under this Act.\n(6) Nothing in this section alters the effect of an existing lease, before the extended application date (within the meaning given by section (Application of Chapter 1 of Part 1)(3)), in relation to a sub-tenancy that is an existing tenancy (within the meaning given by section (Application of Chapter 1 of Part 1)(2)).\n(7) Nothing in this section prevents an existing lease from being varied by the parties to it.\n(8) The Secretary of State may by regulations disapply or modify the effect of this section in relation to existing leases of a specified description.\n(9) Where the Secretary of State makes regulations under subsection (8) disapplying the effect of this section, the fact that this section has previously applied in relation to an existing lease does not prevent the exercise of the powers in section 117(4)(b) in relation to the lease.\n(10) In this section\u2014\n\u201cassured shorthold tenancy\u201d is to be read in accordance with Part 1 of the 1988 Act as it had effect immediately before the commencement date;\n\u201cthe commencement date\u201d has the meaning given by section (Application of Chapter 1 of Part 1)(1)(a);\n\u201cdwelling\u201d means a \u201cdwelling-house\u201d within the meaning of Part 1 of the 1988 Act (see section 45 of that Act) in England;\n\u201cexisting lease\u201d means a lease which is entered into before the commencement date or under a contract entered into before that date;\n\u201crelevant assured tenancy\u201d means a periodic assured tenancy which is not an assured shorthold tenancy and in relation to which each of the rent periods is a period of\u2014\n(a) 28 days or less, or\n(b) 1 month;\n\u201csub-letting\u201d includes sub-letting under any inferior lease.\n(11) In this section references to a lease, and to the terms of a lease, include references to\u2014\n(a) the terms of any agreement relating to the lease, and\n(b) any document or communication from the landlord which gives or refuses consent for sub-letting in relation to a category or description of sub-tenancy.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1040.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1040.1.1": {
     "title": "New Clause 14: Renters (Reform) Bill",
     "content": "New Clause 14 - Powers of Secretary of State in connection with Chapter 1 Clause 14\n\u201c(1) The Secretary of State may by regulations amend provision made by or under an Act passed before or later in the same session as this Act so that the provision has effect in relation to periodic assured tenancies in a manner that corresponds or is similar to the manner in which it had effect immediately before the commencement date in relation to\u2014\n(a) fixed term assured tenancies, or\n(b) assured shorthold tenancies.\n(2) The Secretary of State may by regulations amend provision made by or under an Act passed before or later in the same session as this Act so that the provision has effect, in relation to a ground in Schedule 2 to the 1988 Act as amended by this Act, in a manner that corresponds or is similar to the manner in which it had effect immediately before the commencement date in relation to any ground in that Schedule.\n(3) The amendments that may be made under subsection (1)(b) include any to ensure that provision applying immediately before the commencement date in relation to notices under section 21 of the 1988 Act applies on and after that day, with or without modifications, in relation to notices under section 8 of that Act.\n(4) The transitional provision that may be included in regulations under subsection (1) or (2) by virtue of section 112(1)(a) includes provision for pre-application instruments which the Secretary of State considers do not (or will not) operate appropriately as a result of any provision of the regulations to\u2014\n(i) have effect with specified modifications, or\n(ii) cease to have effect (in whole or in part).\n(5) For the purposes of subsection (4)\u2014\n(a) \u201cpre-application instrument\u201d means an agreement or other instrument made before the regulations come into force;\n(b) the circumstances in which the Secretary of State may consider that a pre-application instrument does not operate appropriately as a result of regulations under subsection (1) or (2) include (but are not limited to) those in which\u2014\n(i) as a result of any provision of the regulations, provision made by the instrument is to any extent spent, obsolete, unnecessary or otherwise not of practical utility;\n(ii) as a result of any provision of the regulations, it is unclear what the effect is of provision made by the instrument;\n(iii) as a result of any provision of the regulations, a person may be placed in breach of obligations arising under the instrument or made subject to more burdensome obligations under the instrument;\n(iv) the instrument makes direct or indirect reference to any enactment as it had effect before being amended by the regulations.\n(6) Regulations made by virtue of subsection (4) must provide that they do not prevent\u2014\n(a) the variation or revocation of provision modified by the regulations, or\n(b) the re-making of provision that has ceased to have effect as a result of the regulations.\n(7) Regulations made by virtue of subsection (4) may apply to an instrument as it has effect in relation to times before the coming into force of the regulations but after the commencement date.\n(8) Nothing in this Chapter limits the provision that may be made by regulations under this section.\n(9) Nothing in this section limits the provision that may be made in regulations under Part 5.\n(10) In this section\u2014\n\u201cassured shorthold tenancy\u201d is to be read in accordance with Part 1 of the 1988 Act as it had effect immediately before the commencement date;\n\u201cthe commencement date\u201d has the meaning given by section (Application of Chapter 1 of Part 1)(1)(a).\u201d \u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1041.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1041.1.1": {
     "title": "New Clause 16: Renters (Reform) Bill",
     "content": "New Clause 16 - Power of Welsh Ministers to extend protection to persons of other descriptions\n\u201c(1) The Welsh Ministers may by regulations make provision in relation to occupation contracts, in relation to persons of another description, corresponding (with or without modifications) to provision made by this Chapter in relation to persons who would have a child live with or visit them or are benefits claimants.\n(2) Regulations under subsection (1) may amend, repeal or revoke provision made by or under\u2014\n(a) an Act, or\n(b) an Act or Measure of Senedd Cymru,\nwhenever passed or made.\n(3) In this section\u2014\n\u2018benefits claimant\u2019 has the meaning given by section 8J of the Renting Homes (Fees, Discrimination etc.) (Wales) Act 2019;\n\u2018occupation contract\u2019 has the same meaning as in the Renting Homes (Wales) Act 2016 (see section 7 of that Act).\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1042.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1042.1.1": {
     "title": "New Clause 17: Renters (Reform) Bill",
     "content": "New Clause 17 - Power of Secretary of State to extend protection to persons of other descriptions: Wales\n\u201cThe Secretary of State may by regulations make provision that the Welsh Ministers could make under section (Power of Welsh Ministers to extend protection to persons of other descriptions)(1) but for the limitation in section 40.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1042.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1042.3.1": {
     "title": "New Clause 18: Renters (Reform) Bill",
     "content": "New Clause 18 - Prohibition of discrimination relating to children or benefits status: Scotland\n\u201c(1) The Private Housing (Tenancies) (Scotland) Act 2016 (asp 19) is amended in accordance with subsections (2) to (4).\n(2) After section 6 insert\u2014\n6A Offence of discriminating in relation to children\n(1) It is an offence for a relevant person to, in relation to a property that is to be let on an agreement which may give rise to a private residential tenancy\u2014\n(a) prevent a person, on the basis that the relevant person believes that the property would or may be used by a child if the property were the person\u2019s home, from\u2014\n(i) enquiring whether the property is available for let,\n(ii) accessing information about the property,\n(iii) viewing the property in order to consider whether to seek to rent it, or\n(iv) entering into a tenancy of the property, or\n(b) apply a provision, criterion or practice in order to make people who would allow the property to be used by a child less likely to enter into a tenancy of the property than people who would not.\n(2) It is a defence for the relevant person to show\u2014\n(a) that the conduct is a proportionate means of achieving a legitimate aim, or\n(b) that the property is insured under an excluded contract of insurance and the conduct is a means of preventing the insured from breaching the term which causes the contract to be an excluded contract of insurance.\n(3) Conduct does not constitute an offence under subsection (1) if it consists only of\u2014\n(a) things done by a person who does nothing in relation to the property other than one or more of the following things\u2014\n(i) publishing advertisements or disseminating information,\n(ii) providing a means by which a prospective landlord can communicate directly with a prospective tenant,\n(iii) providing a means by which a prospective tenant can communicate directly with a prospective landlord, or\n(b) things of a description, or things done by a person of a description, specified for the purposes of this section in regulations made by the Scottish Ministers.\n(4) A person who commits an offence under subsection (1) is liable on summary conviction to a fine not exceeding level 3 on the standard scale.\n(5) For the purpose of this section\u2014\n(a) a property is used by a child if a child lives with or visits a person at the property,\n(b) a contract of insurance is an excluded contract of insurance if\u2014\n(i) section (Terms in insurance contracts relating to children or benefits status: Scotland) of the Renters (Reform) Act 2024 (Terms in insurance contracts relating to children or benefits status: Scotland) does not apply to it, and\n(ii) it contains a term which makes provision (however expressed) requiring the insured to prohibit a tenant under a private residential tenancy from allowing a child to use the property, or to restrict the circumstances in which such a tenant may allow a child to do so.\n6B Offence of discriminating in relation to benefits status\n(1) It is an offence for a relevant person to, in relation to a property that is to be let on an agreement which may give rise to a private residential tenancy\u2014\n(a) prevent a person, on the basis of the person\u2019s benefits status, from\u2014\n(i) enquiring whether the property is available for let,\n(ii) accessing information about the property,\n(iii) viewing the property in order to consider whether to seek to rent it, or\n(iv) entering into a tenancy of the property, or\n(b) apply a provision, criterion or practice in order to make people who are or who, if the property were their home, may become benefits claimants less likely to enter into a tenancy of the property than people who are not.\n(2) It is a defence for the relevant person to show that the property is insured under an excluded contract of insurance and the conduct is a means of preventing the insured from breaching the term which causes the contract to be an excluded contract of insurance.\n(3) Conduct does not constitute an offence under subsection (1) if it consists only of\u2014\n(a) things done by a person who does nothing in relation to the property other than one or more of the following things\u2014\n(i) publishing advertisements or disseminating information,\n(ii) providing a means by which a prospective landlord can communicate directly with a prospective tenant,\n(iii) providing a means by which a prospective tenant can communicate directly with a prospective landlord, or\n(b) things of a description, or things done by a person of a description, specified for the purposes of this section in regulations made by the Scottish Ministers.\n(4) A person who commits an offence under subsection (1) is liable on summary conviction to a fine not exceeding level 3 on the standard scale.\n(5) For the purpose of this section\u2014\n(a) something is done on the basis of a person\u2019s benefits status if it is done on the basis that the relevant person believes that the person is, may be or, if the property were the person\u2019s home, may become a benefits claimant,\n(b) a contract of insurance is an excluded contract of insurance if\u2014\n(i) section (Terms in insurance contracts relating to children or benefits status: Scotland) of the Renters (Reform) Act 2024 (Terms in insurance contracts relating to children or benefits status: Scotland) does not apply to it, and\n(ii) it contains a term which makes provision (however expressed) requiring the insured to prohibit a tenant under a private residential tenancy from being a benefits claimant.\n6C Discriminatory terms relating to children or benefits status\n(1) A term of a private residential tenancy is of no effect so far as the term makes provision (however expressed)\u2014\n(a) prohibiting the tenant from having a child live with or visit the tenant at the property or restricting the circumstances in which the tenant may have a child do so, or\n(b) prohibiting the tenant from being a benefits claimant.\n(2) But\u2014\n(a) subsection (1)(a) does not apply if the provision is a proportionate means of achieving a legitimate aim,\n(b) subsection (1)(a) and (b) does not apply to the extent that the landlord is insured under an excluded contract of insurance and the provision in the tenancy is a means of preventing the landlord from breaching the term which causes the contract to be an excluded contract of insurance.\n(3) For the purpose of subsection (2)(b), a contract of insurance is an excluded contract of insurance if\u2014\n(a) section (Terms in insurance contracts relating to children or benefits status: Scotland) of the Renters (Reform) Act 2024 (Terms in insurance contracts relating to children or benefits status: Scotland) does not apply to it, and\n(b) it contains a term which makes provision (however expressed) requiring the landlord\u2014\n(i) to prohibit the tenant from having a child live with or visit the tenant at the property or to restrict the circumstances in which the tenant may have a child live with or visit the tenant at the property, or\n(ii) to prohibit the tenant from being a benefits claimant.\n6D No prohibition on taking income into account\nNothing in this Part prohibits taking a person\u2019s income into account when considering whether that person would be able to afford to pay rent under a private residential tenancy.\n6E Interpretation of Part 1A\nIn this Part\u2014\n\u201cbenefits claimant\u201d means a person who\u2014\n(a) is entitled to payments (including payments made directly to a landlord) under or by virtue of benefits and welfare legislation, or\n(b) is entitled, by virtue of section 80 of the Local Government Finance Act 1992, to a reduction in the amount of council tax payable in respect of the property on the basis of income or an entitlement to a payment mentioned in paragraph (a),\n\u201cbenefits and welfare legislation\u201d means\u2014\n(a) the Social Security Contributions and Benefits Act 1992,\n(b) the Jobseekers Act 1995,\n(c) the State Pension Credit Act 2002,\n(d) the Tax Credits Act 2002,\n(e) the Welfare Reform Act 2007,\n(f) the Welfare Reform Act 2012,\n(g) the Pensions Act 2014,\n(h) the Social Security (Scotland) Act 2018,\n\u201cchild\u201d means a person under the age of 18,\n\u201cprospective landlord\u201d means a person who proposes to let a property on an agreement which may give rise to a private residential tenancy,\n\u201cprospective tenant\u201d means a person seeking to find a property to rent,\n\u201crelevant person\u201d , in relation to a property, means\u2014\n(a) the prospective landlord,\n(b) a person acting or purporting to act directly or indirectly on behalf of the prospective landlord.\u2019\n(3) Before section 76, insert\u2014\n\u201875A Crown application\n(1) Nothing in Part 1A makes the Crown criminally liable.\n(2) But the Court of Session may, on an application by the Lord Advocate, declare unlawful any act or omission for which the Crown would be criminally liable were it not for subsection (1).\n(3) Subsection (1) does not affect the criminal liability of persons in the service of the Crown.\u2019\n(4) In section 77 (regulation-making powers), in subsection (4), after \u2018sections\u2019 insert \u20186A(3)(b), 6B(3)(b),\u2019.\n(5) The Housing (Scotland) Act 1988 is amended in accordance with subsection (6).\n(6) After section 26 insert\u2014\n\u201826A Discriminatory terms relating to children or benefits status\n(1) A term of an assured tenancy is of no effect so far as the term makes provision (however expressed)\u2014\n(a) prohibiting the tenant from having a child live with or visit the tenant at the dwelling or restricting the circumstances in which the tenant may have a child do so, or\n(b) prohibiting the tenant from being a benefits claimant.\n(2) But\u2014\n(a) subsection (1)(a) does not apply if the provision is a proportionate means of achieving a legitimate aim, and\n(b) subsection (1)(a) and (b) does not apply to the extent that the landlord is insured under an excluded contract of insurance and the provision in the  tenancy is a means of preventing the landlord from breaching the term which causes the contract to be an excluded contract of insurance.\n(3) For the purpose of subsection (2)(b), a contract of insurance is an excluded contract of insurance if\u2014\n(a) section (Terms in insurance contracts relating to children or benefits status: Scotland) of the Renters (Reform) Act 2024 (Terms in insurance contracts relating to children or benefits status: Scotland) does not apply to it, and\n(b) it contains a term which makes provision (however expressed) requiring the landlord\u2014\n(i) to prohibit the tenant from having a child live with or visit the tenant at the dwelling or to restrict the circumstances in which the tenant may have a child live with or visit the tenant at the dwelling, or\n(ii) to prohibit the tenant from being a benefits claimant.\n(4) In this section\u2014\n\u201cbenefits claimant\u201d means a person who\u2014\n(a) is entitled to payments (including payments made directly to a landlord) under or by virtue of benefits and welfare legislation, or\n(b) is entitled, by virtue of section 80 of the Local Government Finance Act 1992, to a reduction in the amount of council tax payable in respect of the property on the basis of income or an entitlement to a payment mentioned in paragraph (a),\n\u201cbenefits and welfare legislation\u201d means\u2014\n(a) the Social Security Contributions and Benefits Act 1992,\n(b) the Jobseekers Act 1995,\n(c) the State Pension Credit Act 2002,\n(d) the Tax Credits Act 2002,\n(e) the Welfare Reform Act 2007,\n(f) the Welfare Reform Act 2012,\n(g) the Pensions Act 2014,\n(h) the Social Security (Scotland) Act 2018,\n\u201cchild\u201d means a person under the age of 18.\u2019\n(7) The Rent (Scotland) Act 1984 is amended in accordance with subsection (8).\n(8) After section 101 insert\u2014\n\u2018101A Discriminatory terms relating to children or benefits status\n(1) A term of a protected or statutory tenancy is of no effect so far as the term makes provision (however expressed)\u2014\n(a) prohibiting the tenant from having a child live with or visit the tenant at the dwelling or restricting the circumstances in which the tenant may have a child do so, or\n(b) prohibiting the tenant from being a benefits claimant.\n(2) But\u2014\n(a) subsection (1)(a) does not apply if the provision is a proportionate means of achieving a legitimate aim, and\n(b) subsection (1)(a) and (b) does not apply to the extent that the landlord is insured under an excluded contract of insurance and the provision in the tenancy is a means of preventing the landlord from breaching the term which causes the contract to be an excluded contract of insurance.\n(3) For the purpose of subsection (2)(b), a contract of insurance is an excluded contract of insurance if\u2014\n(a) section (Terms in insurance contracts relating to children or benefits status: Scotland) of the Renters (Reform) Act 2024 (Terms in insurance contracts relating to children or benefits status: Scotland) does not apply to it, and\n(b) it contains a term which makes provision (however expressed) requiring the landlord\u2014\n(i) to prohibit the tenant from having a child live with or visit the tenant at the dwelling or to restrict the circumstances in which the tenant may have a child live with or visit the tenant at the dwelling, or\n(ii) to prohibit the tenant from being a benefits claimant.\n(4) In this section\u2014\n\u201cbenefits claimant\u201d means a person who\u2014\n(a) is entitled to payments (including payments made directly to a landlord) under or by virtue of benefits and welfare legislation, or\n(b) is entitled, by virtue of section 80 of the Local Government Finance Act 1992, to a reduction in the amount of council tax payable in respect of the property on the basis of income or an entitlement to a payment mentioned in paragraph (a),\n\u201cbenefits and welfare legislation\u201d means\u2014\n(a) the Social Security Contributions and Benefits Act 1992,\n(b) the Jobseekers Act 1995,\n(c) the State Pension Credit Act 2002,\n(d) the Tax Credits Act 2002,\n(e) the Welfare Reform Act 2007,\n(f) the Welfare Reform Act 2012,\n(g) the Pensions Act 2014,\n(h) the Social Security (Scotland) Act 2018,\n\u201cchild\u201d means a person under the age of 18.\u2019\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1047.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1047.1.1": {
     "title": "New Clause 19: Renters (Reform) Bill",
     "content": "New Clause 19 - Terms in standard securities relating to children or benefits status: Scotland\n\u201c(1) A term of a standard security over land that consists of or includes a dwelling is of no effect so far as the term makes provision (however expressed) requiring the debtor in the standard security to\u2014\n(a) prohibit a tenant under a relevant tenancy from having a child live with or visit the tenant at the dwelling, or\n(b) restrict the circumstances in which a tenant under a relevant tenancy may have a child live with or visit the tenant at the dwelling.\n(2) A term of a standard security over land that consists of or includes a dwelling is of no effect so far as the term makes provision (however expressed) requiring the debtor in the standard security to prohibit a benefits claimant from being a tenant under a relevant tenancy.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1048.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1048.1.1": {
     "title": "New Clause 20: Renters (Reform) Bill",
     "content": "New Clause 20 - Terms in insurance contracts relating to children or benefits status: Scotland\n\u201c(1) A term of a contract of insurance to which this section applies is of no effect so far as the term makes provision (however expressed) requiring the insured to\u2014\n(a) prohibit a tenant under a relevant tenancy from having a child live with or visit the tenant at the dwelling which forms the subject of the tenancy, or\n(b) restrict the circumstances in which a tenant under a relevant tenancy may have a child live with or visit the tenant at the dwelling.\n(2) A term of a contract of insurance to which this section applies is of no effect so far as the term makes provision (however expressed) requiring the insured to prohibit a benefits claimant from being a tenant under a relevant tenancy.\n(3) This section applies to contracts of insurance which are entered into or whose duration is extended on or after the day on which this section comes into force.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1048.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1048.3.1": {
     "title": "New Clause 21: Renters (Reform) Bill",
     "content": "New Clause 21 - Power of the Scottish Ministers to extend protection to persons of other descriptions\n\u201c(1) The Scottish Ministers may by regulations make provision about relevant tenancies, corresponding (with or without modifications) to the provision made by this Chapter in relation to persons who would have a child live with or visit them or persons who are benefits claimants, in relation to persons of another description.\n(2) Regulations under subsection (1)\u2014\n(a) may amend, repeal or revoke provision made by or under\u2014\n(i) an Act of the Scottish Parliament,\n(ii) an Act (including this Act),\nwhenever passed or made;\n(b) may only make provision which would be within the legislative competence of the Scottish Parliament if contained in an Act of that Parliament.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1048.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1048.5.1": {
     "title": "New Clause 22: Renters (Reform) Bill",
     "content": "New Clause 22 - Interpretation of Chapter 4A\n\u201cIn this Chapter\u2014\n\u2018benefits claimant\u2019 means a person who\u2014\n(a) is entitled to payments (including payments made directly to a landlord) under or by virtue of benefits and welfare legislation or would be so entitled were the person to become a tenant under a private residential tenancy, or\n(b) is entitled, or would (on application or otherwise), if the person were to rent the property, be entitled, by virtue of section 80 of the Local Government Finance Act 1992, to a reduction in the amount of council tax payable in respect of the property on the basis of income or an entitlement to a payment mentioned in paragraph (a);\n\u2018benefits and welfare legislation\u2019 means\u2014\n(a) the Social Security Contributions and Benefits Act 1992;\n(b) the Jobseekers Act 1995;\n(c) the State Pension Credit Act 2002;\n(d) the Tax Credits Act 2002;\n(e) the Welfare Reform Act 2007;\n(f) the Welfare Reform Act 2012;\n(g) the Pensions Act 2014;\n(h) the Social Security (Scotland) Act 2018 (asp 9);\n\u2018child\u2019 means a person under the age of 18;\n\u2018relevant tenancy\u2019 means\u2014\n(a) a private residential tenancy under the Private Housing (Tenancies) (Scotland) Act 2016 (asp 19);\n(b) an assured tenancy under the Housing (Scotland) Act 1988;\n(c) a protected or statutory tenancy under the Rent (Scotland) Act 1984;\n\u2018tenant\u2019 includes sub-tenant.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1049.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1049.1.1": {
     "title": "New Clause 23: Renters (Reform) Bill",
     "content": "New Clause 23 - Power of Scottish Ministers to make consequential provision\n\u201c(1) The Scottish Ministers may by regulations make provision that is consequential on Chapter 4A of Part 1 (see section 27 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10), as a result of which such regulations are to be made by Scottish statutory instrument).\n(2) Regulations under this section may amend, repeal or revoke provision made by or under\u2014\n(a) an Act of the Scottish Parliament passed before this Act, or\n(b) an Act passed\u2014\n(i) before this Act, or\n(ii) later in the same session of Parliament as this Act.\n(3) The power to make regulations under this section includes power to make\u2014\n(a) supplementary, incidental, transitional or saving provision;\n(b) different provision for different purposes.\n(4) The power under subsection (3)(a) to make transitional provision includes power to provide for the regulations to apply (with or without modifications) in relation to tenancies entered into, or advertising begun, before the date on which the regulations come into force.\n(5) Regulations under this section may only make provision which would be within the legislative competence of the Scottish Parliament if contained in an Act of that Parliament.\n(6) Regulations made under this section that amend or repeal provision made by an Act of the Scottish Parliament, or by an Act, are subject to the affirmative procedure (see section 29 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10)).\n(7) Any other regulations made under this section are subject to the negative procedure (see section 28 of that Act).\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1050.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1050.1.1": {
     "title": "New Clause 24: Renters (Reform) Bill",
     "content": "New Clause 24 - Power of Secretary of State to extend protection to persons of other descriptions: Scotland\n\u201cThe Secretary of State may by regulations make provision that the Scottish Ministers could make under section (Power of the Scottish Ministers to extend protection to persons of other descriptions)(1) but for the limitation in section (Power of the Scottish Ministers to extend protection to persons of other descriptions)(2)(b).\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1050.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1050.3.1": {
     "title": "New Clause 25: Renters (Reform) Bill",
     "content": "New Clause 25 - Landlord redress schemes: no Crown status\n\u201cA person exercising functions under a landlord redress scheme (other than the Secretary of State) is not to be regarded as the servant or agent of the Crown or as enjoying any status, privilege or immunity of the Crown or as exempt from any tax, duty, rate, levy or other charge whatsoever, whether general or local, and any property held by such a person is not to be regarded as property of, or held on behalf of, the Crown.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1050.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1050.5.1": {
     "title": "New Clause 26: Renters (Reform) Bill",
     "content": "New Clause 26 - Other amendments in connection with landlord redress schemes\n\u201cSchedule NS1 contains amendments connected with landlord redress schemes.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1050.7": {
+  "uk.org.publicwhip/debate/2024-04-24b.1050.7.1": {
     "title": "New Clause 27: Renters (Reform) Bill",
     "content": "New Clause 27 - Commencement\n\u201c(1) This Act comes into force for the purposes of making regulations on the day on which it is passed.\n(2) For remaining purposes this Act comes into force on such day as the Secretary of State may by regulations made by statutory instrument appoint, subject to subsections (3) to (6).\n(3) Chapter 4 of Part 1 comes into force on such day as the Welsh Ministers by order made by statutory instrument appoint.\n(4) Chapter 4A of Part 1 comes into force on such day as the Scottish Ministers may by regulations appoint (see section 27 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10), as a result of which such regulations are to be made by Scottish statutory instrument).\n(5) The following come into force at the end of the period of two months beginning with the day on which this Act is passed\u2014\n(a) Chapter 2 of Part 1;\n(b) section 43;\n(c) section 82;\n(d) Chapter 3 of Part 4.\n(6) Section 83 and this Part come into force on the day on which this Act is passed.\n(7) Different days may be appointed under this section for different purposes.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1051.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1051.1.1": {
     "title": "New Clause 28: Renters (Reform) Bill",
     "content": "New Clause 28 - Application of Chapter 1 of Part 1\n\u201c(1) Chapter 1 of Part 1 applies (subject to any provision made by or under this Act)\u2014\n(a) in relation to an assured tenancy that is entered into on or after the day on which that Chapter comes into force (\u201cthe commencement date\u201d), and\n(b) on and after the extended application date, in relation to an assured tenancy that\u2014\n(i) was entered into before the commencement date, and\n(ii) continues in effect on the extended application date,\n(and accordingly, on the extended application date any such tenancy becomes an assured tenancy to which section 4A of the 1988 Act, as inserted by section 1 of this Act, applies).\n(2) Schedule 5 contains transitional provision relating to the application of Chapter 1 of Part 1 to assured tenancies referred to in subsection (1)(b) (\u2018existing tenancies\u2019).\n(3) In paragraph (b) of subsection (1) \u2018the extended application date\u2019 means\u2014\n(a) in relation to an assured tenancy referred to in that paragraph that is converted to a periodic tenancy on or after the commencement date but before the date appointed under paragraph (b) of this subsection, the date on which it is so converted;\n(b) in relation to another assured tenancy referred to in paragraph (b) of subsection (1), a date appointed by the Secretary of State by regulations.\n(4) For the purposes of subsection (3)(a) an assured tenancy is \u2018converted to a periodic tenancy\u2019 if and when it becomes a periodic tenancy on the expiry of a fixed term.\n(5) The Secretary of State may not make regulations under subsection (3)(b) until the assessment under section (Assessment of operation of possession process) has been published.\n(6) For the purposes of the relevant provisions, a fixed term assured tenancy and a periodic tenancy that arises on its expiry by virtue of section 5 of the 1988 Act are to be treated as a single assured tenancy which\u2014\n(a) is entered into when the fixed term tenancy was entered into, and\n(b) becomes a periodic tenancy on the expiry of the fixed term.\n(7) In subsection (6), \u2018the relevant provisions\u2019 means\u2014\n(a) section 5 of the Protection from Eviction Act 1977 as amended by section (Notices to quit by tenants under assured tenancies: timing),\n(b) Part 1 of the 1988 Act as amended by Chapter 1 of Part 1,\n(c) subsections (1) to (5) of this section, and\n(d) Schedule 5.\n(8) The Secretary of State may by regulations amend this section to provide for subsection (6) to apply for the purposes of other provision made by or under an Act passed before or later in the same session as this Act.\n(9) A statutory instrument containing regulations under subsection (8) (whether alone or with other provision) may not be made unless a draft of the instrument has been laid before and approved by a resolution of each House of Parliament.\n(10) Regulations under this section may make different provision for different purposes.\n(11) Regulations under this section are to be made by statutory instrument.\n(12) Nothing in this section prevents regulations made under section (Commencement)(2) and (7) from appointing different days for the purposes of different descriptions of assured tenancy and, where they do so, the reference in subsection (1)(a) to the day on which Chapter 1 of Part 1 comes into force is to the day on which that Chapter comes into force for the purposes of the tenancy in question.\n(13) Nothing in this section prevents regulations made under subsections (3)(b) and (10) from appointing different days for the purposes of different descriptions of assured tenancy and, where they do so, the reference in subsection (3)(b) to a date appointed by the Secretary of State in regulations is to a date so appointed for the purposes of the tenancy in question.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1052.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1052.1.1": {
     "title": "New Clause 29: Renters (Reform) Bill",
     "content": "New Clause 29 - Assured agricultural occupancies:  opting out etc\n\u201c(1) The 1988 Act is amended as follows.\n(2) In section 24 (assured agricultural occupancies), after subsection (1) insert\u2014\n\u2018(1A) Subsection (1) has effect subject to section 24A(1) (opting out).\u2019\n(3) In subsection (2)(a) of that section omit \u201cwhich is not an assured shorthold tenancy\u201d.\n(4) In subsection (3) of that section, for \u2018shall be treated as if it were such a tenancy\u2019 substitute \u2018, and every opted-out tenancy, is to be treated as if it were an assured tenancy\u2019.\n(5) After that section insert\u2014\n\u201824A Opting out\n(1) A tenancy that would otherwise be an assured agricultural occupancy for the purposes of this Part is not such an occupancy for those purposes if\u2014\n(a) before the tenancy is entered into, an opt-out notice (see subsection (2)) is served by the person who is to be the landlord on the person who is to be the tenant, and\n(b) the tenancy is not the continuation of an existing occupancy (see subsection (3)).\n(2) An opt-out notice is a notice, in such form as may be prescribed, stating that the tenancy is not to be an assured agricultural occupancy.\n(3) A tenancy is the continuation of an existing occupancy if\u2014\n(a) the person to whom the tenancy is granted or, as the case may be, at least one of the persons to whom it is granted was, immediately before it was granted, a tenant under an assured agricultural occupancy, and\n(b) the person by whom it is granted or, as the case may be, at least one of the persons by whom it is granted was, immediately before it was granted, a landlord under the assured agricultural occupancy referred to in paragraph (a).\n(4) In this Chapter \u201copted-out tenancy\u201d means a tenancy that, but for this section, would be an assured agricultural occupancy.\u2019\n(6) In section 25 (security of tenure) omit subsection (1).\u201d \u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1053.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1053.1.1": {
     "title": "New Clause 31: Renters (Reform) Bill",
     "content": "New Clause 31 - Local Commissioners\u2019 investigation of complaints by persons who are not tenants\n\u201cIn section 26 of the Local Government Act 1974, at the end of subsection (8) insert \u2018unless\u2014\n(a) the investigation is in respect of action described in paragraph 5A or 5B of that Schedule, and\n(b) the person affected is not an individual of a description whom a scheme approved under Schedule 2 to the Housing Act 1996 (investigation of social housing complaints by housing ombudsman) provides may make a complaint under that scheme in respect of that action.\u2019\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1053.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1053.3.1": {
     "title": "New Clause 32: Renters (Reform) Bill",
     "content": "New Clause 32 - Unlicensed HMOs and houses: offences\n\u201c(1) Section 72 of the Housing Act 2004 (offences in relation to licensing of HMOs) is amended in accordance with subsections (2) to (4).\n(2) For subsection (1) substitute\u2014\n\u201c(1) If an HMO is required to be licensed under this Part (see section 61(1)) but is not so licensed, an offence is committed by\u2014\n(a) any person within subsection (1A), and\n(b) any person who as landlord under a tenancy or licensor under a licence to occupy has an  estate or interest in, or a right in relation to, the HMO that is superior (whether directly or indirectly) to the estate, interest or right of any person within subsection (1A).\n(1A) The following are within this subsection\u2014\n(a) any person having control of or managing the HMO, and\n(b) any person who is the landlord or licensor in relation to a person occupying the HMO under a tenancy or licence.\u201d\n(3) After subsection (4) insert\u2014\n\u201c(4A) In proceedings against a person for an offence under subsection (1)(a) it is a defence for them to prove that they had a reasonable excuse\u2014\n(a) for having control of or managing the HMO, or\n(b) for being the landlord or licensor in relation to a person occupying the HMO under a tenancy or licence,\nin circumstances in which the HMO was required to be licensed under this Part but was not so licensed.\n(4B) In proceedings against a person for an offence under subsection (1)(b) it is a defence for them to prove that they\u2014\n(a) did not know, and had a reasonable excuse for not knowing, that the building or part of the building concerned was an HMO,\n(b) took all reasonably practicable steps to ensure that the HMO was licensed under this Part, or\n(c) had some other reasonable excuse for failing to ensure that the HMO was so licensed.\u201d\n(4) In subsection (5)\u2014\n(a) for \u201csubsection (1), (2) or (3)\u201d substitute \u201csubsection (2) or (3)\u201d, and\n(b) omit paragraph (a) (together with the \u201cor\u201d at the end of it).\n(5) Section 95 of the Housing Act 2004 (offences in relation to licensing of houses under Part 3) is amended in accordance with subsections (6) to (8).\n(6) For subsection (1) substitute\u2014\n\u201c(1) If a house is required to be licensed under this Part (see section 85(1)) but is not so licensed, an offence is committed by\u2014\n(a) any person within subsection (1A), and\n(b) any person who as landlord under a tenancy or licensor under a licence to occupy has an estate or interest in, or a right in relation to, the house that is superior (whether directly or indirectly) to the estate, interest or right of any person within subsection (1A).\n(1A) The following are within this subsection\u2014\n(a) any person having control of or managing the house;\n(b) any person who is the landlord or licensor in relation to a person occupying the house under a tenancy or licence.\u201d\n(7) After subsection (3) insert\u2014\n\u201c(3A) In proceedings against a person for an offence under subsection (1)(a) it is a defence for them to prove that they had a reasonable excuse\u2014\n(a) for having control of or managing the house, or\n(b) for being the landlord or licensor in relation to a person occupying the house under a tenancy or licence,\nin circumstances in which the house was required to be licensed under this Part but was not so licensed\n(3B) In proceedings against a person for an offence under subsection (1)(b) it is a defence for them to prove that they\u2014\n(a) did not know, and had a reasonable excuse for not knowing, that the house was one to which this Part applies,\n(b) took all reasonably practicable steps to ensure that the house was licensed under this Part, or\n(c) had some other reasonable excuse for failing to ensure that the house was so licensed.\u201d\n(8) In subsection (4)\u2014\n(a) for \u201csubsection (1) or (2)\u201d substitute \u201csubsection (2)\u201d, and\n(b) for the words following \u201cexcuse\u201d substitute \u201cfor failing to comply with the condition\u201d.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1055.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1055.1.1": {
     "title": "New Clause 33: Renters (Reform) Bill",
     "content": "New Clause 33 - Service of improvement notices on landlords and licensors\n\u201cIn Schedule 1 to the Housing Act 2004 (procedure and appeals relating to improvement notices), in paragraph 2(2)\u2014\n(a) after \u201cthe notice\u201d insert \u201con whichever of the following the authority considers ought to take the action specified in it\u201d,\n(b) in paragraphs (a) and (b), omit \u201con\u201d in each place, and\n(c) after paragraph (b) insert\u2014\n\u201c(c) (in either case) if the premises or any part of them are let under a tenancy that is periodic or was granted for a term of 21 years or less, or are occupied under a licence\u2014\n(i) the landlord or licensor;\n(ii) any superior landlord or licensor.\u201d\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1055.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1055.3.1": {
     "title": "New Clause 34: Renters (Reform) Bill",
     "content": "New Clause 34 - Rent repayment orders:  liability of directors etc\n\u201cIn the Housing and Planning Act 2016, after section 51 insert\u2014\n\u201c51A Landlord which is body corporate: liability of directors etc\n(1) This section applies where\u2014\n(a) a landlord which is a body corporate has committed an offence to which this Chapter applies, and\n(b) the offence\u2014\n(i) was committed with the consent or connivance of a relevant person in relation to the body corporate, or of a person purporting to act in the capacity of a relevant person in relation to the body corporate, or\n(ii) was a specified offence and was attributable to any neglect on the part of such a person.\n(2) That person, as well as the body corporate, is treated for the purposes of this Chapter as having committed the offence.\n(3) In this Chapter a reference to the landlord includes that person.\n(4) In this section\u2014\n\u201crelevant person\u201d means\u2014\n(a) in relation to a body corporate other than one the affairs of which are managed by its members, a director, manager, secretary or other similar officer of the body;\n(b) in relation to a body corporate the affairs of which are managed by its members, a member who exercises functions of management with respect to it;\n\u201cspecified offence\u201d means an offence under\u2014\n(a) section 1(2) of the Protection from Eviction Act 1977;\n(b) section 30(1), 32(1), 72(1) or 95(1) of the Housing Act 2004;\n(c) section 21 of this Act;\n(d) section 48(1), (2) or (3) or 69(2), (3) or (4) of the Renters (Reform) Act 2024.\u201d.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1056.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1056.1.1": {
     "title": "New Clause 35: Renters (Reform) Bill",
     "content": "New Clause 35 - Report on certain matters relating to tenancy reform\n\u201c(1) The Secretary of State must make arrangements for an independent person to prepare a report on\u2014\n(a) the impact of section 1 on the provision of relevant tenancies;\n(b) the extent to which the grounds in Schedule 2 to the 1988 Act as amended by this Act\u2014\n(i) operate effectively;\n(ii) are comprehensive;\n(iii) are fair.\n(2) The Secretary of State must, within the period of 18 months beginning with the relevant date, lay before both Houses of Parliament\u2014\n(a) a copy of the report, and\n(b) a statement setting out the Secretary of State\u2019s response to the report.\n(3) Nothing in subsection (1) prevents the Secretary of State from arranging for the independent person to include in the report matters additional to those mentioned in that subsection.\n(4) In this section\u2014\n\u201crelevant date\u201d means the earliest date appointed by the Secretary of State under section (Application of Chapter 1 of Part 1)(3)(b);\n\u201crelevant tenancy\u201d means an assured tenancy within the meaning of the 1988 Act other than a tenancy of social housing within the meaning of Part 2 of the Housing and Regeneration Act 2008.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1057.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1057.1.1": {
     "title": "New Clause 36: Renters (Reform) Bill",
     "content": "New Clause 36 - Report on provision of residential tenancies\n\u201c(1) The Secretary of State must prepare and lay before both Houses of Parliament a report containing an analysis of statistical data relating to the provision of residential tenancies.\n(2) A report must be prepared and laid under subsection (1)\u2014\n(a) within the period of 12 months beginning with the day on which this Act is passed, and\n(b) within each subsequent period of 12 months.\n(3) The data analysed in a report may include (but is not limited to) data about\u2014\n(a) the number of dwellings let under residential tenancies;\n(b) the location of those dwellings;\n(c) the size of those dwellings.\n(4) The data analysed in a report may be data that\u2014\n(a) is estimated;\n(b) comprises data relating to the provision of residential tenancies and other data.\n(5) Subject to subsections (6) and (7), in this section \u201cdwelling\u201d and \u201cresidential tenancy\u201d have the meaning given by section 44 on the day on which this Act is passed.\n(6) Where regulations under section 44(4)(b) are made adding a particular kind of tenancy or licence to the meaning of \u201cresidential tenancy\u201d in Part 2\u2014\n(a) a report under subsection (1) may also contain an analysis of statistical data relating to tenancies or licences of that kind, and\n(b) where a report does so, subsections (3) and (4) are to be read as if \u201cresidential tenancy\u201d in this section included tenancies or licences of that kind.\n(7) Where regulations under section 44(4)(c) are made expanding the meaning of \u201cdwelling\u201d in Part 2\u2014\n(a) a report under subsection (1) may also contain an analysis of statistical data relating to dwellings within the expanded meaning given by those regulations, and\n(b) where a report does so, subsections (3) and (4) are to be read as if \u201cdwelling\u201d in this section included such dwellings.\n(8) This section ceases to have effect at the end of the period of five years beginning with the day on which this Act is passed.\u201d \u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1057.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1057.3.1": {
+    "title": "Clause 1 - Assured tenancies to be periodic with rent period not exceeding a month",
+    "content": "Amendments made: 200, page 1, line 11, at end insert \u201c, or\n\u201c(b) for periods of the tenancy to be different from the periods for which rent is payable (\u201crent periods\u201d).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1057.3.4": {
+    "title": "Amendment 201: Renters (Reform) Bill",
+    "content": "Amendment 201, page 1, line 13, after \u201c(1)\u201d insert \u201c(a) or (b)\u201d.\nSee the explanatory statement for amendment 200."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1057.3.6": {
+    "title": "Amendment 202: Renters (Reform) Bill",
+    "content": "Amendment 202, page 1, line 14, leave out\n\u201cthose for which rent is payable\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1057.3.10": {
+    "title": "Amendment 203: Renters (Reform) Bill",
+    "content": "Amendment 203, page 1, line 16, leave out\n\u201cperiods for which rent is payable (\u201crent periods\u201d)\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1057.3.14": {
     "title": "Amendment 204: Renters (Reform) Bill",
     "content": "Amendment 204, page 2, line 1, leave out \u201cabout rent periods\u201d and insert \u201cof an assured tenancy\u201d.\u2014 (Jacob Young.)\nAmendments made: 205, page 3, line 3, at end insert \u201c, or\n(b) where the court has exercised the power conferred by section 8(1)(b), the period of 14 days beginning\u2014\n(i) if the court considers it just and equitable, with the date on which any purported notice under section 8 (within the meaning given by section 16E(8)) was served on the tenant;\n(ii) otherwise, with the date on which the proceedings for possession began.\u201d"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1058.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1058.1.6": {
+    "title": "Amendment 57: Renters (Reform) Bill",
+    "content": "Amendment 57, page 3, line 21, after \u201c2ZB,\u201d insert \u201c2ZC, 2ZD\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1058.1.8": {
+    "title": "Amendment 56: Renters (Reform) Bill",
+    "content": "Amendment 56, page 3, line 22, after \u201c5D,\u201d insert \u201c5H,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1058.1.10": {
+    "title": "Amendment 58: Renters (Reform) Bill",
+    "content": "Amendment 58, page 3, line 32, leave out \u201c2ZB\u201d and insert \u201c2ZC\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1058.1.12": {
+    "title": "Amendment 59: Renters (Reform) Bill",
+    "content": "Amendment 59, page 3, line 32, at end insert\u2014\n\u201c(5B) A notice given by an intermediate landlord under Ground 2ZB is to be treated, when the superior tenancy ends, as a notice given by the person who became the landlord by virtue of section 18 under Ground 2ZD.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1058.1.15": {
     "title": "Amendment 206: Renters (Reform) Bill",
     "content": "Amendment 206, page 3, line 33, at end insert\u2014\n\u201c(4) After section 8 of the 1988 Act insert\u2014\n\u201c8ZA Disapplication of conditions where notice dispensed with\n(1) Where a landlord seeks to recover possession on Ground 4A  in Schedule 2 and the court exercises the power conferred by section 8(1)(b), the court may disapply paragraph (c) of that ground if\u2014\n(a) a purported notice under section 8 was served on the tenant which\u2014\n(i) specified the ground, and\n(ii) in purported compliance with section 8(3)(b), specified a date falling within the period beginning with 1 June and ending with 30 September in any year,\n(b) the proceedings for possession began on or after the date so specified, and\n(c) the court considers it just and equitable to disapply paragraph (c) of the ground.\n(2) Where a landlord seeks to recover possession on Ground 5G in Schedule 2 and the court exercises the power conferred by section 8(1)(b), the court may disapply paragraph (b) of that ground if\u2014\n(a) a purported notice under section 8 was served on the tenant which\u2014\n(i) specified the ground, and\n(ii) in purported compliance with section 8(3)(b), specified a date that was no more than 12 months after the date on which the local housing authority notified the landlord as mentioned in paragraph (a) of the ground,\n(b) the proceedings for possession began on or after the date so specified, and\n(c) the court considers it just and equitable to disapply paragraph (b) of the ground.\n(3) Where a landlord seeks to recover possession on Ground 6 in Schedule 2 and the court exercises the power conferred by section 8(1)(b), the court may disapply paragraph (aa)(ii) of that ground if\u2014\n(a) a purported notice under section 8 was served on the tenant which\u2014\n(i) specified the ground, and\n(ii) in purported compliance with section 8(3)(b), specified a date that was less than 12 months after the date on which the dwelling-house was transferred to the landlord,\n(b) the proceedings for possession began on or after the date so specified, and\n(c) the court considers it just and equitable to disapply paragraph (aa)(ii) of the ground.\n(4) In this section \u201cpurported notice under section 8\u201d has the meaning given by section 16E(8).\u201d\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1059.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1059.1.1": {
     "title": "Clause 6 - Statutory procedure for increases of rent",
     "content": "Amendment made: 207, page 7, line 4, at end insert\u2014\n\u201c13B Challenge to validity of notice to increase rent\nWhere a tenant under an assured tenancy makes an application to the appropriate tribunal in the prescribed form, the tribunal may determine whether a notice served on the tenant under section 13(2) or 13A(2) is valid.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1059.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1059.3.1": {
+    "title": "Clause 11 - Duty of landlord and contractor to give statement of terms etc",
+    "content": "Amendments made: 60, page 13, line 8, after \u201c2ZB,\u201d insert \u201c2ZC, 2ZD\u201d.\nThis amendment is consequential on amendments 161 and 164."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1059.3.3": {
+    "title": "Amendment 208: Renters (Reform) Bill",
+    "content": "Amendment 208, page 13, line 8, leave out \u201c4A,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1059.3.5": {
     "title": "Amendment 61: Renters (Reform) Bill",
     "content": "Amendment 61, page 13, line 8, leave out \u201c5G\u201d and insert \u201c5H\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1060.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.1": {
+    "title": "Clause 12 - Other duties",
+    "content": "Amendments made: 209, page 14, line 8, leave out \u201cthe landlord is not\u201d and insert\n\u201cthe person does not reasonably believe the landlord to be\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.4": {
+    "title": "Amendment 63: Renters (Reform) Bill",
+    "content": "Amendment 63, page 14, line 11, after \u201c2ZB,\u201d insert \u201c2ZC, 2ZD\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.6": {
+    "title": "Amendment 210: Renters (Reform) Bill",
+    "content": "Amendment 210, page 14, line 11, leave out \u201c4A,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.8": {
+    "title": "Amendment 62: Renters (Reform) Bill",
+    "content": "Amendment 62, page 14, line 11, leave out \u201c5G\u201d and insert \u201c5H\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.10": {
+    "title": "Amendment 211: Renters (Reform) Bill",
+    "content": "Amendment 211, page 14, leave out lines 14 to 18."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.12": {
+    "title": "Amendment 64: Renters (Reform) Bill",
+    "content": "Amendment 64, page 14, line 22, at end insert \u201c, or\n(b) permit a person to occupy the dwelling-house\u2014\n(i) under a licence to occupy, and\n(ii) for monetary consideration,\nexcept in the circumstances mentioned in subsection (3A).\n(3A) The circumstances are that\u2014\n(a) the relevant person relied on Ground 1 and persons mentioned in paragraphs (a) to (d) of Ground 1 also occupy the dwelling-house and do so as their only or principal home, or\n(b) the relevant person relied on Ground 1A, the licensee has agreed to purchase the landlord\u2019s interest in the dwelling-house and the licence to occupy is granted in anticipation of that purchase.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.21": {
+    "title": "Amendment 65: Renters (Reform) Bill",
+    "content": "Amendment 65, page 14, line 27, at end insert\u2014\n\u201c(ab) within the restricted period, market the dwelling-house to be occupied\u2014\n(i) under a licence to occupy, and\n(ii) for monetary consideration,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.26": {
+    "title": "Amendment 66: Renters (Reform) Bill",
+    "content": "Amendment 66, page 14, line 31, at end insert \u201c, or\n(c) authorise another person to market the dwelling-house to be occupied\u2014\n(i) under a licence to occupy, and\n(ii) for monetary consideration,\nso far as the authorisation would allow that other person to market it within the restricted period.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.32": {
+    "title": "Amendment 67: Renters (Reform) Bill",
+    "content": "Amendment 67, page 14, line 31, at end insert\u2014\n\u201c(4A) Subsection (3) does not apply where the relevant person relies on Ground 1 and the letting is to, or the licensee is, a person mentioned in paragraphs (a) to (d) of that ground."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.37": {
+    "title": "Amendment 212: Renters (Reform) Bill",
+    "content": "Amendment 212, page 15, line 3, leave out from \u201cbut\u201d to end of line 4 and insert\u2014\n\u201c(a) purports\u2014\n(i) to be such a notice, or\n(ii) to bring an assured tenancy to an end, or\n(b) asserts that the landlord is or may be entitled to rely on a specified ground in Schedule 2 in relation to an assured tenancy and requests or requires that the tenancy is brought to an end,\nand is not a claim form or a document produced pursuant to proceedings in the court for possession of the dwelling-house;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.44": {
+    "title": "Amendment 68: Renters (Reform) Bill",
+    "content": "Amendment 68, page 15, line 25, at end insert\u2014\n\u201c(1A) For the purposes of section 16E a person markets a dwelling-house to be occupied under a licence when\u2014\n(a) the person advertises that the dwelling-house is or may be available to be occupied under a licence, or\n(b) in the course of lettings agency work, the person informs any other person that the dwelling is or may be so available.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.49": {
+    "title": "Amendment 69: Renters (Reform) Bill",
+    "content": "Amendment 69, page 15, line 26, leave out \u201csubsection (1)(a) does\u201d and insert\n\u201csubsections (1)(a) and (1A)(a) do\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.52": {
+    "title": "Amendment 70: Renters (Reform) Bill",
+    "content": "Amendment 70, page 15, line 34, leave out \u201cwhom to let\u201d and insert \u201coccupy\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.54": {
+    "title": "Amendment 71: Renters (Reform) Bill",
+    "content": "Amendment 71, page 15, line 35, leave out \u201ctenant\u201d and insert \u201coccupier\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.56": {
+    "title": "Amendment 72: Renters (Reform) Bill",
+    "content": "Amendment 72, page 15, line 36, leave out \u201clet\u201d and insert \u201coccupy\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.58": {
+    "title": "Amendment 73: Renters (Reform) Bill",
+    "content": "Amendment 73, page 15, line 42, leave out \u201ctenant\u201d and insert \u201coccupier\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.60": {
+    "title": "Amendment 74: Renters (Reform) Bill",
+    "content": "Amendment 74, page 16, line 2, leave out \u201ctenant\u201d and insert \u201coccupier\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1060.1.62": {
     "title": "Amendment 75: Renters (Reform) Bill",
     "content": "Amendment 75, page 16, line 4, leave out \u201ctenant\u201d and insert \u201coccupier\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1062.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1062.1.1": {
+    "title": "Clause 14 - Landlords etc: financial penalties and offences",
+    "content": "Amendments made: 213, page 18, line 13, leave out from \u201cit,\u201d to first \u201cthe\u201d in line 21 and insert \u201c, and\u201d.\nThis amendment is consequential on amendment 211."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1062.1.3": {
+    "title": "Amendment 214: Renters (Reform) Bill",
+    "content": "Amendment 214, page 18, leave out lines 24 and 25 and insert\u2014\n\u201c(2) Subsections (6) and (8) of section 16E apply for the purposes of this section as they apply for the purposes of that section.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1062.1.6": {
     "title": "Amendment 195: Renters (Reform) Bill",
     "content": "Amendment 195, page 21, line 9, after \u201cLondon\u201d insert\n\u201c(in its capacity as a local authority)\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1062.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1062.3.1": {
+    "title": "Clause 16 - No criminal liability of the Crown  under Part 1 of 1988 Act",
+    "content": "Amendments made: 215, page 24, line 39, at beginning insert\n\u201cbeing a landlord under a tenancy to which section 16E applies, or acting or purporting to act on behalf of such a landlord, and, in relation to that tenancy,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1062.3.4": {
+    "title": "Amendment 216: Renters (Reform) Bill",
+    "content": "Amendment 216, page 24, line 39, leave out from \u201cthe\u201d to end of line 3 on page 25 and insert\n\u201ccondition in paragraph (a) of section 16I(1) where the condition in paragraph (b) of section 16I(1) is also satisfied,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1062.3.7": {
     "title": "Amendment 217: Renters (Reform) Bill",
     "content": "Amendment 217, page 25, line 6, leave out \u201c16I(4)\u201d and insert \u201c16I(5)\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1063.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1063.1.1": {
     "title": "Clause 17 - Notices to quit by tenants under assured tenancies: timing",
     "content": "Amendment made: 76, Page 25, line 10, leave out Clause 17."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1063.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1063.3.1": {
     "title": "Clause 20 - Assured agricultural occupancies: grounds for possession",
     "content": "Amendment made: 77, Clause 20, page 26, line 16, after \u201c2ZB,\u201d insert \u201c2ZC, 2ZD\u201d."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1063.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1063.5.1": {
+    "title": "Clause 22 - Tenancy deposit requirements",
+    "content": "Amendments made: 78, page 27, line 29, leave out \u201c116(4)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1063.5.4": {
+    "title": "Amendment 79: Renters (Reform) Bill",
+    "content": "Amendment 79, page 28, line 25, leave out \u201c116(4)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(1)(a)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1063.5.7": {
+    "title": "Amendment 80: Renters (Reform) Bill",
+    "content": "Amendment 80, page 29, line 4, leave out \u201c116(4)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1063.5.10": {
     "title": "Amendment 218: Renters (Reform) Bill",
     "content": "Amendment 218, page 29, line 10, at end insert\u2014\n\u201c(7A) Omit section 215C\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1063.7": {
+  "uk.org.publicwhip/debate/2024-04-24b.1063.7.1": {
+    "title": "Clause 25 - Tenancies of more than seven years",
+    "content": "Amendments made: 219, page 29, line 32, at end insert\u2014\n\u201c(1A) In section 133 of the 1988 Act (consent required for certain subsequent disposals), in subsection (11)(f), for \u201c4\u201d substitute \u201c3D\u201d.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1063.7.4": {
     "title": "Amendment 220: Renters (Reform) Bill",
     "content": "Amendment 220, page 29, line 32, at end insert\u2014\n\u201c(1B) In section 13 of the Landlord and Tenant Act 1985 (leases to which section 11 applies: general rule)\u2014\n(a) in subsection (1A)(b) omit \u201cor more\u201d;\n(b) after subsection (1A) insert\u2014\n\u201c(1AA) Section 11 also applies to a lease of a dwelling-house in England granted on or after the day on which section 166 of the Localism   Act 2011 came into force which is a tenancy for a fixed term of more than seven years that\u2014\n(a) would be an assured tenancy if it were not for a term of more than seven years,\n(b) is not a shared ownership lease, and\n(c) is granted by a private registered provider of social housing.\u201d;\n(c) in subsection (1B), for \u201cIn subsection (1A)\u201d substitute \u201cIn this section\u201d.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1064.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1064.1.1": {
+    "title": "Clause 27 - Discrimination relating to children",
+    "content": "Amendments made: 81, page 30, line 24, after \u201con\u201d insert\n\u201can agreement which may give rise to\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1064.1.4": {
     "title": "Amendment 82: Renters (Reform) Bill",
     "content": "Amendment 82, page 30, line 26, after \u201cwould\u201d insert \u201cor may\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1064.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1064.3.1": {
+    "title": "Clause 28 - Discrimination relating to benefits status",
+    "content": "Amendments made: 83, page 31, line 29, after \u201con\u201d insert\n\u201can agreement which may give rise to\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1064.3.4": {
+    "title": "Amendment 84: Renters (Reform) Bill",
+    "content": "Amendment 84, page 31, line 31, after \u201cis\u201d insert \u201cor may be\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1064.3.6": {
     "title": "Amendment 85: Renters (Reform) Bill",
     "content": "Amendment 85, page 32, line 5, leave out \u201cprospective landlord\u201d and insert \u201cinsured\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1064.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1064.5.1": {
+    "title": "Clause 34 - Power of the Secretary of State to amend Chapter 3 to protect others",
+    "content": "Amendments made: 86, page 36, line 8, leave out\n\u201camend this Chapter so as to\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1064.5.4": {
     "title": "Amendment 87: Renters (Reform) Bill",
     "content": "Amendment 87, page 36, line 12, at end insert\u2014\n\u201c(2) Regulations under subsection (1) may amend, repeal or revoke provision made by or under an Act, whenever passed or made (including this Act).\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1065.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1065.1.1": {
+    "title": "Clause 36 - Interpretation of Chapter 3",
+    "content": "Amendments made: 88, page 36, line 19, after \u201cpayments\u201d insert\n\u201c(including payments made directly to a landlord)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1065.1.4": {
+    "title": "Amendment 89: Renters (Reform) Bill",
+    "content": "Amendment 89, page 36, line 22, at end insert\u2014\n\u201c(b) is entitled to payments (including payments made directly to a landlord) under or by virtue of the Jobseekers Act 1995, the State Pension Credit Act 2002, the Tax Credits Act 2002, the Welfare Reform Act 2007 or the Pensions Act 2014,\n(c) is in receipt of a reduction in the amount of council tax payable in respect of the person\u2019s current home under a scheme made by a billing authority under or by virtue of section 13A of the Local Government Finance Act 1992, or\n(d) would be entitled to a reduction in the amount of council tax payable in respect of the dwelling in question under a scheme made by the billing authority in whose area the dwelling is situated under or by virtue of section 13A of the Local Government Finance Act 1992, if the person were to\u2014\n(i) rent the dwelling on a relevant tenancy, and\n(ii) if an application is a precondition of entitlement, apply to the billing authority for a reduction under the scheme.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1065.1.11": {
+    "title": "Amendment 90: Renters (Reform) Bill",
+    "content": "Amendment 90, page 36, line 27, after \u201con\u201d insert\n\u201can agreement which may give rise to\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1065.1.14": {
     "title": "Amendment 91: Renters (Reform) Bill",
     "content": "Amendment 91, page 37, line 2, at end insert\u2014\n\u201c(2) In this Chapter a reference to doing something on the basis of particular facts includes reference to doing it on the basis of a belief in those facts.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1066.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.1": {
+    "title": "Clause 37 - Discrimination relating to children or benefits status: Welsh language",
+    "content": "Amendments made: 92, page 37, line 23, after \u201cannedd\u201d insert\n\u201c, neu y gallai plentyn fyw gyda pherson neu ymweld \u00e2 pherson yn yr annedd,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.4": {
+    "title": "Amendment 93: Renters (Reform) Bill",
+    "content": "Amendment 93, page 38, line 12, leave out \u201cdarpar landlord\u201d and insert\n\u201cperson sydd wedi ei yswirio\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.7": {
+    "title": "Amendment 94: Renters (Reform) Bill",
+    "content": "Amendment 94, page 38, line 19, after\n\u201cbod person yn hawlydd budd-daliadau\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.12": {
+    "title": "Amendment 95: Renters (Reform) Bill",
+    "content": "Amendment 95, page 38, line 41, leave out \u201cdarpar landlord\u201d and insert\n\u201cperson sydd wedi ei yswirio\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.15": {
+    "title": "Amendment 96: Renters (Reform) Bill",
+    "content": "Amendment 96, page 42, leave out lines 5 to 10."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.17": {
+    "title": "Amendment 97: Renters (Reform) Bill",
+    "content": "Amendment 97, page 42, line 11, leave out \u201c8K\u201d and insert \u201c8J\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.19": {
+    "title": "Amendment 98: Renters (Reform) Bill",
+    "content": "Amendment 98, page 42, line 22, after \u201ctaliadau\u201d insert\n\u201c(gan gynnwys taliadau a wneir yn uniongyrchol i landlord)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.22": {
+    "title": "Amendment 99: Renters (Reform) Bill",
+    "content": "Amendment 99, page 42, line 26, at end insert\u2014\n\u201c(b) sydd \u00e2 hawl i gael taliadau (gan gynnwys taliadau a wneir yn uniongyrchol i landlord) o dan neu yn rhinwedd Deddf Ceiswyr Gwaith 1995, Deddf Credyd Pensiwn y Wladwriaeth 2002, Deddf Credydau Treth 2002, Deddf Diwygio Lles 2007 neu Ddeddf Pensiynau 2014,\n(c) sy\u2019n cael gostyngiad yn swm y dreth gyngor sy\u2019n daladwy mewn perthynas \u00e2 chartref presennol y person o dan gynllun a wneir gan awdurdod bilio o dan neu yn rhinwedd adran 13A o Ddeddf Cyllid Llywodraeth Leol 1992, neu\n(d) a fyddai \u00e2\u2019r hawl i gael gostyngiad yn swm y dreth gyngor sy\u2019n daladwy mewn perthynas \u00e2\u2019r annedd o dan sylw o dan gynllun a wneir gan yr awdurdod   bilio y mae\u2019r annedd yn ei ardal o dan neu yn rhinwedd adran 13A o Ddeddf Cyllid Llywodraeth Leol 1992, pe bai\u2019r person\u2014\n(i) yn rhentu\u2019r annedd o dan gontract meddiannaeth, a\n(ii) os yw gwneud cais yn rhagamod ar gyfer hawlio gostyngiad, yn gwneud cais i\u2019r awdurdod bilio am ostyngiad o dan y cynllun.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.29": {
+    "title": "Amendment 100: Renters (Reform) Bill",
+    "content": "Amendment 100, page 42, line 34, at end insert\u2014\n\u201c(2) Yn y Rhan hon, mae cyfeiriad at wneud rhywbeth ar sail ffeithiau penodol yn cynnwys cyfeiriad at wneud hynny ar sail cred yn y ffeithiau hynny.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.32": {
+    "title": "Amendment 101: Renters (Reform) Bill",
+    "content": "Amendment 101, page 43, line 17, leave out \u201c8K\u201d and insert \u201c8J\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1066.1.34": {
     "title": "Amendment 102: Renters (Reform) Bill",
     "content": "Amendment 102, page 43, line 30, leave out \u201cadran 8J,\u201d \u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1067.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.1": {
+    "title": "Clause 38 - Discrimination relating to children or benefits status: English language",
+    "content": "Amendments made: 103, page 44, line 7, after \u201cwould\u201d insert \u201cor may\u201d.\nThis amendment aligns this provision with the similar one being inserted for Scotland and ensures that it is an offence for a landlord or agent to discriminate against people with children on that basis even if they were not sure that children would live with or visit the person."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.3": {
+    "title": "Amendment 104: Renters (Reform) Bill",
+    "content": "Amendment 104, page 44, line 31, leave out \u201cprospective landlord\u201d and insert \u201cinsured\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.5": {
+    "title": "Amendment 105: Renters (Reform) Bill",
+    "content": "Amendment 105, page 44, line 38, after \u201cis\u201d insert \u201cor may be\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.7": {
+    "title": "Amendment 106: Renters (Reform) Bill",
+    "content": "Amendment 106, page 45, line 16, leave out \u201cprospective landlord\u201d and insert \u201cinsured\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.9": {
+    "title": "Amendment 107: Renters (Reform) Bill",
+    "content": "Amendment 107, page 48, leave out lines 14 to 19."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.11": {
+    "title": "Amendment 108: Renters (Reform) Bill",
+    "content": "Amendment 108, page 48, line 20, leave out \u201c8K\u201d and insert \u201c8J\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.13": {
+    "title": "Amendment 109: Renters (Reform) Bill",
+    "content": "Amendment 109, page 48, line 23, after \u201cpayments\u201d insert \u201c(including payments made directly to a landlord)\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.15": {
+    "title": "Amendment 110: Renters (Reform) Bill",
+    "content": "Amendment 110, page 48, line 26, at end insert\u2014\n\u201c(b) is entitled to payments (including payments made directly to a landlord) under or by virtue of the Jobseekers Act 1995, the State Pension Credit Act 2002, the Tax Credits Act 2002, the Welfare Reform Act 2007 or the Pensions Act 2014,\n(c) is in receipt of a reduction in the amount of council tax payable in respect of the person\u2019s current home under a scheme made by a billing authority under or by virtue of section 13A of the Local Government Finance Act 1992, or\n(d) would be entitled to a reduction in the amount of council tax payable in respect of the dwelling in question under a scheme made by the billing authority in whose area the dwelling is situated under or by virtue of section 13A of the Local Government Finance Act 1992, if the person were to\u2014\n(i) rent the dwelling under an occupation contract, and\n(ii) if an application is a precondition of entitlement, apply to the billing authority for a reduction under the scheme.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.22": {
+    "title": "Amendment 111: Renters (Reform) Bill",
+    "content": "Amendment 111, page 48, line 40, at end insert\u2014\n\u201c(2) In this Part a reference to doing something on the basis of particular facts includes reference to doing it on the basis of a belief in those facts.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.25": {
+    "title": "Amendment 112: Renters (Reform) Bill",
+    "content": "Amendment 112, page 49, line 19, leave out \u201c8K\u201d and insert \u201c8J\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1067.1.27": {
     "title": "Amendment 113: Renters (Reform) Bill",
     "content": "Amendment 113, page 49, line 32, leave out \u201csection 8J,\u201d. \u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1068.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1068.1.1": {
+    "title": "Clause 40 - Regulations",
+    "content": "Amendment made: 115, page 51, line 2, leave out  \u201cor 8J\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1068.1.3": {
     "title": "Clause 40 - Regulations",
     "content": "Amendment made: 116, page 51, line 3, after \u201cthis Act)\u201d insert\n\u201cor section (Power of Welsh Ministers to extend protection to persons of other descriptions)(1) of this Act\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1069.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1069.1.1": {
+    "title": "Clause 41 - Amendments of Renting Homes (Wales) Act 2016 regarding discrimination",
+    "content": "Amendments made: 117, page 52, line 3, leave out from \u201crhag\u201d to end of line 5 and insert\u2014\n\u201cbod yn hawlydd budd-daliadau o fewn yr ystyr a roddir gan adran 8J o Ddeddf Rhentu Cartrefi (Ffioedd, Gwahaniaethu etc.) (Cymru) 2019.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.1.4": {
     "title": "Amendment 118: Renters (Reform) Bill",
     "content": "Amendment 118, page 53, line 16, leave out from \u201cfrom\u201d to end of line 18 and insert\u2014\n\u201cbeing a benefits claimant within the meaning given by section 8J of the Renting Homes (Fees, Discrimination etc.) (Wales) Act 2019.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1069.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1069.3.1": {
+    "title": "Clause 44 - Meaning of \u201cresidential landlord\u201d",
+    "content": "Amendments made: 119, page 58, line 34, leave out\n\u201can assured tenancy that is a sub-tenancy\u201d,\nand insert \u201ca relevant tenancy\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.3.5": {
+    "title": "Amendment 120: Renters (Reform) Bill",
+    "content": "Amendment 120, page 59, line 1, after \u201cto\u201d insert \u201cor instead of\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.3.7": {
     "title": "Amendment 121: Renters (Reform) Bill",
     "content": "Amendment 121, page 59, line 19, at end insert\u2014\n\u201c(4A) Kinds of tenancy or licence added or removed under subsection (4)(b) may be identified by reference to any matters connected directly or indirectly with a tenancy or licence, including the characteristics or circumstances of any person who is so connected.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1069.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.1": {
+    "title": "Clause 46 - Approval and designation of landlord redress schemes",
+    "content": "Amendments made: 122, page 61, line 19, leave out \u201cwhich\u201d and insert\u2014\n\u201c(2A) The conditions\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.4": {
+    "title": "Amendment 123: Renters (Reform) Bill",
+    "content": "Amendment 123, page 61, line 21, leave out from \u201cthe\u201d in the first place it occurs, to \u201cto\u201d in line 23 and insert \u201cappointment of an individual\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.6": {
+    "title": "Amendment 124: Renters (Reform) Bill",
+    "content": "Amendment 124, page 61, line 24, at end insert\u2014\n\u201c(aa) about the terms and conditions of that individual and the termination of their appointment,\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.9": {
+    "title": "Amendment 125: Renters (Reform) Bill",
+    "content": "Amendment 125, page 61, line 35, leave out \u201cunder other redress schemes\u201d and insert\n\u201cin relation to other kinds of complaint\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.12": {
+    "title": "Amendment 126: Renters (Reform) Bill",
+    "content": "Amendment 126, page 62, line 3, after first \u201cof\u201d insert\n\u201c, and the investigation and determination of complaints under,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.15": {
+    "title": "Amendment 127: Renters (Reform) Bill",
+    "content": "Amendment 127, page 62, line 30, leave out \u201cunder subsection (2)(n)\u201d and insert\n\u201cby virtue of subsection (2A)(n)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.18": {
+    "title": "Amendment 128: Renters (Reform) Bill",
+    "content": "Amendment 128, Clause 46, page 62, line 34, leave out \u201cunder subsection (2)(n)\u201d and insert\n\u201cby virtue of subsection (2A)(n)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.21": {
+    "title": "Amendment 129: Renters (Reform) Bill",
+    "content": "Amendment 129, page 62, line 38, at end insert\u2014\n\u201c(5A) Subsections (2A) to (5) do not limit the conditions that may be set out in regulations under subsection (2).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.24": {
+    "title": "Amendment 130: Renters (Reform) Bill",
+    "content": "Amendment 130, page 63, line 6, after \u201cscheme\u201d insert\n\u201cand the investigation and determination of complaints under those aspects of the scheme\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1069.5.27": {
     "title": "Amendment 131: Renters (Reform) Bill",
     "content": "Amendment 131, page 63, line 8, leave out from \u201cmay\u201d to end of line 9 and insert\u2014\n\u201c(a) confer functions (including functions involving the exercise of a discretion) on the Secretary of State, or authorise or require a scheme to do so;\n(b) provide for the delegation of such functions by the Secretary of State, or authorise or require a scheme to provide for that.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1071.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1071.1.1": {
+    "title": "Clause 52 - Housing activities under social rented sector scheme",
+    "content": "Amendments made: 132, page 66, line 27, leave out \u201cparagraph 4 of paragraph 2(1),\u201d and insert\n\u201cparagraph 2(1)\u2014\n(a) in paragraph 4,\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1071.1.5": {
+    "title": "Amendment 133: Renters (Reform) Bill",
+    "content": "Amendment 133, page 66, line 30, at end insert\u2014\n\u201c(b) after paragraph 7 insert\u2014\n\u201c7A Where the scheme provides for the housing ombudsman to be employed by the person administering the scheme, provision for the enforcement of directions given under paragraph 10(3)(b).\u201d\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1071.1.9": {
     "title": "Amendment 134: Renters (Reform) Bill",
     "content": "Amendment 134, page 67, line 4, at end insert\u2014\n\u201c(4A) For paragraph 10 substitute\u2014\n\u201c10 \u201c(1) The housing ombudsman for the purposes of an approved scheme is to be appointed by the Secretary of State on such terms as the Secretary of State thinks fit.\n(2) The Secretary of State may at any time remove a housing ombudsman from office.\n(3) In relation to an approved scheme which provides for the housing ombudsman to be employed by the person administering the scheme\u2014\n(a) the reference in sub-paragraph (1) to the terms on which the housing ombudsman is appointed includes a reference to the terms of the housing ombudsman\u2019s employment by that person;\n(b) the power of the Secretary of State under sub-paragraph (2) to remove a housing ombudsman from office includes power to give the person administering the scheme a direction in writing to cease to employ the individual who is housing ombudsman as housing ombudsman (and a direction under this paragraph may be revoked or varied by a further direction under this paragraph).\n(4) Where an approved scheme does not provide that it is to be administered by a body corporate\u2014\n(a) the Secretary of State may by order provide that the housing ombudsman for the purposes of the scheme is to be a corporation sole, and\n(b) the staff to administer the scheme and otherwise assist the ombudsman in the discharge of functions are to be appointed and employed by the ombudsman.\n(5) Where an approved scheme provides that it is to be administered by a body corporate the Secretary of State may delegate functions under sub-paragraph (1) or (2) to the body administering the scheme.\n(6) A delegation under sub-paragraph (5) may specify\u2014\n(a) the extent to which the functions are delegated;\n(b) any conditions to which the delegation is subject.\n(7) A delegation under sub-paragraph (5)\u2014\n(a) must be in writing;\n(b) may be varied or revoked by the Secretary of State, in writing, at any time;\n(c) does not prevent the Secretary of State from exercising the functions.\n(8) A housing ombudsman is not to be regarded as the servant or agent of the Crown or as enjoying any status, privilege or immunity of the Crown or as exempt from any tax, duty, rate, levy or other charge whatsoever, whether general or local, and any property held by a housing ombudsman is not to be regarded as property of, or held on behalf of, the Crown.\u201d\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1072.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1072.1.1": {
     "title": "Clause 66 - Use of information from the database",
     "content": "Amendment made: 135, page 77, line 5, leave out \u201cthis Part\u201d and insert\n\u201cthe provisions of the landlord legislation for which it is responsible\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1072.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1072.3.1": {
+    "title": "Clause 72 - Interpretation of Chapter 3",
+    "content": "Amendments made: 136, page 81, line 26, leave out \u201chas the same meaning\u201d and insert\n\u201cand \u201cthe landlord legislation\u201d have the same meanings\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1072.3.4": {
     "title": "Amendment 137: Renters (Reform) Bill",
     "content": "Amendment 137, page 81, line 29, at end insert\u2014\n\u201c(2) Section 83(6) (lead enforcement authority \u201cresponsible\u201d for the provisions of the landlord legislation) applies for the purposes of this Chapter as it applies for the purposes of Part 4.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1072.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1072.5.1": {
     "title": "Clause 78 - Rent repayment orders",
     "content": "Amendment made: 196, page 86, line 33, at end insert\u2014\n\u201c(7) In section 52 (interpretation), after subsection (2) insert\u2014\n\u201c(3) In the case of an application for a rent repayment order made, or to be made, against a superior landlord\u2014\n(a) references in this Chapter to the landlord are to be read as references to the superior landlord, and\n(b) housing in relation to which the person in question is a superior landlord is to be treated for the purposes of this Chapter as let by that person.\u201d\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1073.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1073.1.1": {
     "title": "Clause 90 - Business premises: entry without warrant",
     "content": "Amendment made: 138, page 95, line 39, leave out paragraph (a).\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1073.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1073.3.1": {
+    "title": "Clause 109 - Interpretation",
+    "content": "Amendments made: 139, page 107, line 29, at end insert\u2014\n\u201c\u201clease\u201d includes any tenancy;\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.3.4": {
     "title": "Amendment 197: Renters (Reform) Bill",
     "content": "Amendment 197, page 107, line 32, after \u201cLondon\u201d insert\n\u201c(in its capacity as a local authority)\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1073.5": {
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.1": {
+    "title": "Clause 112 - Regulations",
+    "content": "Amendments made: 140, page 109, line 30, after \u201cpower\u201d insert \u201cof the Secretary of State and the Scottish Ministers\u201d\nThis amendment is consequential on amendment 141."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.3": {
+    "title": "Amendment 141: Renters (Reform) Bill",
+    "content": "Amendment 141, page 109, line 33, at end insert\u2014\n\u201c(2A) The power of the Welsh Ministers under subsection (1)(a) to make transitional provision includes power to provide for regulations to apply (with or without modifications) in relation to occupation contracts granted, renewed or continued, or advertising begun, before the date on which the regulations come into force.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.6": {
+    "title": "Amendment 142: Renters (Reform) Bill",
+    "content": "Amendment 142, page 109, line 34, at end insert \u201c, except where they are made by the Scottish Ministers (see section 27 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10))\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.8": {
+    "title": "Amendment 143: Renters (Reform) Bill",
+    "content": "Amendment 143, page 109, line 35, after \u201csection\u201d insert\n\u201c(Powers of Secretary of State in connection with Chapter 1)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.11": {
+    "title": "Amendment 144: Renters (Reform) Bill",
+    "content": "Amendment 144, page 109, line 35, after \u201c34,\u201d insert\n\u201c(Power of Secretary of State to extend protection to persons of other descriptions: Wales), (Power of Secretary of State to extend protection to persons of other descriptions: Scotland)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.14": {
+    "title": "Amendment 221: Renters (Reform) Bill",
+    "content": "Amendment 221, page 109, line 41, at end insert\n\u201c, unless it contains regulations under section 83(3) only\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.17": {
+    "title": "Amendment 145: Renters (Reform) Bill",
+    "content": "Amendment 145, page 109, line 41, at end insert\u2014\n\u201c(5A) A statutory instrument containing regulations made by the Welsh Ministers under section (Power of Welsh Ministers to extend protection to persons of other descriptions)(1) may not be made unless a draft of the instrument has been laid before and approved by a resolution of Senedd Cymru.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.20": {
+    "title": "Amendment 146: Renters (Reform) Bill",
+    "content": "Amendment 146, page 109, line 41, at end insert\u2014\n\u201c(5B) Regulations made by the Scottish Ministers under section (Power of the Scottish Ministers to extend protection to persons of other descriptions) are subject to the affirmative procedure (see section 29 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10)).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1073.5.23": {
     "title": "Amendment 222: Renters (Reform) Bill",
     "content": "Amendment 222, page 109, line 41, at end insert\u2014\n\u201c(5C) If a draft of a statutory instrument containing regulations under section 45 would, apart from this subsection, be treated for the purposes of the standing orders of either House of Parliament as a hybrid instrument, it is to proceed in that House as if it were not a hybrid instrument.\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1074.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1074.1.1": {
+    "title": "Clause 114 - Power of Secretary of State to make consequential provision",
+    "content": "Amendments made: 147, page 111, line 4, at end insert\u2014\n\u201c(b) in relation to regulations that make provision that is consequential on Chapter 1 or 2 of Part 1, power to provide for pre-application instruments which the Secretary of State considers do not (or will not) operate appropriately as a result of any provision of the regulations to\u2014\n(i) have effect with specified modifications, or\n(ii) cease to have effect (in whole or in part).\n(4A) For the purposes of subsection (4)(b)\u2014\n(a) \u2018pre-application instrument\u2019 means an agreement or other instrument made before the regulations come into force;\n(b) the circumstances in which the Secretary of State may consider that a pre-application instrument does not operate appropriately as a result of regulations under this section include (but are not limited to) those in which\u2014\n(i) as a result of any provision of the regulations, provision made by the instrument is to any extent spent, obsolete, unnecessary or otherwise not of practical utility;\n(ii) as a result of any provision of the regulations, it is unclear what the effect is of provision made by the instrument;\n(iii) as a result of any provision of the regulations, a person may be placed in breach of obligations arising under the instrument or made subject to more burdensome obligations under the instrument;\n(iv) the instrument makes direct or indirect reference to any enactment as it had effect before being amended by the regulations.\n(4B) Regulations made by virtue of subsection (4)(b) must provide that they do not prevent\u2014\n(a) the variation or revocation of provision modified by the regulations, or\n(b) the re-making of provision that has ceased to have effect as a result of the regulations.\n(4C) Regulations made by virtue of subsection (4)(b) may apply to an instrument as it has effect in relation to times before the coming into force of the regulations but after the commencement date (within the meaning given by section (Application of Chapter 1 of Part 1)(1)(a)).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1074.1.17": {
     "title": "Amendment 148: Renters (Reform) Bill",
     "content": "Amendment 148, page 111, line 7, after \u201cAct\u201d insert \u201c, or\n(b) are made by virtue of subsection (4)(b),\u201d\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1075.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1075.1.1": {
+    "title": "Clause 115 - Financial penalties: procedure,  appeals and enforcement",
+    "content": "Amendments made: 149, page 111, line 13, leave out \u201csubsection\u201d and insert \u201csubsections (1A) to\u201d\nThis amendment is consequential on amendment 150."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1075.1.3": {
     "title": "Clause 115 - Financial penalties: procedure,  appeals and enforcement",
     "content": "Amendment 150 , page 111, line 13, at end insert\u2014\n\u201c(1A) In Part 1, Chapter 4A extends to Scotland only."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1075.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1075.3.1": {
+    "title": "Clause 116 - Commencement and application",
+    "content": "Amendment made: 151, page 111, line 16, leave out clause 116\u2014(Jacob Young.)"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1075.3.3": {
     "title": "Clause 116 - Commencement and application",
     "content": "Amendment proposed: 28, page 111, line 19, at end insert\n\u201c, save that section 2(b) comes into force on the day on which this Act is passed only to the extent that it repeals section 21 of the Housing Act 1988; such repeal will not affect the validity of any notices served under that provision on or before the day on which this Act is passed and the provisions of that section will continue to apply to any claims issued in respect of such a notice\u201d.\u2014(Matthew Pennycook.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1079.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.1": {
+    "title": "Clause 117 - Transitional provision",
+    "content": "Amendments made: 152, page 113, line 2, leave out \u201corder\u201d and insert \u201cregulations\u201d.\nThis amendment provides for the Welsh Ministers\u2019 power to make transitional provision to be exercisable by regulations rather than by order."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.3": {
+    "title": "Amendment 153: Renters (Reform) Bill",
+    "content": "Amendment 153, page 113, line 4, at end insert\u2014\n\u201c(1A) The Scottish Ministers may by regulations make transitional or saving provision in connection with the coming into force of any provision of Chapter 4A of Part 1 (see section 27 of the Interpretation and Legislative Reform (Scotland) Act 2010 (asp 10), as a result of which such regulations are to be made by Scottish statutory instrument).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.6": {
+    "title": "Amendment 154: Renters (Reform) Bill",
+    "content": "Amendment 154, page 113, line 9, leave out \u201can order\u201d and insert \u201cregulations\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.8": {
+    "title": "Amendment 155: Renters (Reform) Bill",
+    "content": "Amendment 155, page 113, line 12, at end insert\u2014\n\u201c(3A) The power to make regulations under subsection (1A) includes power to provide for a provision of Chapter 4A of Part 1 to apply (with or without modifications) in relation to tenancies entered into, or advertising begun, before the date on which the provision comes into force.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.11": {
+    "title": "Amendment 156: Renters (Reform) Bill",
+    "content": "Amendment 156, page 113, line 16, at end insert\u2014\n\u201c(b) power to provide for pre-application instruments which the Secretary of State considers do not (or will not) operate appropriately as a result of any provision of Chapter 1 or 2 of Part 1 to\u2014\n(i) have effect with specified modifications, or\n(ii) cease to have effect (in whole or in part).\n(4A) For the purposes of subsection (4)(b)\u2014\n(a) \u201cpre-application instrument\u201d means an agreement or other instrument made before the extended application date (within the meaning given by section (Application of Chapter 1 of Part 1)(3));\n(b) the circumstances in which the Secretary of State may consider that a pre-application instrument does not operate appropriately as a result of Chapter 1 or 2 of Part 1 include (but are not limited to) those in which\u2014\n(i) as a result of any provision of Chapter 1 or 2 of Part 1, provision made by the instrument is to any extent spent, obsolete, unnecessary or otherwise not of practical utility;\n(ii) as a result of any provision of Chapter 1 or 2 of Part 1, it is unclear what the effect is of provision made by the instrument;\n(iii) as a result of any provision of Chapter 1 or 2 of Part 1, a person may be placed in breach of obligations arising under the instrument or made subject to more burdensome obligations under the instrument;\n(iv) the instrument makes direct or indirect reference to fixed term assured tenancies or assured shorthold tenancies (within the meaning of Part 1 of the 1988 Act as it had effect immediately before the commencement date);\n(v) the instrument makes direct or indirect reference to periodic assured tenancies that are not relevant assured tenancies within the meaning given by section (Sections 1 and 2: effect of superior leases);\n(vi) the instrument otherwise makes direct or indirect reference to any enactment as it had effect before being amended by Chapter 1 or 2 of Part 1.\n(4B) Regulations made by virtue of subsection (4)(b) must provide that they do not prevent\u2014\n(a) the variation or revocation of provision modified by the regulations, or\n(b) the re-making of provision that has ceased to have effect as a result of the regulations.\n(4C) Regulations made by virtue of subsection (4)(b) may apply to an instrument as it has effect in relation to times before the coming into force of the regulations but after the commencement date.\n(4D) A statutory instrument containing regulations made by virtue of subsection (4)(b) (whether alone or with other provision) may not be made unless a draft of the instrument has been laid before and approved by a resolution of each House of Parliament.\n(4E) In this section \u201cthe commencement date\u201d has the meaning given by section (Application of Chapter 1 of Part 1)(1)(a).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1079.1.31": {
     "title": "Amendment 157: Renters (Reform) Bill",
     "content": "Amendment 157, page 113, line 17, leave out \u201csubsections (1) and (2)\u201d and insert \u201cthis section\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1082.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.1": {
+    "title": "Renters (Reform) Bill: Schedule 1 - Changes to grounds for possession",
+    "content": "Amendments made: 223, page 114, line 9, leave out\n\u201cdate specified in the notice under section 8\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.5": {
+    "title": "Amendment 224: Renters (Reform) Bill",
+    "content": "Amendment 224, page 115, line 7, leave out\n\u201cdate specified in the notice under section 8\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.9": {
+    "title": "Amendment 225: Renters (Reform) Bill",
+    "content": "Amendment 225, page 115, leave out lines 10 to 14 and insert\u2014\n\u201c(ii) notice of a compulsory acquisition in relation to the dwelling-house has been given, the landlord intends to sell their interest in the dwelling-house to the acquiring authority and the acquiring authority intends to acquire it;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.12": {
+    "title": "Amendment 158: Renters (Reform) Bill",
+    "content": "Amendment 158, page 115, line 36, at end insert\u2014\n\u201cor\n(iii) to grant an assured tenancy to another person pursuant to a rent-to-buy agreement;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.16": {
+    "title": "Amendment 159: Renters (Reform) Bill",
+    "content": "Amendment 159, page 116, line 29, after \u201ctenancy\u201d insert\n\u201cas a result of which the superior tenancy will end within the period of 12 months beginning with the relevant date\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.19": {
+    "title": "Amendment 160: Renters (Reform) Bill",
+    "content": "Amendment 160, page 116, line 30, leave out\n\u201cfor a fixed term which will end\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.24": {
+    "title": "Amendment 161: Renters (Reform) Bill",
+    "content": "Amendment 161, page 117, line 7, at end insert\u2014\n\u201cGround 2ZB\nThe landlord who is seeking possession holds the interest in the dwelling-house under a superior tenancy which is a fixed term tenancy of a term certain of more than 21 years and\u2014\n(a) the fixed term will expire (if the tenancy does not come to an end earlier) within the period of 12 months beginning with the relevant date, or\n(b) if the superior tenancy has continued following the expiry of the fixed term, any party to the superior tenancy has served a valid notice to terminate that tenancy as a result of which the superior tenancy will end within the period of 12 months beginning with the relevant date.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.30": {
+    "title": "Amendment 163: Renters (Reform) Bill",
+    "content": "Amendment 163, page 117, line 8, leave out \u201c2ZB\u201d and insert \u201c2ZC\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.32": {
+    "title": "Amendment 164: Renters (Reform) Bill",
+    "content": "Amendment 164, page 117, line 23, at end insert\u2014\n\u201cGround 2ZD\nThe landlord who is seeking possession became the landlord by virtue of section 18, no more than 6 months before the date on which the possession proceedings were commenced, as a result of a superior tenancy which was a fixed term tenancy of a term certain of more than 21 years coming to an end\u2014\n(a) on the expiry of the fixed term,\n(b) within the period of 12 months ending with the date on which the fixed term would have expired if the tenancy had not come to an end, or\n(c) after the expiry of the fixed term, as a result of a valid notice to terminate the tenancy.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.39": {
+    "title": "Amendment 226: Renters (Reform) Bill",
+    "content": "Amendment 226, page 118, line 4, leave out\n\u201cdwelling-house is an HMO and\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.43": {
+    "title": "Amendment 227: Renters (Reform) Bill",
+    "content": "Amendment 227, page 118, line 4, at end insert\u2014\n\u201c(za) the landlord or, in the case of joint landlords, at least one of them, gave the tenant, before the beginning of the tenancy or on the day on which it began, a written statement of the landlord\u2019s wish to be able to recover possession on the basis that\u2014\n(i) at the beginning of the tenancy, as regards each tenant either\u2014\n(A) the tenant was a full-time student, or\n(B) the landlord reasonably believed that the tenant would become a full-time student during the tenancy, and\n(ii) the landlord intends to let the dwelling-house, on the next occasion on which it is let, to people who are full-time students or who the landlord reasonably believes will become full-time students during the tenancy;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.50": {
+    "title": "Amendment 228: Renters (Reform) Bill",
+    "content": "Amendment 228, page 118, leave out line 10."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.52": {
+    "title": "Amendment 229: Renters (Reform) Bill",
+    "content": "Amendment 229, page 118, leave out lines 11 and 12 and insert\u2014\n\u201c(c) the relevant date falls within the period beginning with 1 June and ending with 30 September in any year, and\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.55": {
+    "title": "Amendment 165: Renters (Reform) Bill",
+    "content": "Amendment 165, page 120, line 22, leave out \u201cat the dwelling-house\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.57": {
+    "title": "Amendment 166: Renters (Reform) Bill",
+    "content": "Amendment 166, page 121, line 10, leave out \u201chas\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.59": {
+    "title": "Amendment 167: Renters (Reform) Bill",
+    "content": "Amendment 167, page 121, line 11, leave out \u201cbut has not been\u201d and insert\n\u201cbefore the relevant date but was not\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.62": {
+    "title": "Amendment 168: Renters (Reform) Bill",
+    "content": "Amendment 168, page 121, line 16, leave out \u201cwithout that funding\u201d and insert \u201cin the circumstances\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.64": {
+    "title": "Amendment 169: Renters (Reform) Bill",
+    "content": "Amendment 169, page 121, line 16, at end insert\u2014\n\u201c(ca) the financial viability of the landlord or of supported accommodation or support services the landlord provides to others would, in the landlord\u2019s reasonable opinion, be threatened if the landlord were to continue to provide or fund a supported accommodation project of which the tenant\u2019s dwelling-house forms part and the landlord used reasonable endeavours to identify alternative funding for the project before the relevant date but was not able to do so;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.67": {
+    "title": "Amendment 170: Renters (Reform) Bill",
+    "content": "Amendment 170, page 121, line 18, leave out \u201cat the dwelling-house\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.69": {
+    "title": "Amendment 171: Renters (Reform) Bill",
+    "content": "Amendment 171, page 121, line 20, leave out \u201cat the dwelling-house\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.71": {
+    "title": "Amendment 172: Renters (Reform) Bill",
+    "content": "Amendment 172, page 121, line 28, at end insert\u2014\n\u201cIn paragraph (ca), \u201csupported accommodation project\u201d means\u2014\n(a) supported accommodation consisting of two or more dwelling-houses in the same building as, or otherwise nearby, each other,\n(b) supported accommodation consisting of two or more dwelling-houses occupied by tenants who receive support services of a similar kind, or\n(c) support services of a similar kind provided to tenants of two or more dwelling-houses that are supported accommodation.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.77": {
+    "title": "Amendment 173: Renters (Reform) Bill",
+    "content": "Amendment 173, page 121, line 39, leave out\n\u201cgrant of the tenancy was\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.82": {
+    "title": "Amendment 174: Renters (Reform) Bill",
+    "content": "Amendment 174, page 122, line 2, leave out \u201cno longer\u201d and insert \u201cnot\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.84": {
+    "title": "Amendment 230: Renters (Reform) Bill",
+    "content": "Amendment 230, page 122, line 4, leave out\n\u201cdate specified in the notice under section 8\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.88": {
+    "title": "Amendment 175: Renters (Reform) Bill",
+    "content": "Amendment 175, page 122, line 11, at end insert\u2014\n\u201cNew ground for possession of stepping stone accommodation\n18A After Ground 5G (inserted by paragraph 18 of this Schedule) insert\u2014\n\u201cGround 5H\nThe landlord seeking possession is a registered provider of social housing or a charity and\u2014\n(a) the tenancy was granted because the tenant met eligibility criteria of a description specified in regulations made by the Secretary of State,\n(b) the eligibility criteria that the tenant met were set out in a written tenancy agreement,\n(c) the tenant no longer meets the eligibility criteria or the tenancy was granted in order to provide accommodation for a limited period to help the tenant transition to living independently and that period has come to an end,\n(d) the rent is no higher than the highest amount that would be affordable rent, within the meaning given by regulations under paragraph 4(2) of Part 1 of Schedule 2 to the Welfare Reform and Work Act 2016 (whether or not those regulations apply in relation to the tenancy), and\n(e) the tenancy was not granted\u2014\n(i) pursuant to a nomination as mentioned in section 159(2)(c) of the Housing Act 1996,\n(ii) as a tenancy of supported accommodation, or\n(iii) in pursuance of a local housing authority\u2019s duty under section 193 of the Housing Act 1996."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.104": {
+    "title": "Amendment 231: Renters (Reform) Bill",
+    "content": "Amendment 231, page 122, line 22, leave out\n\u201cdate specified in the notice under section 8\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.108": {
+    "title": "Amendment 232: Renters (Reform) Bill",
+    "content": "Amendment 232, page 122, line 23, leave out from beginning to \u201cand\u201d in line 25 and insert\n\u201cnotice of a compulsory acquisition was given in respect of the dwelling-house where the acquiring authority was the person who became the landlord who is seeking possession\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.111": {
+    "title": "Amendment 233: Renters (Reform) Bill",
+    "content": "Amendment 233, page 122, line 26, leave out \u201cone year\u201d and insert \u201c12 months\u201d.\nThis is a small drafting change to make the language in the Bill more consistent."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.113": {
+    "title": "Amendment 234: Renters (Reform) Bill",
+    "content": "Amendment 234, page 122, line 27, leave out\n\u201cdate specified in the notice under section 8\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.117": {
+    "title": "Amendment 235: Renters (Reform) Bill",
+    "content": "Amendment 235, page 126, line 20, at end insert\u2014\n\u201c\u2018acquiring authority\u2019 means, where notice of a compulsory acquisition has been given, the person who would be authorised to make the compulsory acquisition if the order or legislation to which the notice relates were to become operative;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.120": {
+    "title": "Amendment 236: Renters (Reform) Bill",
+    "content": "Amendment 236, page 126, leave out lines 21 to 23."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.122": {
+    "title": "Amendment 176: Renters (Reform) Bill",
+    "content": "Amendment 176, page 126, line 31, leave out \u201cand\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.124": {
+    "title": "Amendment 177: Renters (Reform) Bill",
+    "content": "Amendment 177, page 126, line 32, leave out \u201cwhere the\u201d and insert\n\u201cin a case in which that\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.127": {
+    "title": "Amendment 237: Renters (Reform) Bill",
+    "content": "Amendment 237, page 126, line 34, at end insert\u2014\n\u201c\u2018relevant date\u2019\u2014\n(a) in Grounds 2ZA, 2ZB and 5F, means the date of service of the notice under section 8;\n(b) otherwise, means the date specified in the notice under section 8;\nbut where the court exercises the power conferred by section 8(1)(b) (power to dispense with notice under section 8) is to be read as a reference to the date on which proceedings for possession began;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.133": {
+    "title": "Amendment 178: Renters (Reform) Bill",
+    "content": "Amendment 178, page 126, line 36, at end insert\u2014\n\u201c(a) which is provided by the landlord or a person acting on behalf of the landlord, or\n(b) which the tenant was admitted into the accommodation for the purpose of receiving;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.137": {
+    "title": "Amendment 179: Renters (Reform) Bill",
+    "content": "Amendment 179, page 126, line 37, after \u201cdwelling-house\u201d insert \u201clet\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.139": {
+    "title": "Amendment 180: Renters (Reform) Bill",
+    "content": "Amendment 180, page 126, line 38, leave out \u201clet\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.141": {
+    "title": "Amendment 181: Renters (Reform) Bill",
+    "content": "Amendment 181, page 127, line 3, leave out \u201cwhere a tenant\u201d and insert \u201cto a tenant who\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.143": {
+    "title": "Amendment 238: Renters (Reform) Bill",
+    "content": "Amendment 238, page 127, line 10, at end insert\u2014\n\u201c(2) For the purposes of this Schedule, each of the following constitutes giving notice of a compulsory acquisition\u2014\n(a) in the case of a compulsory acquisition which is to be authorised by a compulsory purchase order\u2014\n(i) publication of the notice required by section 11 of, or (as the case may be) paragraph 2 of Schedule 1 to, the Acquisition of Land Act 1981, in accordance with that Act, or\n(ii) service of the notice required by section 12 of, or (as the case may be) paragraph 3 of Schedule 1 to, that Act, in accordance with that Act;\n(b) in the case of a compulsory acquisition which is to be authorised by any other order, publication or service of any notice that any provision of or made under any Act requires to be published or served in connection with that acquisition, in accordance with that Act;\n(c) in the case of a compulsory acquisition which is to be authorised by a special enactment, publication or service of a notice that, in connection with that acquisition, is published or served in accordance with any Standing Order of either House of Parliament relating to private business.\n(3) In sub-paragraph (2)\u2014\n\u2018compulsory purchase order\u2019 means a compulsory purchase order within the meaning given by the Acquisition of Land Act 1981 (see section 2 of that Act);\n\u2018special enactment\u2019 means\u2014\n(a) a local or private Act which authorises the compulsory acquisition of land specifically identified in that Act, or\n(b) a provision which\u2014\n(i) is contained in an Act other than a local or private Act, and\n(ii) authorises the compulsory acquisition of land specifically identified in that Act.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.158": {
+    "title": "Amendment 182: Renters (Reform) Bill",
+    "content": "Amendment 182, page 127, line 12, leave out \u201c2ZB,\u201d and insert \u201c2ZC,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.160": {
+    "title": "Amendment 183: Renters (Reform) Bill",
+    "content": "Amendment 183, page 127, line 17, leave out \u201c2ZB,\u201d and insert \u201c2ZC,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1082.1.162": {
     "title": "Amendment 184: Renters (Reform) Bill",
     "content": "Amendment 184, page 127, line 21, at end insert\u2014\n\u201c(ca) amend Ground 5H to change the descriptions of landlord who may use the ground;\n(cb) amend Ground 5H to give a different meaning for \u201caffordable rent\u201d in consequence of regulations under paragraph 4(2) of Part 1 of Schedule 2 to the Welfare Reform and Work Act 2016;\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1089.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.1": {
+    "title": "Renters (Reform) Bill: Schedule 2 - Consequential amendments relating to  Chapter 1 of Part 1",
+    "content": "Amendments made: 245, page 128, line 2, at end insert\u2014\n\u201cLandlord and Tenant Act 1985\nA1 In section 13(1A) of the Landlord and Tenant Act 1985 (as amended by section 25) omit paragraph (b) and the \u2018or\u2019 before it."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.11": {
+    "title": "Amendment 258: Renters (Reform) Bill",
+    "content": "Amendment 258, page 128, line 2, at end insert\u2014\n\u201cHousing Act 1985\nZA1 In section 82A of the Housing Act 1985 (demotion because of anti-social behaviour), in subsection (8), omit paragraph (b).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.15": {
+    "title": "Amendment 246: Renters (Reform) Bill",
+    "content": "Amendment 246, page 128, line 15, at end insert\u2014\n\u201c4A In section 7 (orders for possession)\u2014\n(a) in subsection (3), for \u201csubsections (5A) and (6)\u201d substitute \u201csubsection (5A)\u201d;\n(b) in subsection (4), for \u201csubsections (5A) and (6)\u201d substitute \u201csubsection (5A)\u201d;\n(c) in subsection (5) omit the words from \u201cand Part IV\u201d to the end."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.22": {
+    "title": "Amendment 247: Renters (Reform) Bill",
+    "content": "Amendment 247, page 128, line 19, at end insert\u2014\n\u201c6A In section 18 (provisions as to reversions on assured tenancies)\u2014\n(a) in subsection (3)\u2014\n(i) in the words before paragraph (a) omit \u201cwhich is a periodic tenancy (including a statutory periodic tenancy)\u201d;\n(ii) omit paragraph (a) and the \u201cor\u201d after it;\n(iii) in paragraph (b), for \u201cperiodic\u201d substitute \u201cassured\u201d;\n(iv) in the words after paragraph (b), for \u201cperiodic\u201d substitute \u201cassured\u201d;\n(b) omit subsection (4).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.31": {
+    "title": "Amendment 198: Renters (Reform) Bill",
+    "content": "Amendment 198, page 128, leave out lines 20 and 21."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.33": {
+    "title": "Amendment 248: Renters (Reform) Bill",
+    "content": "Amendment 248, page 128, line 21, at end insert\u2014\n\u201c7A In section 34 (restrictions on new protected tenancies and agricultural occupancies) omit subsection (3).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.36": {
+    "title": "Amendment 249: Renters (Reform) Bill",
+    "content": "Amendment 249, page 128, line 22, at end insert\u2014\n\u201c8A In section 41 (rent assessment committees: procedure and information powers), in subsection (2), omit \u201cor Chapter II\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.40": {
+    "title": "Amendment 250: Renters (Reform) Bill",
+    "content": "Amendment 250, page 128, line 23, after \u201cPart 1)\u201d insert \u201c\u2014\n\u201c(a) in subsection (1) omit the definition of \u201cstatutory periodic tenancy\u201d;\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.43": {
+    "title": "Amendment 251: Renters (Reform) Bill",
+    "content": "Amendment 251, page 128, line 25, after \u201cpossession)\u201d insert \u201c\u2014\n(a) in Part 3, in paragraph 2(a), omit the words from \u201cother than\u2014\u201d to the end of sub-paragraph (ii) (but not the \u201c, or\u201d at the end of the paragraph);\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.46": {
+    "title": "Amendment 252: Renters (Reform) Bill",
+    "content": "Amendment 252, page 128, line 26, at end insert\u2014\n\u201cLocal Government and Housing Act 1989\n11A In Schedule 11 to the Local Government and Housing Act 1989 (minor and consequential amendments) omit paragraphs 103 and 108.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.50": {
+    "title": "Amendment 253: Renters (Reform) Bill",
+    "content": "Amendment 253, page 128, line 28, at end insert\u2014\n\u201c12A In section 64 omit the entry for \u201cassured shorthold tenancy\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.55": {
+    "title": "Amendment 239: Renters (Reform) Bill",
+    "content": "Amendment 239, page 128, line 29, leave out \u201comit subsection (5)\u201d and insert\n\u201c, in subsection (5)\u2014\n(a) in paragraph (a), for \u201csection 21 of the Housing Act 1988 (orders for possession on expiry or termination of assured shorthold tenancy)\u201d substitute \u201csection 8 of the Housing Act 1988 (notice of proceedings for possession)\u201d;\n(b) in paragraph (b), for \u201cthat notice will expire\u201d substitute \u201cthe date specified in that notice is\u201d\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.60": {
+    "title": "Amendment 240: Renters (Reform) Bill",
+    "content": "Amendment 240, page 129, line 1, leave out \u201comit subsection (6)\u201d and insert\n\u201c, in subsection (6)\u2014\n(a) in the words before paragraph (a), for \u201csection 21 of the Housing Act 1988 (orders for possession on expiry or termination of assured shorthold tenancy)\u201d substitute \u201csection 8 of the Housing Act 1988 (notice of proceedings for possession)\u201d;\n(b) in paragraph (a)\u2014\n(i) for \u201cwill expire\u201d substitute \u201cspecifies a date that is\u201d;\n(ii) for \u201cexpired\u201d substitute \u201cpassed\u201d\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.67": {
+    "title": "Amendment 254: Renters (Reform) Bill",
+    "content": "Amendment 254, page 129, line 9, at end insert\u2014\n\u201c18A In section 230 (minor definitions: general), in the first definition, omit \u201c, \u201cassured shorthold tenancy\u201d\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1089.1.71": {
     "title": "Amendment 259: Renters (Reform) Bill",
     "content": "Amendment 259, page 129, line 9, at end insert\u2014\n\u201cCapital Allowances Act 2001\n18C In the Capital Allowances Act 2001, in section 490(3)(b) (assured tenancy allowances), omit \u201c(but not an assured shorthold tenancy)\u201d."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1092.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1092.1.1": {
     "title": "Renters (Reform) Bill: Schedule 3 - Decent homes standard",
     "content": "Amendment made: 185, in page 140, line 37, leave out \u201ctype 2\u201d and insert \u201ctype 1\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1092.3": {
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.1": {
+    "title": "Renters (Reform) Bill: Schedule 5 - Application of Chapter 1 of Part 1 to existing tenancies: transitional provision",
+    "content": "Amendments made: 241, page 152, line 14, at end insert\u2014\n\u201cTenancies to which Chapter 1 of Part 1 applies on conversion to a periodic tenancy\nA1 Where the extended application date in relation to an existing tenancy is the date on which it is converted to a periodic tenancy, the amendments made by Chapter 1 of Part 1 do not apply in relation to the tenancy until immediately after it is so converted.\nSection 1: existing tenancies continue as modified\nA2 The application of section 4A of the 1998 Act (inserted by section 1) in relation to an existing tenancy does not bring that tenancy to an end, and the terms of such a tenancy are not affected by the application of section 4A of the 1988 Act except as provided by that section.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.7": {
+    "title": "Amendment 186: Renters (Reform) Bill",
+    "content": "Amendment 186, page 152, line 22, leave out \u201c116(2)(b)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.10": {
+    "title": "Amendment 242: Renters (Reform) Bill",
+    "content": "Amendment 242, page 153, line 2, leave out paragraph 2."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.12": {
+    "title": "Amendment 187: Renters (Reform) Bill",
+    "content": "Amendment 187, page 154, line 16, leave out \u201c116(2)(b)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.15": {
+    "title": "Amendment 199: Renters (Reform) Bill",
+    "content": "Amendment 199, page 154, line 30, at end insert\u2014\n\u201cSection (Assured agricultural occupancies: opting out etc): existing opt-out notices for assured agricultural occupancies\n8A Where an existing tenancy would be an assured agricultural occupancy but for a notice served under paragraph 9(2) of Schedule 2A to the 1988 Act, the tenancy is to be treated for the purposes of Chapter 3 of Part 1 of the 1988 Act as amended by this Act, on and after the extended application date, as a tenancy in relation to which an opt-out notice has been served under section 24A of the 1988 Act (inserted by section (Assured agricultural occupancies: opting out etc) of this Act).\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.19": {
+    "title": "Amendment 243: Renters (Reform) Bill",
+    "content": "Amendment 243, page 154, line 34, at end insert\u2014\n\u201cSchedule 1: student accommodation ground\n9A In relation to an existing tenancy, paragraph (za) in Ground 4A in Schedule 2 to the 1988 Act is to be read as if for \u201cbefore the beginning of the tenancy or on the day on which it began\u201d there were substituted \u201cbefore the extended application date (within the  meaning given by section (Application of Chapter 1 of Part 1)(3) of the Renters (Reform) Act 2024)\u201d.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.23": {
+    "title": "Amendment 188: Renters (Reform) Bill",
+    "content": "Amendment 188, page 154, line 34, at end insert\u2014\n\u201cSchedule 1: stepping stone accommodation ground\n9B In relation to an existing tenancy, paragraph (b) in Ground 5H in Schedule 1 to the 1988 Act is to be read as if after \u201cagreement\u201d there were inserted \u201cor in a written statement given to the tenant before the extended application date (within the meaning given by section (Application of Chapter 1 of Part 1)(3) of the Renters (Reform) Act 2024)\u201d.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.27": {
+    "title": "Amendment 189: Renters (Reform) Bill",
+    "content": "Amendment 189, page 155, line 1, leave out \u201c116(4)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.30": {
+    "title": "Amendment 190: Renters (Reform) Bill",
+    "content": "Amendment 190, page 155, line 2, at end insert\u2014\n\u201cExisting tenancies subject to possession notice\n10A Where, immediately before the extended application date, proceedings for an order for possession under section 8 of the 1988 Act in reliance on a valid notice given under that section of that Act have been commenced in relation to an existing tenancy and have not been concluded, or have not been commenced but have not become time-barred\u2014\n(a) the notice remains valid until any time when such proceedings in reliance on the notice become time-barred or are concluded, and\n(b) until that time the amendments made by Chapter 1 of Part 1 do not apply in relation to the tenancy."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.37": {
+    "title": "Amendment 191: Renters (Reform) Bill",
+    "content": "Amendment 191, page 155, line 5, leave out \u201c116(1)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(1)(a)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.40": {
+    "title": "Amendment 192: Renters (Reform) Bill",
+    "content": "Amendment 192, page 155, line 7, leave out \u201c116(5)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(4)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.43": {
+    "title": "Amendment 244: Renters (Reform) Bill",
+    "content": "Amendment 244, page 155, leave out line 8."
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1092.3.45": {
     "title": "Amendment 194: Renters (Reform) Bill",
     "content": "Amendment 194, page 155, line 10, leave out \u201c116(4)\u201d and insert\n\u201c(Application of Chapter 1 of Part 1)(3)\u201d.\u2014(Jacob Young.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1093.0": {
+  "uk.org.publicwhip/debate/2024-04-24b.1093.0.1": {
     "title": "Third Reading: Renters (Reform) Bill",
     "content": "I beg to move, That the Bill be now read the Third time."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1099.2": {
+  "uk.org.publicwhip/debate/2024-04-24b.1099.2.1": {
     "title": "Approve: Terrorism Act 2000 (Proscribed Organisations) (Amendment) (No. 2) Order 2024",
     "content": "I beg to move,\nThat the draft Terrorism Act 2000 (Proscribed Organisations) (Amendment) (No. 2) Order 2024, which was laid before this House on 22 April, be approved."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1105.0": {
+  "uk.org.publicwhip/debate/2024-04-24b.1105.0.2": {
+    "title": "Disapply Standing Order 41A",
+    "content": "Motion made, and Question put forthwith (Standing Order No. 41A(3)),\nThat, at this day\u2019s sitting, Standing Order No. 41A (Deferred divisions) shall not apply to the Motion in the name of Secretary James Cleverly relating to Prevention and Suppression of Terrorism.\u2014(Aaron Bell.)"
+  },
+  "uk.org.publicwhip/debate/2024-04-24b.1105.0.6": {
     "title": "Prevention and Suppression of Terrorism",
     "content": "Main Question again proposed."
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1106.2": {
+  "uk.org.publicwhip/debate/2024-04-24b.1106.2.1": {
     "title": "Approve: Criminal Justice Act 1988 (Offensive Weapons) (Amendment, Surrender and Compensation) Order 2024",
     "content": "Motion made, and Question put forthwith (Standing Order No. 118(6)),\nThat the draft Criminal Justice Act 1988 (Offensive Weapons) (Amendment, Surrender and Compensation) Order 2024, which was laid before this House on 25 January, be approved.\u2014(Aaron Bell.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1106.4": {
+  "uk.org.publicwhip/debate/2024-04-24b.1106.4.3": {
     "title": "Approve: Veterinary Medicines (Amendment etc.) Regulations 2024",
     "content": "Motion made, and Question put forthwith (Standing Order No. 118(6)),\nThat the draft Veterinary Medicines (Amendment etc.) Regulations 2024, which were laid before this House on 4 March, be approved.\u2014(Aaron Bell.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1108.1": {
+  "uk.org.publicwhip/debate/2024-04-24b.1108.1.1": {
     "title": "Adjournment Debate: Access to Banking: Devon",
     "content": "Motion made, and Question proposed, That this House do now adjourn.\u2014(Aaron Bell.)"
   },
-  "uk.org.publicwhip/debate/2024-04-24b.1114.2": {
+  "uk.org.publicwhip/debate/2024-04-24b.1114.2.1": {
     "title": "Deferred Division: Regulatory Reform",
     "content": "That the draft Economic Growth (Regulatory Functions) (Amendment) Order 2024, which was laid before this House on 6 March, be approved."
   }

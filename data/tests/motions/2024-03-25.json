@@ -1,41 +1,153 @@
 {
-  "uk.org.publicwhip/debate/2024-03-25b.1302.3": {
+  "uk.org.publicwhip/debate/2024-03-25b.1302.3.1": {
     "title": "New Clause 1: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "New Clause 1 - Report on the Prime Minister\u2019s engagement with the Intelligence and Security Committee\n\u201cAfter section 240 of the Investigatory Powers Act 2016 insert\u2014\n\u201c240A Report on the Prime Minister\u2019s engagement with the Intelligence and Security Committee\n(1) The Secretary of State must publish a report about the Prime Minister\u2019s engagement with the Intelligence and Security Committee in relation to the investigatory powers regime and lay the report before Parliament.\n(2) The report must be published within six months of the passage of the Investigatory Powers (Amendment) Act 2024, and annually thereafter.\u201d\u201d\u2014(Dan Jarvis.)"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1302.4": {
+  "uk.org.publicwhip/debate/2024-03-25b.1302.4.1": {
     "title": "Second Reading: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "I beg to move, That the clause be read a Second time."
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1302.5": {
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.2": {
+    "title": "New Clause 2: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "New clause 2\u2014Requirement for the Secretary of State to publish an annual report on technology-enabled serious and organised crime and technology-enabled threats to national security\u2014\n\u201cAfter section 234 of the Investigatory Powers Act 2016, insert\u2014\n\u201c234A Requirement for the Secretary of State to publish an annual report on technology-enabled serious and organised crime and technology-enabled threats to national security\n(1) The Secretary of State must publish a report on technology-assisted crime insofar as it relates to measures set out in this Act and the Investigatory Powers Act 2016.\n(2) The report must be published within one year of the passing of the Investigatory Powers (Amendment) Act 2024, and annually thereafter.\u201d\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.8": {
+    "title": "New Clause 3: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "New clause 3\u2014Prevention of torture or cruel, inhuman or degrading treatment or punishment\u2014\n\u201c(1) The Investigatory Powers Act 2016 is amended as follows."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.15": {
+    "title": "New Clause 4: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "New clause 4\u2014Members of Parliament: interception and examination of communications and equipment interference\u2014\n\u201c(1) The Investigatory Powers Act 2016 is amended as follows."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.24": {
+    "title": "New Clause 5: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "New clause 5\u2014Interception notification for Members of Parliament etc.\u2014\n\u201cAfter section 26 of the Investigatory Powers Act 2016 (Members of Parliament etc.) insert\u2014\n\u201c26A Interception notification for Members of Parliament etc.\n(1) Upon completion of conduct authorised by a warrant under section 26, or the cancellation of a warrant issued under that section, a Judicial Commissioner must notify the subject of the warrant, in writing, of\u2014\n(a) the conduct that has taken place, and\n(b) the provisions under which the conduct has taken place.\n(2) The notification under subsection (1) must be sent within thirty days of the completion of the conduct or cancellation of the warrant.\n(3) A Judicial Commissioner may postpone the notification under subsection (1) beyond the time limit under subsection (2) if the Judicial Commissioner assesses that notification may defeat the purposes of an ongoing serious crime or national security investigation relating to the subject of the warrant.\n(4) A Judicial Commissioner must consult the person who applied for the warrant in order to fulfil an assessment under subsection (3).\u201d\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.34": {
+    "title": "Amendment 7: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 7, page 3, line 9, leave out clause 2."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.35": {
+    "title": "Amendment 8: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 8, in clause 2, page 3, line 17, leave out \u201c, or only a low,\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.36": {
+    "title": "Amendment 24: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 24, page 3, line 18, at end insert\u2014\n\u201c(1A) This section does not apply to a bulk personal dataset unless it has been published in accordance with the Data Protection Act 2018.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.39": {
+    "title": "Amendment 9: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 9, page 3, line 34, at end insert\u2014\n\u201c(4) By way of example, bulk datasets of images obtained by CCTV and bulk datasets of Facebook posts are not to be considered datasets where the individuals to whom the data relates could have no, or only a low, reasonable expectation of privacy.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.42": {
+    "title": "Amendment 10: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 10, page 5, line 7, leave out \u201cany dataset that falls\u201d and insert \u201call datasets that fall\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.44": {
+    "title": "Amendment 11: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 11, page 11, line 2, at end insert\u2014\n\u201c226DZA Notification and review of bulk personal datasets retained under category authorisations\n(1) This section applies where a category authorisation has been approved by a Judicial Commissioner under section 226BB.\n(2) The head of an intelligence service, or a person acting on their behalf, must notify the Judicial Commissioner within 28 days of a bulk personal dataset being retained or retained and examined under the category authorisation.\n(3) The notification under subsection (2) must include a description of the dataset and the data it includes, the purpose for which it is being used and the number of individuals whose data is contained in the dataset.\n(4) The Judicial Commissioner, on reviewing any notifications received under subsection (2), must cancel the category authorisation if the Commissioner considers that section 226A no longer applies to any dataset that falls within the category of datasets described in the authorisation.\n(5) The Judicial Commissioner, on reviewing any notifications received under subsection (2), must cancel the relevant individual authorisation if the Commissioner considers that the condition in section 226B(4) is not met in relation to that bulk personal dataset.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.52": {
+    "title": "Amendment 13: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 13, in clause 12, page 34, leave out lines 5 and 6 and insert\u2014\n\u201c(e) where the communications data has been made publicly or commercially available by the telecommunications operator or postal operator\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.55": {
+    "title": "Amendment 12: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 12, page 34, leave out lines 5 and 6."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.58": {
+    "title": "Amendment 14: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 14, page 36, line 2, leave out clause 15."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.59": {
+    "title": "Amendment 15: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 15, to clause 15, page 36, line 35, at end insert\u2014\n\u201c(c) the Investigatory Powers Commissioner agrees with the judgment of the officer made in accordance with paragraph (b)\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.62": {
+    "title": "Amendment 16: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 16, page 38, line 11, leave out clause 18."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.63": {
+    "title": "Amendment 17: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 17, page 44, line 39, leave out clause 21."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.64": {
+    "title": "Amendment 18: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 18, in clause 21, page 45, line 3, at the beginning insert \u201cSubject to subsection (1A),\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.66": {
+    "title": "Amendment 19: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 19, page 45, line 6, at end insert\u2014\n\u201c(1A) The Secretary of State may not give a relevant operator a notice under this section unless the notice has been approved by a Judicial Commissioner."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.70": {
+    "title": "Amendment 25: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 25, page 47, line 28, leave out clause 22."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.72": {
+    "title": "Amendment 20: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 20, in clause 22, page 48, line 13, leave out\n\u201chas the necessary operational awareness to decide whether\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.77": {
+    "title": "Amendment 21: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 21, page 48, line 14, at end insert\u2014\n\u201c(2DA) The Prime Minister must be notified of the individual\u2019s decision as soon as it is reasonably practicable to do so.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.80": {
+    "title": "Amendment 27: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 27, page 48, line 21, at end insert\u2014\n\u201c(2G) The Prime Minister may not give approval under this section unless it has been authorised by a judge of the Supreme Court.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.83": {
+    "title": "Amendment 26: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 26, page 48, line 22, leave out clause 23."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.85": {
+    "title": "Amendment 22: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 22, in clause 23, page 49, line 13, leave out\n\u201chas the necessary operational awareness to decide whether\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.90": {
+    "title": "Amendment 23: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 23, page 49, line 14, at end insert\u2014\n\u201c(7DA) The Prime Minister must be notified of the individual\u2019s decision as soon as it is reasonably practicable to do so.\u201d."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1302.5.93": {
     "title": "Amendment 28: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "Amendment 28, page 49, line 18, at end insert\u2014\n\u201c(7F) The Prime Minister may not give approval under this section unless it has been authorised by a judge of the Supreme Court.\u201d."
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1344.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1344.1.1": {
     "title": "New Clause 2: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "New Clause 2 - Requirement for the Secretary of State to publish an annual report on technology-enabled serious and organised crime and technology-enabled threats to national security\n\u201cAfter section 234 of the Investigatory Powers Act 2016, insert\u2014\n\u201c234A Requirement for the Secretary of State to publish an annual report on technology-enabled serious and organised crime and technology-enabled threats to national security\n(1) The Secretary of State must publish a report on technology-assisted crime insofar as it relates to measures set out in this Act and the Investigatory Powers Act 2016.\n(2) The report must be published within one year of the passing of the Investigatory Powers (Amendment) Act 2024, and annually thereafter.\u201d\u201d\u2014(Dan Jarvis.)"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1348.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1348.1.1": {
     "title": "Clause 2 - Low or no reasonable expectation of privacy",
     "content": "Amendment proposed: 7, Page 3, line 9, leave out Clause 2.\u2014(Stuart C. McDonald.)"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1350.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1350.1.1": {
+    "title": "Clause 14 - Powers to obtain communications data",
+    "content": "Amendments made: 3, page 35, line 5, after \u201cexercise\u201d insert \u201cby a specified public authority\u201d\nThis amendment and Amendments 4, 5 and 6 restrict the class of public authorities whose powers to secure disclosures of communications data are affected by this Clause."
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1350.1.3": {
+    "title": "Amendment 4: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 4, page 35, line 17, at end insert\u2014\n\u201c(5A) After subsection (5) insert\u2014\n\u201c(5A) In this section \u201cspecified public authority\u201d means a public authority which is\u2014\n(a) listed in Schedule 2A, or\n(b) listed in column 1 of the table in Schedule 4.\n(5B) The Secretary of State or the Treasury may by regulations modify Schedule 2A by\u2014\n(a) adding a public authority to, or\n(b) removing a public authority from,\nthe list in that Schedule.\u201d\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1350.1.13": {
+    "title": "Amendment 5: Investigatory Powers (Amendment)Bill [Lords]",
+    "content": "Amendment 5, page 35, line 35, at end insert\u2014\n\u201c(6A) In section 267 of the Investigatory Powers Act 2016 (regulations), in subsection (5), after paragraph (a) insert\u2014\n\u201c(aa) regulations under section 12(5B),\u201d.\u201d"
+  },
+  "uk.org.publicwhip/debate/2024-03-25b.1350.1.17": {
     "title": "Amendment 6: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "Amendment 6, page 35, line 35, at end insert\u2014\n\u201c(6B) In the Investigatory Powers Act 2016, after Schedule 2 insert\u2014\n\u201cSchedule 2A\nSpecified public authorities for the purposes of section 12"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1351.0": {
+  "uk.org.publicwhip/debate/2024-03-25b.1351.0.1": {
     "title": "Third Reading: Investigatory Powers (Amendment)Bill [Lords]",
     "content": "I beg to move, That the Bill be read the Third time."
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1356.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1356.1.2": {
     "title": "Acting Parliamentary and Health Service Ombudsman",
     "content": "Motion made, and Question proposed,\nThat an humble Address be presented to His Majesty, praying that His Majesty will appoint Rebecca Hilsenrath to the offices of acting Parliamentary Commissioner for Administration and acting Health Service Commissioner for England, in accordance with section 3A of the Parliamentary Commissioner Act 1967 and paragraph 2 of Schedule 1 to the Health Service Commissioners Act 1993.\u2014(Alex Burghart.)"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1363.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1363.1.1": {
     "title": "Adjournment Debate: Taiwan Strait",
     "content": "Motion made, and Question proposed, That this House do now adjourn.\u2014(Ruth Edwards.)"
   },
-  "uk.org.publicwhip/debate/2024-03-25b.1365.1": {
+  "uk.org.publicwhip/debate/2024-03-25b.1365.1.4": {
     "title": "Adjournment Debate: Taiwan Strait",
     "content": "Motion made, and Question proposed, That this House do now adjourn.\u2014(Ruth Edwards.)"
   }
