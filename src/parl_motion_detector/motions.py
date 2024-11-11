@@ -5,12 +5,35 @@ import re
 from pathlib import Path
 from typing import Optional, TypeVar
 
+import pandas as pd
+from bs4 import BeautifulSoup
 from mysoc_validator import Transcript
 from pydantic import BaseModel, Field, computed_field
 
 from parl_motion_detector.detector import PhraseDetector, StartsWith, Stringifiable
 from parl_motion_detector.enum_helpers import StrEnum
 from parl_motion_detector.motion_title_extraction import extract_motion_title
+
+
+def html_to_markdown(html_table: str) -> str | None:
+    # Parse the HTML table
+    soup = BeautifulSoup(html_table, "html.parser")
+    table = soup.find("tbody")
+
+    # Extract table rows
+    rows = []
+    for tr in table.find_all("tr"):  # type: ignore
+        cells = [td.get_text(strip=True) for td in tr.find_all("td")]
+        rows.append(cells)
+    try:
+        headers = rows[0]
+        rows = rows[1:]
+        df = pd.DataFrame(rows, columns=headers)
+        markdown_table = df.to_markdown(index=False)
+    except Exception:
+        return None
+    return markdown_table
+
 
 T = TypeVar("T")
 
@@ -91,11 +114,21 @@ class Motion(BaseModel):
         self.add_flag(other)
         return self
 
-    def add(self, item: Stringifiable):
-        if hasattr(item, "id"):
-            self.final_speech_id = item.id  # type: ignore
+    def add(self, item: Stringifiable, new_final_id: str = ""):
+        if not new_final_id and hasattr(item, "id"):
+            new_final_id = item.id  # type: ignore
 
-        self.motion_lines.append(str(item))
+        if new_final_id:
+            self.final_speech_id = new_final_id
+
+        if hasattr(item, "tag") and getattr(item, "tag") == "table":
+            str_item = html_to_markdown(item.content.raw)  # type: ignore
+            if str_item is None:
+                str_item = str(item)
+        else:
+            str_item = str(item)
+
+        self.motion_lines.append(str_item)
 
     def self_flag(self):
         """
@@ -164,12 +197,17 @@ amendment_flag = PhraseDetector(
 )
 
 main_question = PhraseDetector(
-    criteria=["I beg to move", "That the clause stand part of the Bill."]
+    criteria=[
+        "I beg to move",
+        "That the clause stand part of the Bill.",
+        "Question again proposed,",
+    ]
 )
 
 resolved_start = PhraseDetector(
     criteria=[
         re.compile(r"^Resolved,", re.IGNORECASE),
+        re.compile(r"^Ordered,", re.IGNORECASE),
     ]
 )
 
@@ -179,6 +217,7 @@ malformed_motion_start = PhraseDetector(
     ]
 )
 
+# These kick the detector into action - basically a set of phrases that indicate a motion is starting
 motion_start = PhraseDetector(
     criteria=[
         "I beg to move",
@@ -187,10 +226,25 @@ motion_start = PhraseDetector(
         "Amendment proposed: at the end of the Question to add:",
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
+        # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
+        re.compile(r"^Question put,$", re.IGNORECASE),
+        re.compile(
+            r"^Question put, That this House disagrees with Lords amendment",
+            re.IGNORECASE,
+        ),
+        re.compile(r"^Amendment \([a-zA-Z]+\) proposed", re.IGNORECASE),
+        re.compile(
+            r"^Amendments \([a-zA-Z]+\) and \([a-zA-Z]+\) proposed", re.IGNORECASE
+        ),
+        re.compile(
+            r"^Amendments \([a-zA-Z]+\) to \([a-zA-Z]+\) proposed", re.IGNORECASE
+        ),
         "Question put accordingly",
         "Question again proposed",
         "Question put forthwith",
         "Question proposed",
+        "Question put (Standing Order No. 31(2))",
+        "That this House authorises",
         "Motion made, and Question proposed",
         "Motion made, Question put forthwith",
         "Motion made , and Question proposed",
@@ -198,6 +252,7 @@ motion_start = PhraseDetector(
         "Motion made and Question put forthwith",
         "Motion made, and Question put forthwith",
         re.compile(r"^Resolved,", re.IGNORECASE),
+        re.compile(r"^Ordered,", re.IGNORECASE),
         re.compile(r"amendment proposed: \(.+?\), at the end of the Question to add:"),
         re.compile(r"amended proposed: \(.+?\)"),
         re.compile(r"^Amendment proposed: \(.+?\)"),
@@ -212,11 +267,13 @@ motion_start = PhraseDetector(
 )
 
 
+# these are criteria that say the motion is wrapped up in a single line (and will stop looking)
 one_line_motion = PhraseDetector(
     criteria=[
         "Main Question again proposed.",
         "Question put forthwith, That the Question be now put",
         "Motion made, That the Bill be now read a Secondtime.",
+        "Question put forthwith (Standing Order No. 33), That the amendment be made.",
         "Motion made, That the Bill be read be now read a Second time.",
         "Question put, That the Bill be read a Second time.",
         "Question put, That the clause be a Second time.",
@@ -229,8 +286,25 @@ one_line_motion = PhraseDetector(
         "That the clause be read a Second time.",
         "the Bill be now read a Second time.",
         "the Bill be now read the Third time.",
-        "That the clause stand part of the Bill.",
         "That the original words stand part of the Question",
+        "That this House authorises",
+        "That this House do now adjourn.",
+        re.compile(
+            r"^Amendment ([a-zA-Z]+) proposed in lieu of Lords amendment \d+",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"^Amendments? \((?:[a-zA-Z]+(?: and )?)+\) proposed in lieu of Lords amendments? \d+(?:, \d+)*(?: and \d+)?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"^Amendments? \((?:[a-zA-Z]+(?: and )?)+\) proposed in lieu of Lords amendments? \d+[A-Z]?(?:, \d+[A-Z]?)*(?: and \d+[A-Z]?)?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"^Amendments \([a-zA-Z]+\) to \([a-zA-Z]+\) proposed in lieu of Lords amendment \d+[A-Z]?",
+            re.IGNORECASE,
+        ),
         re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
     ]
 )
@@ -402,7 +476,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                 # similarly if there's the shortform amendment (and) the amendment close language in the same line
                 if in_line_amendment(paragraph) and signature_close(paragraph):
                     current_motion = new_motion(paragraph.pid)
-                    current_motion.add(paragraph)
+                    current_motion.add(
+                        paragraph, new_final_id=transcript_group.speech.id
+                    )
                     current_motion = current_motion.finish(
                         collection, "one line inline amendment close"
                     )
@@ -438,7 +514,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                 # always add the first one
                 if len(current_motion) == 0:
                     debug_test(paragraph, "first line")
-                    current_motion.add(paragraph)
+                    current_motion.add(
+                        paragraph, new_final_id=transcript_group.speech.id
+                    )
                     debug_test(paragraph, current_motion)
 
                     # if we're seeing a one line motion - we're done
@@ -469,7 +547,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                     # here's where we add the current line to the motion
                     # before this are checks that reveal the current line is *not*
                     # part of the motion
-                    current_motion.add(paragraph)
+                    current_motion.add(
+                        paragraph, new_final_id=transcript_group.speech.id
+                    )
                     debug_test(paragraph, "info added")
                     # if we're starting to see an itemised list - that means we're dealing with a more complex motion
                     # that's doing something to legislation or standing orders
@@ -511,6 +591,7 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                             and not is_inserted(next_item)
                             and not ends_in_continuation_character(paragraph)
                             and not signature_close(next_item)
+                            and next_item.tag not in ["table"]
                         ) or (signature_close(paragraph)):
                             debug_test(paragraph, "complex motion end")
                             current_motion = current_motion.finish(

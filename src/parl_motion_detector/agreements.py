@@ -45,6 +45,18 @@ class Flag(StrEnum):
     ASKED_IMMEDIATELY = "asked_immediately"
 
 
+construct_reading_pass = PhraseDetector(
+    criteria=[
+        "read the Third time",
+        "read a third time",
+        "read the Second time",
+        "read a Second time",
+        "read the First time",
+        "read a First time",
+    ]
+)
+
+
 class Agreement(HasSpeechAndDate):
     date: str
     major_heading_id: str
@@ -66,7 +78,7 @@ class Agreement(HasSpeechAndDate):
         return self.after_text
 
     def construct_motion(self):
-        if "read a second time" in self.after_text.lower():
+        if construct_reading_pass(self.after_text.lower()):
             motion_lines = [self.agreed_text, self.after_text]
         else:
             motion_lines = [self.preceeding_text, self.agreed_text]
