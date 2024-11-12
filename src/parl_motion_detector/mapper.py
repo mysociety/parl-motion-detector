@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
 from itertools import groupby
 from pathlib import Path
 from typing import TypeVar
@@ -20,6 +21,15 @@ from .agreements import (
 from .motions import Flag, Motion, get_motions
 
 T = TypeVar("T")
+
+
+@lru_cache
+def get_manual_connections(data_dir: Path) -> dict[str, str]:
+    data = json.loads(Path(data_dir, "raw", "manual_motion_linking.json").read_text())
+    return {x["motion_gid"]: x["decision_gid"] for x in data}
+
+
+amendment_be_made = PhraseDetector(criteria=["That the amendment be made."])
 
 amendment_check = re.compile(r"Amendment \([A-Za-z0-9]+\)", re.IGNORECASE)
 
@@ -44,6 +54,7 @@ can_be_self_motion = PhraseDetector(
         "this House disagrees with Lords amendment",
         re.compile(r"clause \d+ accordingly read a Second time", re.IGNORECASE),
         re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
+        re.compile(r"^That the .+ be approved.$", re.IGNORECASE),
         re.compile(r"amendment \(\w+\) to Lords amendment \d+ be made", re.IGNORECASE),
     ]
 )
@@ -182,13 +193,14 @@ def remove_redundant_motions(motions: list[Motion]) -> list[Motion]:
 
 
 class MotionMapper:
-    def __init__(self, transcript: Transcript, debate_date: str):
+    def __init__(self, transcript: Transcript, debate_date: str, data_dir: Path):
         self.transcript = transcript
         self.speech_id_map = {
             x.id: n  # type: ignore
             for n, x in enumerate(transcript.items)
             if hasattr(x, "id")
         }
+        self.data_dir = data_dir
         self.debate_date = debate_date
         self.found_motions = get_motions(transcript, debate_date)
         self.found_agreements = get_agreements(transcript, debate_date)
@@ -258,10 +270,26 @@ class MotionMapper:
         possible_motions: list[Motion],
         decisions: list[DivisionHolder | Agreement],
     ):
+        manual_lookup = get_manual_connections(self.data_dir)
+
         possible_motions = condense_motions(possible_motions)
         previous_loop = len(decisions) + 1
 
         while len(decisions) < previous_loop:
+            for m in possible_motions:
+                if m.gid in manual_lookup:
+                    mdecision_gid = manual_lookup[m.gid]
+                    mdecision = [x for x in decisions if x.gid == mdecision_gid]
+                    if len(mdecision) == 1:
+                        self.assign_motion_decision(m, mdecision[0], "manual lookup")
+                        decisions = [x for x in decisions if x != mdecision[0]]
+                        possible_motions = [x for x in possible_motions if x != m]
+                        continue
+                    if len(mdecision) == 0:
+                        raise ValueError(
+                            f"Manual lookup failed to find {mdecision_gid}"
+                        )
+
             previous_loop = len(decisions)
             # print(len(decisions), previous_loop)
 
@@ -286,11 +314,6 @@ class MotionMapper:
                         x for x in possible_motions if x != after_decision_motions[0]
                     ]
                     continue
-
-            # if len(as_amended_decisions) > 1:
-            #    rich.print(as_amended_decisions)
-            #    raise ValueError("Too many 'as amended' decisions")
-
             # try and match up decisions on amendment with the original motions
             # find the relevant amendment string and see if it's in the motion
 
@@ -332,19 +355,26 @@ class MotionMapper:
                 # e.g.That the Bill be now read the Third time.
                 rel_text = (
                     decision.relevant_text.lower()
+                    .replace("question, ", "")
                     .replace("question put, ", "")
                     .replace(" now ", " ")
                     .replace("question agreed to", "")
                     .strip()
                 )
+
+                # remove closing full stop
+                if rel_text.endswith("."):
+                    rel_text = rel_text[:-1]
+
                 preceeding_text = decision.preceeding.lower().strip()
+                text_match_motions = []
+
                 for rt in [rel_text, preceeding_text]:
-                    text_match_motions = []
                     if len(rt) > 5:
                         for motion in possible_motions:
                             if rt in str(motion).lower():
-                                text_match_motions.append(motion)
-
+                                if motion not in text_match_motions:
+                                    text_match_motions.append(motion)
                 if len(text_match_motions) == 1:
                     self.assign_motion_decision(
                         text_match_motions[0], decision, "text match on proceeding"
@@ -383,6 +413,7 @@ class MotionMapper:
 
                 exact_matches: list[Motion] = []
                 nearby_matches: list[Motion] = []
+                remainder_matches: list[Motion] = []
 
                 for motion in possible_motions:
                     motion_pos = self.motion_position(motion)
@@ -390,10 +421,17 @@ class MotionMapper:
                         Flag.AFTER_DECISION
                     ):
                         continue
+                    if motion_pos < decision_pos and motion.has_flag(
+                        Flag.AFTER_DECISION
+                    ):
+                        # ignore after_decision motions that come *before* the motion we're concerned about.
+                        continue
                     elif motion_pos == decision_pos:
                         exact_matches.append(motion)
                     elif abs(motion_pos - decision_pos) <= 2:
                         nearby_matches.append(motion)
+                    else:
+                        remainder_matches.append(motion)
 
                 # prefer exact matches
                 if exact_matches:
@@ -417,6 +455,37 @@ class MotionMapper:
                         x for x in possible_motions if x != relevant_motions[0]
                     ]
                     continue
+
+                if len(relevant_motions) == 0 and len(remainder_matches) == 1:
+                    # exactly one motion left after we've found no nearby motions
+                    # and discarded prior after motions
+                    # this helps catch instances where of the two last remaining instances
+                    # one isn't *close* (e.g. at the top of the debate)
+                    # but the other is an after_decision motion from an earlier decision.
+                    self.assign_motion_decision(
+                        remainder_matches[0], decision, "remainder match"
+                    )
+                    decisions = [x for x in decisions if x != decision]
+                    possible_motions = [
+                        x for x in possible_motions if x != remainder_matches[0]
+                    ]
+                    continue
+
+            for decision in decisions:
+                if amendment_be_made(decision.preceeding):
+                    # if there's one motion amendment, this is our match
+                    amendment_motions = [
+                        x for x in possible_motions if x.has_flag(Flag.MOTION_AMENDMENT)
+                    ]
+                    if len(amendment_motions) == 1:
+                        self.assign_motion_decision(
+                            amendment_motions[0], decision, "one amendment motion"
+                        )
+                        decisions = [x for x in decisions if x != decision]
+                        possible_motions = [
+                            x for x in possible_motions if x != amendment_motions[0]
+                        ]
+                        continue
 
             # when we're down to one, we can move on
             if len(possible_motions) == 1 and len(decisions) == 1:

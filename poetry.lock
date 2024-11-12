@@ -2428,20 +2428,22 @@ files = [
 
 [[package]]
 name = "mysoc-validator"
-version = "0.2.0"
+version = "0.6.0"
 description = "Pydantic validators for mySociety democracy types"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "mysoc_validator-0.2.0-py3-none-any.whl", hash = "sha256:74609fdb4fb2de2347c3bc4d375e22ffb989aea1a514442bdcc5205c36ea5801"},
-    {file = "mysoc_validator-0.2.0.tar.gz", hash = "sha256:1da3502120697d92e3c407219a8ac3dbd8afbb1f75d42bc45790a3a87beafae9"},
+    {file = "mysoc_validator-0.6.0-py3-none-any.whl", hash = "sha256:eb5eab02fe1e90e3f23137df31c59294df3c350957c15644b5c291dd6aaf325c"},
+    {file = "mysoc_validator-0.6.0.tar.gz", hash = "sha256:f8b9ff4452036216da93e0307b5c3f24e7e507f35900dfcc5278859a8e18f5e0"},
 ]
 
 [package.dependencies]
+httpx = ">=0.27.2,<0.28.0"
 lxml = ">=4.0.0,<5.0.0"
+nest-asyncio = ">=1.6.0,<2.0.0"
 pydantic = ">=2.7.1,<3.0.0"
 requests = ">=2.32.3,<3.0.0"
-rich = ">=12.0.0,<13.0.0"
+rich = ">=10.0.0,<14.0.0"
 typer = ">=0.12.3,<0.13.0"
 typing-extensions = ">=4.11.0,<5.0.0"
 
@@ -5029,4 +5031,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.11"
-content-hash = "9c3c876fef8a74a003189b8844ddd258d895d7aa2b88b4930151f8b291a24f9e"
+content-hash = "5429744734d938101be48cf30c11a9fe2131a05b12f406bb3c90663210f3c8b5"
