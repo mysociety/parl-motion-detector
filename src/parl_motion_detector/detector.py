@@ -59,7 +59,8 @@ class PhraseDetector(BaseModel):
         return False
 
     def __call__(self, text: Union[str, Stringifiable]) -> bool:
-        return self.score(str(text))
+        txt = str(text).replace("\xa0", " ")
+        return self.score(txt)
 
 
 class ComplexPhrase(BaseModel):

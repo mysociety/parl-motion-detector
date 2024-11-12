@@ -128,6 +128,8 @@ class Motion(BaseModel):
         else:
             str_item = str(item)
 
+        str_item = str_item.replace("\xa0", " ")
+
         self.motion_lines.append(str_item)
 
     def self_flag(self):
@@ -181,6 +183,9 @@ class MotionCollection(BaseModel):
             json.dump(self.basic_dict(), f, indent=2)
 
 
+# Abstract motions are motions usually triggered by standing orders
+# that are about management of the original question and amendments
+# and will often not in themeselves have detectable content
 abstract_motion = PhraseDetector(
     criteria=[
         "That the proposed words be there added",
@@ -189,13 +194,16 @@ abstract_motion = PhraseDetector(
     ]
 )
 
+# for adding a flag after bringing the contents together
 amendment_flag = PhraseDetector(
     criteria=[
         "I beg to move an amendment",
+        "I beg to move amendment",
         "Amendment proposed: at the end of the Question",
     ]
 )
 
+# for adding a flag after bringing the contents together
 main_question = PhraseDetector(
     criteria=[
         "I beg to move",
@@ -204,6 +212,11 @@ main_question = PhraseDetector(
     ]
 )
 
+# This is phrases that should cause us to crash out of a motion
+end_motion = PhraseDetector(criteria=["I rise to continue the debate"])
+
+# These are phrases that appear when a motion text is
+# *after* the decision, saying what was ordered.
 resolved_start = PhraseDetector(
     criteria=[
         re.compile(r"^Resolved,", re.IGNORECASE),
@@ -211,9 +224,17 @@ resolved_start = PhraseDetector(
     ]
 )
 
+# this deals with an edge case where someone forgot to
+# beg to move
 malformed_motion_start = PhraseDetector(
     criteria=[
         re.compile(r"^That the draft", re.IGNORECASE),
+    ]
+)
+
+motion_amendment_jump_in = PhraseDetector(
+    criteria=[
+        re.compile(r"^[‘“]\(1\)", re.IGNORECASE),
     ]
 )
 
@@ -226,10 +247,15 @@ motion_start = PhraseDetector(
         "Amendment proposed: at the end of the Question to add:",
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
+        "The Deputy Speaker put forthwith",
         # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
         re.compile(r"^Question put,$", re.IGNORECASE),
         re.compile(
             r"^Question put, That this House disagrees with Lords amendment",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"^Question put, That this House agrees with Lords amendment",
             re.IGNORECASE,
         ),
         re.compile(r"^Amendment \([a-zA-Z]+\) proposed", re.IGNORECASE),
@@ -238,6 +264,9 @@ motion_start = PhraseDetector(
         ),
         re.compile(
             r"^Amendments \([a-zA-Z]+\) to \([a-zA-Z]+\) proposed", re.IGNORECASE
+        ),
+        re.compile(
+            r"Question, That new clause \d+ be added to the Bill.", re.IGNORECASE
         ),
         "Question put accordingly",
         "Question again proposed",
@@ -251,12 +280,33 @@ motion_start = PhraseDetector(
         "Motion made and Question proposed",
         "Motion made and Question put forthwith",
         "Motion made, and Question put forthwith",
+        re.compile(r"^Motion \([A-Z]\)", re.IGNORECASE),
+        StartsWith(
+            "If, on the day before the end of the penultimate House of Commons sitting"
+        ),
+        re.compile(
+            r"^That an humble Address be presented to (His|Her) Majesty", re.IGNORECASE
+        ),
+        # including variants here to avoid false positives - but an option in future
+        re.compile(r"^That this House at its rising", re.IGNORECASE),
+        re.compile(r"^That this House, at its rising", re.IGNORECASE),
+        re.compile(r"^That this House—", re.IGNORECASE),
+        re.compile(r"^That this House agrees", re.IGNORECASE),
+        re.compile(r"^That this House directs", re.IGNORECASE),
+        re.compile(r"^That this House recognises", re.IGNORECASE),
+        re.compile(r"^That this House instructs", re.IGNORECASE),
+        re.compile(r"^That this House requires", re.IGNORECASE),
+        re.compile(r"^That this House will not allow", re.IGNORECASE),
         re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"^Ordered,", re.IGNORECASE),
-        re.compile(r"amendment proposed: \(.+?\), at the end of the Question to add:"),
-        re.compile(r"amended proposed: \(.+?\)"),
-        re.compile(r"^Amendment proposed: \(.+?\)"),
-        re.compile(r"Amendment proposed to new clause \d+: \(.+?\),"),
+        re.compile(
+            r"amendment proposed: \(.+?\), at the end of the Question to add:",
+            re.IGNORECASE,
+        ),
+        re.compile(r"amended proposed: \(.+?\)", re.IGNORECASE),
+        re.compile(r"^Amendment proposed: \(.+?\)", re.IGNORECASE),
+        re.compile(r"Question put, That amendment \(.+?\) be made.", re.IGNORECASE),
+        re.compile(r"Amendment proposed to new clause \d+: \(.+?\),", re.IGNORECASE),
         re.compile(
             r"^Amendments made:\s*\d+,\s*page\s*\d+,\s*line\s*\d+", re.IGNORECASE
         ),
@@ -290,6 +340,11 @@ one_line_motion = PhraseDetector(
         "That this House authorises",
         "That this House do now adjourn.",
         re.compile(
+            r"Question, That new clause \d+ be added to the Bill.", re.IGNORECASE
+        ),
+        re.compile(r"^That this House at its rising", re.IGNORECASE),
+        re.compile(r"^That this House, at its rising", re.IGNORECASE),
+        re.compile(
             r"^Amendment ([a-zA-Z]+) proposed in lieu of Lords amendment \d+",
             re.IGNORECASE,
         ),
@@ -306,23 +361,29 @@ one_line_motion = PhraseDetector(
             re.IGNORECASE,
         ),
         re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
+        re.compile(
+            r"^That an humble Address be presented to (His|Her) Majesty.*?be annulled\.$",
+            re.IGNORECASE,
+        ),
     ]
 )
 
 # remember that regular expression and other criteria are applied to lower cased versions of the text.
 # Criteria are automatically adjusted - but if you're using a regular expression, you need to make sure it's case insensitive
 
-# This immediately follows a motion saying the question is about to be asked -
+# This immediately follows a motion saying the question is about to be asked.
 asked_immediately = PhraseDetector(criteria=["Question put forthwith"])
 
 # This picks up when we're in a rapid fire amendment mood
 discussion_mode = PhraseDetector(criteria=["discuss the following:"])
 
 # catches (1) (10) (a) (i) (iii) (1zb) etc
-is_subitem = PhraseDetector(criteria=[re.compile(r"^\((\d+[a-zA-Z]*|[a-z]+|\d*)\)")])
+is_subitem = PhraseDetector(
+    criteria=[re.compile(r"^\((\d+[a-zA-Z]*|[a-z]+|\d*)\)", re.IGNORECASE)]
+)
 
 # end on a full stop or a quote
-valid_ender_character = PhraseDetector(criteria=[re.compile(r'[.\”"]$')])
+valid_ender_character = PhraseDetector(criteria=[re.compile(r'[.\”"]$', re.IGNORECASE)])
 
 # continutation character - ends on comma or semicolon or some kind of dash
 ends_in_continuation_character = PhraseDetector(criteria=[re.compile(r"[,;-–—‑]$")])
@@ -352,7 +413,11 @@ in_line_amendment = PhraseDetector(
 
 # after an inline amendment there is a little explainer bubble - we're excluding this for consistuency
 amendment_explainer = PhraseDetector(
-    criteria=[StartsWith("This Amendment"), StartsWith("This probing Amendment")]
+    criteria=[
+        StartsWith("This Amendment"),
+        StartsWith("This probing Amendment"),
+        StartsWith("This amendment would ensure"),
+    ],
 )
 
 # disagree with lords amendment
@@ -484,6 +549,20 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                     )
                     continue
 
+            if current_motion is None:
+                # this is picking up when motions are being restated before a vote
+                # there's less preamble - but it's easier to make connections
+                if (
+                    transcript_group.speech.person_id is None
+                    and motion_amendment_jump_in(paragraph)
+                ):
+                    current_motion = new_motion(paragraph.pid)
+                    current_motion.add(
+                        paragraph, new_final_id=transcript_group.speech.id
+                    )
+                    current_motion.add_flag(Flag.COMPLEX_MOTION)
+                    continue
+
             # if doing lots of clauses and amendments in sequence
             if speech_is_discussion_mode:
                 debug_test(paragraph, "speech is discussion")
@@ -511,6 +590,11 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
             # here's our main motion processing once a motion has been started
             if current_motion is not None:
                 debug_test(paragraph, "main processing")
+
+                if end_motion(paragraph):
+                    current_motion = current_motion.finish(collection, "end motion")
+                    continue
+
                 # always add the first one
                 if len(current_motion) == 0:
                     debug_test(paragraph, "first line")
