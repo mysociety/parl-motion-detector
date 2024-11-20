@@ -1,0 +1,80 @@
+title: Agreements
+description: dataset of agreements extracted from parliamentary debates
+custom:
+  row_count: 3234
+path: agreements.parquet
+name: agreements
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: utf-8
+schema:
+  fields:
+  - name: gid
+    type: string
+    description: unique identifier for the agreement - debate gid plus paragraph pid
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/debate/2019-01-08b.277.4.2
+  - name: date
+    type: string
+    description: date of the debate
+    constraints:
+      unique: false
+    example: '2019-01-08'
+  - name: major_heading_id
+    type: string
+    description: ID of the major heading (if relevant)
+    constraints:
+      unique: false
+    example: uk.org.publicwhip/debate/2019-01-08b.211.0
+  - name: minor_heading_id
+    type: string
+    description: ID of the minor heading (if relevant)
+    constraints:
+      unique: false
+    example: ''
+  - name: speech_id
+    type: string
+    description: ID of the speech containing the agreement
+    constraints:
+      unique: false
+    example: uk.org.publicwhip/debate/2019-01-08b.277.4
+  - name: paragraph_pid
+    type: string
+    description: paragraph ID of the agreement
+    constraints:
+      unique: false
+    example: a100.1/12
+  - name: agreed_text
+    type: string
+    description: Text that contains the agreement
+    constraints:
+      unique: false
+    example: '(2) That a further day not later than 5 August be allotted for the consideration
+      of the following Estimate for financial year 2021-22: Foreign, Commonwealth
+      and Development Office, insofar as it relates to the spending of the Foreign,
+      Commonwealth and Development Office on Official Development Assistance and the
+      British Council.—(David Rutley.) Question agreed to.'
+  - name: motion_title
+    type: string
+    description: Title of the motion
+    constraints:
+      unique: false
+    example: ''
+  - name: motion_gid
+    type: string
+    description: ID of the motion
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/debate/2019-01-08b.277.4.3
+  - name: chamber
+    type: string
+    description: Chamber in which the agreement was made
+    constraints:
+      unique: false
+      enum:
+      - house-of-commons
+    example: house-of-commons
+hash: 13aa74d2792ce8e82708d4dcb4bab4dd

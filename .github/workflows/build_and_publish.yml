@@ -13,6 +13,8 @@ on:
   push: 
     branches: ["main"]
   workflow_dispatch:
+  schedule: 
+    - cron: '0 9 * * *'
 
 jobs:
 
@@ -31,8 +33,11 @@ jobs:
           run: |
             export PATH="/root/.local/bin:$PATH"
             script/test
+            project process-current-year
             dataset build --all
-            dataset version auto --auto-ban major --all --publish
+            dataset version static --auto-ban major --all --publish
+            project remove-current-year-parquets
+
             
       - name: Push new data
         id: auto-commit-action

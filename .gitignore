@@ -6,3 +6,6 @@ _render/_parts
 _render/_papermills
 docs/_site
 UNKNOWN.egg-info
+data/interim/results/
+data/process
+data/packages/parliamentary_motions/*.parquet

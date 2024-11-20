@@ -73,6 +73,15 @@ class Motion(BaseModel):
     motion_lines: list[str] = Field(default_factory=list)
     flags: list[Flag] = Field(default_factory=list)
 
+    def flat(self) -> dict[str, str]:
+        return {
+            "gid": self.gid,
+            "speech_id": self.speech_id,
+            "date": self.date,
+            "motion_title": self.motion_title,
+            "motion_text": "\n".join(self.motion_lines),
+        }
+
     @classmethod
     def merge(cls, motions: list[Motion]) -> Motion:
         if len(motions) == 0:
@@ -497,9 +506,9 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
             except IndexError:
                 try:
                     next_transcript_group = transcript_groups[transcript_index + 1]
+                    next_item = next_transcript_group.speech.items[0]
                 except IndexError:
                     next_item = None
-                next_item = next_transcript_group.speech.items[0]
 
             if discussion_mode(paragraph):
                 speech_is_discussion_mode = True

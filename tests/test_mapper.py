@@ -17,7 +17,7 @@ def compare_date(debate_date: str):
     )
     transcript = Transcript.from_xml_path(transcript_path)
 
-    mm = MotionMapper(transcript, debate_date, debates_path)
+    mm = MotionMapper(transcript, debate_date, Transcript.Chamber.COMMONS, debates_path)
     mm.assign()
     snapshot = mm.snapshot()
     with (tests_path / f"{debate_date}.json").open() as f:
