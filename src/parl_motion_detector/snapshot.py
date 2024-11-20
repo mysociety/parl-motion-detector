@@ -38,7 +38,7 @@ def generate_mapper_snapshot(date: str):
         datetime.date.fromisoformat(date), download_path=debates_path
     )
     transcript = Transcript.from_xml_path(transcript_path)
-    mapper = MotionMapper(transcript, date, debates_path)
+    mapper = MotionMapper(transcript, date, Transcript.Chamber.COMMONS, debates_path)
     mapper.assign()
     mapper.dump_test_data(tests_path / "mapper")
 

@@ -3,12 +3,15 @@ from __future__ import annotations
 import json
 import re
 from functools import lru_cache
-from itertools import groupby
+from itertools import chain, groupby
 from pathlib import Path
 from typing import TypeVar
 
+import pandas as pd
 import rich
 from mysoc_validator import Transcript
+from mysoc_validator.models.transcripts import Chamber
+from pydantic import BaseModel, Field
 
 from parl_motion_detector.detector import PhraseDetector
 
@@ -192,8 +195,79 @@ def remove_redundant_motions(motions: list[Motion]) -> list[Motion]:
     return non_redundant_motions
 
 
+class ResultsHolder(BaseModel):
+    date: str
+    chamber: Chamber
+    division_motions: list[DivisionHolder] = Field(default_factory=list)
+    agreement_motions: list[Agreement] = Field(default_factory=list)
+
+    def export_motions_parquet(self, output_dir: Path):
+        all_motions = [
+            x.motion.flat()
+            for x in self.division_motions + self.agreement_motions
+            if x.motion
+        ]
+        df = pd.DataFrame(all_motions)
+        df["chamber"] = self.chamber
+        df.to_parquet(output_dir / f"{self.chamber}-{self.date}-motions.parquet")
+
+    def export_divison_links(self, output_dir: Path):
+        df = pd.DataFrame(
+            [
+                {
+                    "division_gid": x.gid,
+                    "motion_gid": x.motion_speech_id(),
+                }
+                for x in self.division_motions
+            ]
+        )
+        df["chamber"] = self.chamber
+        df.to_parquet(output_dir / f"{self.chamber}-{self.date}-division-links.parquet")
+
+    def export_agreements(self, output_dir: Path):
+        df = pd.DataFrame([x.flat() for x in self.agreement_motions])
+        df["chamber"] = self.chamber
+        df.to_parquet(output_dir / f"{self.chamber}-{self.date}-agreements.parquet")
+
+    def export(self, output_dir: Path):
+        if not output_dir.exists():
+            output_dir.mkdir(parents=True)
+        self.export_motions_parquet(output_dir)
+        self.export_divison_links(output_dir)
+        self.export_agreements(output_dir)
+
+    def to_data_dir(self, data_dir: Path):
+        if not data_dir.exists():
+            data_dir.mkdir(parents=True)
+        with (data_dir / f"{self.chamber}-{self.date}.json").open("w") as f:
+            f.write(self.model_dump_json(indent=2))
+
+    @classmethod
+    def from_data_dir(cls, data_dir: Path, date: str, chamber: Chamber):
+        with (data_dir / f"{chamber}-{date}.json").open() as f:
+            return cls.model_validate_json(f.read())
+
+    @classmethod
+    def from_data_dir_composite(cls, data_dir: Path, date: str, chamber: Chamber):
+        items: list[ResultsHolder] = []
+        for file_path in data_dir.glob(f"{chamber}-{date}*.json"):
+            with file_path.open() as f:
+                item = cls.model_validate_json(f.read())
+                items.append(item)
+
+        composite = cls(
+            date=date,
+            chamber=chamber,
+            division_motions=list(chain(*[x.division_motions for x in items])),
+            agreement_motions=list(chain(*[x.agreement_motions for x in items])),
+        )
+        return composite
+
+
 class MotionMapper:
-    def __init__(self, transcript: Transcript, debate_date: str, data_dir: Path):
+    def __init__(
+        self, transcript: Transcript, debate_date: str, chamber: Chamber, data_dir: Path
+    ):
         self.transcript = transcript
         self.speech_id_map = {
             x.id: n  # type: ignore
@@ -202,11 +276,12 @@ class MotionMapper:
         }
         self.data_dir = data_dir
         self.debate_date = debate_date
+        self.chamber = chamber
         self.found_motions = get_motions(transcript, debate_date)
         self.found_agreements = get_agreements(transcript, debate_date)
         self.found_divisions = get_divisions(transcript, debate_date)
-        self.division_assignments: dict[str, Motion] = {}
-        self.agreement_assignments: dict[str, Motion] = {}
+        self.division_assignments: list[DivisionHolder] = []
+        self.agreement_assignments: list[Agreement] = []
 
     def speech_distance(self, id_a: str, id_b: str) -> int:
         return abs(self.speech_id_map[id_a] - self.speech_id_map[id_b])
@@ -219,18 +294,20 @@ class MotionMapper:
         # dictionary to use as a snapshot
         return {
             "division_motions": {
-                k: v.speech_id for k, v in self.division_assignments.items()
+                x.gid: x.motion_speech_id() for x in self.division_assignments
             },
             "agreement_motions": {
-                k: v.speech_id for k, v in self.agreement_assignments.items()
+                x.gid: x.motion_speech_id() for x in self.agreement_assignments
             },
         }
 
-    def export(self):
-        return {
-            "division_motions": self.division_assignments,
-            "agreement_motions": self.agreement_assignments,
-        }
+    def export(self) -> ResultsHolder:
+        return ResultsHolder(
+            date=self.debate_date,
+            chamber=self.chamber,
+            division_motions=self.division_assignments,
+            agreement_motions=self.agreement_assignments,
+        )
 
     def all_items(self):
         def ordered_speech(gid: str) -> float:
@@ -251,11 +328,13 @@ class MotionMapper:
         assignment_reason: str,
     ):
         # print(f"Assigning {motion.speech_id} to {decision.speech_id} - {assignment_reason}")
+        decision.motion = motion
+        decision.motion_assignment_reason = assignment_reason
         match decision:
             case DivisionHolder():
-                self.division_assignments[decision.gid] = motion
+                self.division_assignments.append(decision)
             case Agreement():
-                self.agreement_assignments[decision.gid] = motion
+                self.agreement_assignments.append(decision)
 
     def decision_position(self, decision: DivisionHolder | Agreement) -> int:
         return self.speech_id_map.get(decision.speech_id, 0)

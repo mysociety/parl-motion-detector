@@ -1,0 +1,54 @@
+title: Motions
+description: Motions extracted from parliamentary debates
+custom:
+  row_count: 4328
+path: motions.parquet
+name: motions
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: utf-8
+schema:
+  fields:
+  - name: gid
+    type: string
+    description: unique identifier for the motion - debate gid plus paragraph pid
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/debate/2019-01-08b.212.3.1
+  - name: speech_id
+    type: string
+    description: ID of the speech containing the motion (or the first entry)
+    constraints:
+      unique: false
+    example: uk.org.publicwhip/debate/2019-01-08b.212.3
+  - name: date
+    type: string
+    description: date of the debate
+    constraints:
+      unique: false
+    example: '2019-01-08'
+  - name: motion_title
+    type: string
+    description: Title of the motion
+    constraints:
+      unique: false
+    example: ''
+  - name: motion_text
+    type: string
+    description: Text of the motion
+    constraints:
+      unique: false
+    example: "After Clause 46 - Register of members: information to be included and\
+      \ powers to obtain it\nQuestion put, That amendment (a) to Lords amendment 23\
+      \ be made."
+  - name: chamber
+    type: string
+    description: Chamber in which the motion was made
+    constraints:
+      unique: false
+      enum:
+      - house-of-commons
+    example: house-of-commons
+hash: 933981b426e92431d3f5171e08d055d9

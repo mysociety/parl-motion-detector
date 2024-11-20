@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 from typing import (
     Generic,
+    Optional,
     Protocol,
     TypeVar,
 )
@@ -68,6 +69,21 @@ class Agreement(HasSpeechAndDate):
     agreed_text: str
     preceeding_text: str
     after_text: str
+    motion: Optional[Motion] = None
+    motion_assignment_reason: str = ""
+
+    def flat(self):
+        return {
+            "gid": self.gid,
+            "date": self.date,
+            "major_heading_id": self.major_heading_id,
+            "minor_heading_id": self.minor_heading_id,
+            "speech_id": self.speech_id,
+            "paragraph_pid": self.paragraph_pid,
+            "agreed_text": self.agreed_text,
+            "motion_title": self.motion.motion_title if self.motion else "",
+            "motion_gid": self.motion.gid if self.motion else "",
+        }
 
     @property
     def preceeding(self):
@@ -76,6 +92,12 @@ class Agreement(HasSpeechAndDate):
     @property
     def after(self):
         return self.after_text
+
+    def motion_speech_id(self):
+        if self.motion:
+            return self.motion.gid
+        else:
+            return ""
 
     def construct_motion(self):
         if construct_reading_pass(self.after_text.lower()):
@@ -117,6 +139,8 @@ class DivisionHolder(HasSpeechAndDate):
     paragraph_pid: str = ""
     preceding_speech: str
     after_speech: str
+    motion: Optional[Motion] = None
+    motion_assignment_reason: str = ""
 
     @property
     def preceeding(self):
@@ -125,6 +149,12 @@ class DivisionHolder(HasSpeechAndDate):
     @property
     def after(self):
         return self.after_speech
+
+    def motion_speech_id(self):
+        if self.motion:
+            return self.motion.gid
+        else:
+            return ""
 
     def construct_motion(self):
         """
@@ -233,7 +263,11 @@ def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
             else:
                 previous_speech = ""
             try:
-                next_speech = str(transcript.items[index + 1])
+                next_item = transcript.items[index + 1]
+                if isinstance(next_item, Speech):
+                    next_speech = str(next_item.items[0])
+                else:
+                    next_speech = str(next_item)
             except IndexError:
                 next_speech = ""
             current_division = DivisionHolder(
