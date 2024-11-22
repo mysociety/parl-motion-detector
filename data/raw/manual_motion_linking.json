@@ -62,5 +62,41 @@
     {
         "decision_gid": "uk.org.publicwhip/debate/2023-10-25c.853.0",
         "motion_gid": "uk.org.publicwhip/debate/2023-10-25c.838.3.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2019-03-26c.274.3",
+        "motion_gid": "uk.org.publicwhip/debate/2019-03-26c.269.0.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2019-04-03b.1114.2",
+        "motion_gid": "uk.org.publicwhip/debate/2019-04-03b.1111.1.8"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2019-06-12e.723.1",
+        "motion_gid": "uk.org.publicwhip/debate/2019-06-12e.690.1.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2020-06-23b.1266.3",
+        "motion_gid": "uk.org.publicwhip/debate/2020-06-23b.1244.2.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2020-09-15c.270.1",
+        "motion_gid": "uk.org.publicwhip/debate/2020-09-15c.205.6.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2020-09-29d.298.0",
+        "motion_gid": "uk.org.publicwhip/debate/2020-09-29d.289.0.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2021-12-08c.437.9",
+        "motion_gid": "uk.org.publicwhip/debate/2021-12-08c.437.3.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2022-04-25b.517.2",
+        "motion_gid": "uk.org.publicwhip/debate/2022-04-25b.500.5.2"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2023-04-19d.336.0",
+        "motion_gid": "uk.org.publicwhip/debate/2023-04-19d.323.2.7"
     }
 ]

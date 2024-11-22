@@ -25,6 +25,8 @@ from .motions import Flag, Motion, get_motions
 
 T = TypeVar("T")
 
+DEBUG: bool = False
+
 
 @lru_cache
 def get_manual_connections(data_dir: Path) -> dict[str, str]:
@@ -327,7 +329,10 @@ class MotionMapper:
         decision: DivisionHolder | Agreement,
         assignment_reason: str,
     ):
-        # print(f"Assigning {motion.speech_id} to {decision.speech_id} - {assignment_reason}")
+        if DEBUG:
+            print(
+                f"Assigning motion: {motion.speech_id} to decision: {decision.gid} - {assignment_reason}"
+            )
         decision.motion = motion
         decision.motion_assignment_reason = assignment_reason
         match decision:
@@ -348,27 +353,15 @@ class MotionMapper:
         self,
         possible_motions: list[Motion],
         decisions: list[DivisionHolder | Agreement],
+        previous_motions: list[Motion] | None = None,
     ):
-        manual_lookup = get_manual_connections(self.data_dir)
+        if previous_motions is None:
+            previous_motions = []
 
         possible_motions = condense_motions(possible_motions)
         previous_loop = len(decisions) + 1
 
         while len(decisions) < previous_loop:
-            for m in possible_motions:
-                if m.gid in manual_lookup:
-                    mdecision_gid = manual_lookup[m.gid]
-                    mdecision = [x for x in decisions if x.gid == mdecision_gid]
-                    if len(mdecision) == 1:
-                        self.assign_motion_decision(m, mdecision[0], "manual lookup")
-                        decisions = [x for x in decisions if x != mdecision[0]]
-                        possible_motions = [x for x in possible_motions if x != m]
-                        continue
-                    if len(mdecision) == 0:
-                        raise ValueError(
-                            f"Manual lookup failed to find {mdecision_gid}"
-                        )
-
             previous_loop = len(decisions)
             # print(len(decisions), previous_loop)
 
@@ -397,6 +390,7 @@ class MotionMapper:
             # find the relevant amendment string and see if it's in the motion
 
             for decision in decisions:
+                # print(f"d gid: {decision.gid}")
                 detected_amendment = extract_amendment(decision.relevant_text)
 
                 if detected_amendment:
@@ -451,7 +445,9 @@ class MotionMapper:
                 for rt in [rel_text, preceeding_text]:
                     if len(rt) > 5:
                         for motion in possible_motions:
-                            if rt in str(motion).lower():
+                            motion_str = str(motion).lower()
+                            motion_str = motion_str.replace("be now read", "be read")
+                            if rt in motion_str:
                                 if motion not in text_match_motions:
                                     text_match_motions.append(motion)
                 if len(text_match_motions) == 1:
@@ -584,7 +580,10 @@ class MotionMapper:
                     if (self.speech_distance(motion.speech_id, decision.speech_id)) < 5:
                         self.assign_motion_decision(motion, decision, "close by motion")
                         decisions = []
-                        continue
+                        break
+
+                if len(decisions) == 0:
+                    continue
 
                 # if there is only one 'one_line_motion' we can use that.
                 # This is generally the 'main question'
@@ -648,6 +647,17 @@ class MotionMapper:
                     decisions = []
                     continue
 
+            if (
+                len(decisions) > 0
+                and len(possible_motions) == 0
+                and len(previous_motions) > 0
+            ):
+                possible_motions = [
+                    x for x in previous_motions if x.has_flag(Flag.MAIN_QUESTION)
+                ]
+                previous_motions = []
+                continue
+
         if len(decisions) > 0:
             # if all remaining are 'agreements' I am ok just not collecting them
             # we're *mostly* interested in the divisions and agreements as a way of specifying the right
@@ -663,16 +673,47 @@ class MotionMapper:
             rich.print(possible_motions)
             raise ValueError("Unassigned decisions remain")
 
+    def assign_manual(self):
+        manual_lookup = get_manual_connections(self.data_dir)
+        decisions: list[DivisionHolder | Agreement] = list(
+            self.found_agreements
+        ) + list(self.found_divisions)
+        for m in self.found_motions:
+            if m.gid in manual_lookup:
+                mdecision_gid = manual_lookup[m.gid]
+                mdecision = [x for x in decisions if x.gid == mdecision_gid]
+                if len(mdecision) == 1:
+                    self.assign_motion_decision(m, mdecision[0], "manual lookup")
+                elif len(mdecision) == 0:
+                    raise ValueError(f"Manual lookup failed to find {mdecision_gid}")
+
+    def assigned_gids(self):
+        division_gids = [x.gid for x in self.division_assignments]
+        agreement_gids = [x.gid for x in self.agreement_assignments]
+        divison_motion_gids = [x.motion_speech_id() for x in self.division_assignments]
+        agreement_motion_gids = [
+            x.motion_speech_id() for x in self.agreement_assignments
+        ]
+        return (
+            division_gids + agreement_gids + divison_motion_gids + agreement_motion_gids
+        )
+
     def assign(self):
         # first step is see if we've for unique division and motions within a major heading
 
         previous_motions: list[Motion] = []
 
+        # assign manual ones first so these can reach across major heading divides
+        self.assign_manual()
+
+        remaining_items = [
+            x for x in self.all_items() if x.gid not in self.assigned_gids()
+        ]
+
         for major_heading_id, items in groupby(
-            self.all_items(), lambda x: x.major_heading_id
+            remaining_items, lambda x: x.major_heading_id
         ):
             items = list(items)
-
             possible_motions = [x for x in items if isinstance(x, Motion)]
             decisions = [x for x in items if isinstance(x, DivisionHolder | Agreement)]
 
@@ -692,11 +733,30 @@ class MotionMapper:
                 previous_motions.extend(possible_motions)
                 continue
 
-            if len(decisions) > 2:
-                self.multiple_decision_assignment(possible_motions, decisions)
-                continue
-
             if len(decisions) == 1 and len(possible_motions) > 1:
                 # seperating out if needed to make clear which branch we're in
-                self.multiple_decision_assignment(possible_motions, decisions)
+                self.multiple_decision_assignment(
+                    possible_motions, decisions, previous_motions
+                )
                 continue
+
+            if len(decisions) > 1:
+                self.multiple_decision_assignment(
+                    possible_motions, decisions, previous_motions
+                )
+                continue
+
+            if len(decisions) == 1 and len(possible_motions) == 0:
+                # *also* send this down the multiple path because it has some self extracting features
+                self.multiple_decision_assignment(
+                    possible_motions, decisions, previous_motions
+                )
+                continue
+
+        if len(self.found_divisions) != len(self.division_assignments):
+            diff = len(self.found_divisions) - len(self.division_assignments)
+            # rich.print(self.division_assignments)
+            # rich.print(self.found_divisions)
+            raise ValueError(
+                f"Not all divisions assigned - {diff} remain for {self.debate_date}"
+            )

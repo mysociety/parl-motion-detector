@@ -247,6 +247,11 @@ motion_amendment_jump_in = PhraseDetector(
     ]
 )
 
+# when several are happening in sequence - need to split
+motion_start_sequence = PhraseDetector(
+    criteria=[re.compile(r"^That this House", re.IGNORECASE)]
+)
+
 # These kick the detector into action - basically a set of phrases that indicate a motion is starting
 motion_start = PhraseDetector(
     criteria=[
@@ -257,6 +262,7 @@ motion_start = PhraseDetector(
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
         "The Deputy Speaker put forthwith",
+        re.compile(r"^To leave out from “That”", re.IGNORECASE),
         # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
         re.compile(r"^Question put,$", re.IGNORECASE),
         re.compile(
@@ -280,6 +286,7 @@ motion_start = PhraseDetector(
         "Question put accordingly",
         "Question again proposed",
         "Question put forthwith",
+        "Question put, That the clause stand part of the Bill",
         "Question proposed",
         "Question put (Standing Order No. 31(2))",
         "That this House authorises",
@@ -300,12 +307,14 @@ motion_start = PhraseDetector(
         re.compile(r"^That this House at its rising", re.IGNORECASE),
         re.compile(r"^That this House, at its rising", re.IGNORECASE),
         re.compile(r"^That this House—", re.IGNORECASE),
+        re.compile(r"^That this House insists", re.IGNORECASE),
         re.compile(r"^That this House agrees", re.IGNORECASE),
         re.compile(r"^That this House directs", re.IGNORECASE),
         re.compile(r"^That this House recognises", re.IGNORECASE),
         re.compile(r"^That this House instructs", re.IGNORECASE),
         re.compile(r"^That this House requires", re.IGNORECASE),
         re.compile(r"^That this House will not allow", re.IGNORECASE),
+        re.compile(r"^That this House takes note", re.IGNORECASE),
         re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"^Ordered,", re.IGNORECASE),
         re.compile(
@@ -314,6 +323,7 @@ motion_start = PhraseDetector(
         ),
         re.compile(r"amended proposed: \(.+?\)", re.IGNORECASE),
         re.compile(r"^Amendment proposed: \(.+?\)", re.IGNORECASE),
+        re.compile(r"^That the .+ be approved", re.IGNORECASE),
         re.compile(r"Question put, That amendment \(.+?\) be made.", re.IGNORECASE),
         re.compile(r"Amendment proposed to new clause \d+: \(.+?\),", re.IGNORECASE),
         re.compile(
@@ -336,6 +346,7 @@ one_line_motion = PhraseDetector(
         "Motion made, That the Bill be read be now read a Second time.",
         "Question put, That the Bill be read a Second time.",
         "Question put, That the clause be a Second time.",
+        "Question put, That the clause stand part of the Bill",
         "That the Bill be now read a second time",
         "That the Bill be now read a third time.",
         "That the Bill be read the Third time.",
@@ -370,6 +381,7 @@ one_line_motion = PhraseDetector(
             re.IGNORECASE,
         ),
         re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
+        re.compile(r"^That the .+ be approved", re.IGNORECASE),
         re.compile(
             r"^That an humble Address be presented to (His|Her) Majesty.*?be annulled\.$",
             re.IGNORECASE,
@@ -535,6 +547,11 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                     current_motion.add(transcript_group.minor_heading)
                     current_motion += Flag.CLAUSE_MOTION
                     current_motion += Flag.COMPLEX_MOTION
+
+            if current_motion and motion_start_sequence(paragraph):
+                # trigger word for new motion, need to finish the old one
+                if "that this house" in str(current_motion).lower():
+                    current_motion = current_motion.finish(collection, "new motion")
 
             # Here we're looking for ordinary phrases that herald the start of a motion
             # beg to move etc
