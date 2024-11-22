@@ -1,9 +1,13 @@
 {
   "division_motions": {
-    "uk.org.publicwhip/debate/2023-06-27c.168.1": "uk.org.publicwhip/debate/2023-06-27c.165.2.1"
+    "uk.org.publicwhip/debate/2023-06-27c.168.1": "uk.org.publicwhip/debate/2023-06-27c.165.2.1",
+    "uk.org.publicwhip/debate/2023-06-27c.209.1": "uk.org.publicwhip/debate/2023-06-27c.209.0.2",
+    "uk.org.publicwhip/debate/2023-06-27c.213.0": "uk.org.publicwhip/debate/2023-06-27c.209.2.3"
   },
   "agreement_motions": {
     "uk.org.publicwhip/debate/2023-06-27c.250.3.4": "uk.org.publicwhip/debate/2023-06-27c.219.1.1",
+    "uk.org.publicwhip/debate/2023-06-27c.251.4.2": "uk.org.publicwhip/debate/2023-06-27c.251.2.1",
+    "uk.org.publicwhip/debate/2023-06-27c.251.6.2": "uk.org.publicwhip/debate/2023-06-27c.251.4.3",
     "uk.org.publicwhip/debate/2023-06-27c.257.1.4": "uk.org.publicwhip/debate/2023-06-27c.252.1.1"
   }
 }
