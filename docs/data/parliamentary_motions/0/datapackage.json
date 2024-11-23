@@ -53,7 +53,7 @@
             }
         },
         "change_log": {
-            "0.1.0": "Don't need to increment, first version"
+            "0.1.0": "Minor change in data for resource(s): agreements,motions"
         },
         "datasette": {
             "about": "Info & Downloads",
@@ -175,7 +175,7 @@
                     }
                 ]
             },
-            "hash": "58dc31fcfc1236bd87f81600594bb768"
+            "hash": "a0e58370f670a625374ec399e23e4264"
         },
         {
             "title": "Division Links",
@@ -308,7 +308,7 @@
                     }
                 ]
             },
-            "hash": "301ed3b2c03962e166ac8cb4cf006291"
+            "hash": "65715454a5508e45fbfe6b2f1219eb63"
         }
     ]
 }
