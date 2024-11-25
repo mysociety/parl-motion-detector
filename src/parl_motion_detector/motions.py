@@ -62,11 +62,11 @@ class Flag(StrEnum):
 class Motion(BaseModel):
     date: str
     motion_title: str = ""
-    major_heading_id: str
-    minor_heading_id: str
+    major_heading_id: str = ""
+    minor_heading_id: str = ""
     major_heading_title: str = ""
     minor_heading_title: str = ""
-    speech_start_pid: str
+    speech_start_pid: str = ""
     speech_id: str
     final_speech_id: str = ""
     end_reason: str = ""
