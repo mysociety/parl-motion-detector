@@ -112,7 +112,7 @@ class Agreement(HasSpeechAndDate):
             speech_id=self.speech_id,
             speech_start_pid=self.paragraph_pid,
             motion_lines=motion_lines,
-        )
+        ).add_title()
 
     @computed_field
     @property
@@ -168,7 +168,7 @@ class DivisionHolder(HasSpeechAndDate):
             speech_id=self.speech_id,
             speech_start_pid="",
             motion_lines=[self.minor_heading_text, self.preceding_speech],
-        )
+        ).add_title()
 
     @computed_field
     @property

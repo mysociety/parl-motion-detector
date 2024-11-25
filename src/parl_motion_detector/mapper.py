@@ -706,6 +706,19 @@ class MotionMapper:
         # assign manual ones first so these can reach across major heading divides
         self.assign_manual()
 
+        # remove inappriprate motions
+
+        def is_inappropriate(motion: Motion) -> bool:
+            # there's a thing after first reading where what's resolved is who presents the bill rather than the *content* of the bill.
+            # which is ideally what we want
+            if motion.has_flag(Flag.AFTER_DECISION) and str(
+                motion
+            ).strip().lower().endswith("present the bill."):
+                return True
+            return False
+
+        self.found_motions = [x for x in self.found_motions if not is_inappropriate(x)]
+
         remaining_items = [
             x for x in self.all_items() if x.gid not in self.assigned_gids()
         ]
