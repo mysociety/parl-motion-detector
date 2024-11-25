@@ -98,5 +98,17 @@
     {
         "decision_gid": "uk.org.publicwhip/debate/2023-04-19d.336.0",
         "motion_gid": "uk.org.publicwhip/debate/2023-04-19d.323.2.7"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2024-10-09c.415.0",
+        "motion": {
+            "date": "2024-10-09",
+            "gid": "uk.org.publicwhip/debate/2024-10-09c.332.0.2",
+            "speech_id": "uk.org.publicwhip/debate/2024-10-09c.332.0",
+            "motion_lines": [
+                "[Reasoned amendment - opposing a second reading]"
+            ],
+            "motion_title": "Renters' Rights Bill: Reasoned Amendment to Second Reading"
+        }
     }
 ]

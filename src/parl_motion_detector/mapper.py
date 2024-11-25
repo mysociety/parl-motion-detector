@@ -11,7 +11,7 @@ import pandas as pd
 import rich
 from mysoc_validator import Transcript
 from mysoc_validator.models.transcripts import Chamber
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, TypeAdapter
 
 from parl_motion_detector.detector import PhraseDetector
 
@@ -28,10 +28,31 @@ T = TypeVar("T")
 DEBUG: bool = False
 
 
+class ManualLink(BaseModel):
+    decision_gid: str
+    motion_gid: str
+
+
+class ManualText(BaseModel):
+    decision_gid: str
+    motion: Motion
+
+
+ManualInfo = ManualLink | ManualText
+
+
 @lru_cache
 def get_manual_connections(data_dir: Path) -> dict[str, str]:
-    data = json.loads(Path(data_dir, "raw", "manual_motion_linking.json").read_text())
-    return {x["motion_gid"]: x["decision_gid"] for x in data}
+    data = Path(data_dir, "raw", "manual_motion_linking.json").read_text()
+    items = TypeAdapter(list[ManualLink | ManualText]).validate_json(data)
+    return {x.motion_gid: x.decision_gid for x in items if isinstance(x, ManualLink)}
+
+
+@lru_cache
+def get_manual_text(data_dir: Path) -> dict[str, Motion]:
+    data = Path(data_dir, "raw", "manual_motion_linking.json").read_text()
+    items = TypeAdapter(list[ManualLink | ManualText]).validate_json(data)
+    return {x.decision_gid: x.motion for x in items if isinstance(x, ManualText)}
 
 
 amendment_be_made = PhraseDetector(criteria=["That the amendment be made."])
@@ -686,6 +707,13 @@ class MotionMapper:
                     self.assign_motion_decision(m, mdecision[0], "manual lookup")
                 elif len(mdecision) == 0:
                     raise ValueError(f"Manual lookup failed to find {mdecision_gid}")
+
+        # when motions are just missing, sometimes we specify the whole thing by hand
+        manual_motions = get_manual_text(self.data_dir)
+        for decision in decisions:
+            if decision.gid in manual_motions:
+                motion = manual_motions[decision.gid]
+                self.assign_motion_decision(motion, decision, "manual text")
 
     def assigned_gids(self):
         division_gids = [x.gid for x in self.division_assignments]
