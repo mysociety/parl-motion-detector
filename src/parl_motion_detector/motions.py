@@ -111,6 +111,7 @@ class Motion(BaseModel):
     def add_title(self):
         if not self.motion_title:
             self.motion_title = extract_motion_title(self)
+        return self
 
     def has_flag(self, flag: Flag) -> bool:
         return flag in self.flags
