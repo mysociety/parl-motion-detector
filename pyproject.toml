@@ -11,7 +11,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
 data_common = { path = "src/data_common/", develop = true }
-mysoc-validator = "^0.6.0"
+mysoc-validator = "^0.6.1"
 httpx = "^0.27.2"
 nest-asyncio = "^1.6.0"
 
