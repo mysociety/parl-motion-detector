@@ -1,24 +1,19 @@
 name: parliamentary_motions
 title: Parliamentary motions
-description : |
-  Motions and agreements extracted from parliamentary debates
+description: "Motions and agreements extracted from parliamentary debates\n"
 version: 0.1.0
 licenses:
-  
-  - name: CC-BY-4.0
-    path: https://creativecommons.org/licenses/by/4.0/
-    title: Creative Commons Attribution 4.0 International License
-  
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0 International License
 contributors:
-  - title: mySociety
-    path: https://mysociety.org
-    role: author
-
-
+- title: mySociety
+  path: https://mysociety.org
+  role: author
 custom:
-  build: "parl_motion_detector.process:move_to_package"
+  build: parl_motion_detector.process:move_to_package
   tests:
-    - test_parliamentary_motions
+  - test_parliamentary_motions
   dataset_order: 0
   download_options:
     gate: default
@@ -43,4 +38,5 @@ custom:
       include: all
       exclude: none
       render: true
-
+  change_log:
+    0.1.0: Don't need to increment, first version
