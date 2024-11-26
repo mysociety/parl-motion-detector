@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Optional, TypeVar
 
@@ -13,6 +14,23 @@ from pydantic import BaseModel, Field, computed_field
 from parl_motion_detector.detector import PhraseDetector, StartsWith, Stringifiable
 from parl_motion_detector.enum_helpers import StrEnum
 from parl_motion_detector.motion_title_extraction import extract_motion_title
+
+from .sp_motions import SPMotionManager
+
+sp_motion_pattern = re.compile(r"\b[A-Z0-9]{2}M-[0-9]{5}\.?[0-9]?\b")
+
+
+@lru_cache
+def get_sp_manager() -> SPMotionManager:
+    return SPMotionManager()
+
+
+def extract_sp_motions(text: str) -> list[str]:
+    """
+    returns the longest amendment
+    """
+    matches = sp_motion_pattern.findall(text)
+    return [x for x in matches if not any(y in x for y in matches if x != y)]
 
 
 def html_to_markdown(html_table: str) -> str | None:
@@ -57,6 +75,7 @@ class Flag(StrEnum):
     ABSTRACT_MOTION = "abstract_motion"  # use for when the question is entirely about 'the question' without actual content
     MAIN_QUESTION = "main_question"
     MOTION_AMENDMENT = "motion_amendment"
+    SCOTTISH_EXPANDED_MOTION = "scottish_expanded_motion"
 
 
 class Motion(BaseModel):
@@ -210,6 +229,10 @@ amendment_flag = PhraseDetector(
         "I beg to move an amendment",
         "I beg to move amendment",
         "Amendment proposed: at the end of the Question",
+        re.compile(
+            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
+            re.IGNORECASE,
+        ),
     ]
 )
 
@@ -231,6 +254,9 @@ resolved_start = PhraseDetector(
     criteria=[
         re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"^Ordered,", re.IGNORECASE),
+        re.compile(r"^Motion agreed to,", re.IGNORECASE),
+        re.compile(r"^Motion, as amended,", re.IGNORECASE),
+        re.compile(r"^Motion, as amended, agreed to,", re.IGNORECASE),
     ]
 )
 
@@ -318,6 +344,9 @@ motion_start = PhraseDetector(
         re.compile(r"^That this House takes note", re.IGNORECASE),
         re.compile(r"^Resolved,", re.IGNORECASE),
         re.compile(r"^Ordered,", re.IGNORECASE),
+        re.compile(r"^Motion agreed to,", re.IGNORECASE),
+        re.compile(r"^Motion, as amended,", re.IGNORECASE),
+        re.compile(r"^Motion, as amended, agreed to,", re.IGNORECASE),
         re.compile(
             r"amendment proposed: \(.+?\), at the end of the Question to add:",
             re.IGNORECASE,
@@ -332,6 +361,10 @@ motion_start = PhraseDetector(
         ),
         re.compile(
             r"^Amendment\s*\d+\s*,\s*page\s*\d+\s*,\s*line\s*\d+\s*", re.IGNORECASE
+        ),
+        re.compile(
+            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
+            re.IGNORECASE,
         ),
     ]
 )
@@ -385,6 +418,10 @@ one_line_motion = PhraseDetector(
         re.compile(r"^That the .+ be approved", re.IGNORECASE),
         re.compile(
             r"^That an humble Address be presented to (His|Her) Majesty.*?be annulled\.$",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
             re.IGNORECASE,
         ),
     ]
@@ -442,6 +479,15 @@ amendment_explainer = PhraseDetector(
     ],
 )
 
+not_sp_motion_ref = PhraseDetector(
+    criteria=[
+        "To ask the Scottish Government",
+        "To ask the First Minister when",
+        "as amended",
+        re.compile(r"\([A-Z0-9]{3}-[0-9]{5}\.?[0-9]?\)$", re.IGNORECASE),
+    ]
+)
+
 # disagree with lords amendment
 disagree_with_lords_amendment = PhraseDetector(
     criteria=[re.compile(r"disagrees with lords amendment [a-zA-Z0-9]+\.?$")]
@@ -472,7 +518,7 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
     transcript_groups = list(transcript.iter_headed_speeches())
     for transcript_index, transcript_group in enumerate(transcript_groups):
 
-        def new_motion(speech_start_pid: Optional[str]):
+        def new_motion(speech_start_pid: Optional[str] = None):
             if speech_start_pid is None:
                 speech_start_pid = ""
             return Motion(
@@ -522,6 +568,27 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
                     next_item = next_transcript_group.speech.items[0]
                 except IndexError:
                     next_item = None
+
+            sp_motions = extract_sp_motions(str(paragraph))
+
+            if sp_motions:
+                if current_motion:
+                    raise ValueError(
+                        f"Multiple motions found in {paragraph} - {sp_motions}"
+                    )
+                if len(sp_motions) == 1 and not not_sp_motion_ref(paragraph):
+                    # try and avoid creating sp motions we'll pick up normally
+                    # as amended motions are usually described in full after
+                    current_motion = new_motion(paragraph.pid or f"subitem/{index}")
+                    current_motion.add(paragraph)
+                    try:
+                        actual_content = get_sp_manager().get_motion(sp_motions[0])
+                        current_motion.add(actual_content.item_text)
+                        current_motion.add_flag(Flag.SCOTTISH_EXPANDED_MOTION)
+                        current_motion = current_motion.finish(collection, "sp_motion")
+                    except KeyError as e:
+                        print(f"Error: {e}, junking expanded motion")
+                        current_motion = None
 
             if discussion_mode(paragraph):
                 speech_is_discussion_mode = True

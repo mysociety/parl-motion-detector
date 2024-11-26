@@ -22,10 +22,23 @@ from .agreements import (
     get_divisions,
 )
 from .motions import Flag, Motion, get_motions
+from .sp_motions import SPMotionManager
 
 T = TypeVar("T")
 
 DEBUG: bool = False
+
+sp_motion_pattern = re.compile(r"\b[A-Z0-9]{3}-[0-9]{5}\.?[0-9]?\b")
+
+
+def extract_sp_motions(text: str) -> list[str]:
+    matches = sp_motion_pattern.findall(text)
+    return [x for x in matches if not any(y in x for y in matches if x != y)]
+
+
+@lru_cache
+def get_sp_manager() -> SPMotionManager:
+    return SPMotionManager()
 
 
 class ManualLink(BaseModel):
@@ -407,6 +420,48 @@ class MotionMapper:
                         x for x in possible_motions if x != after_decision_motions[0]
                     ]
                     continue
+
+            if self.chamber == Chamber.SCOTLAND:
+                # Here we have some special casing for amendments in the scottish Parliament
+                # these should happen pretty good in order! But there may be a bit more spacing than usual
+                # for no! and some comments
+
+                amendment_motions = [
+                    x
+                    for x in possible_motions
+                    if x.has_flag(Flag.MOTION_AMENDMENT)
+                    or x.has_flag(Flag.SCOTTISH_EXPANDED_MOTION)
+                ]
+                match_allowance = 4
+                for decision in decisions:
+                    dec_pos = self.decision_position(decision)
+                    possible_match = None
+                    match_distance = 1000
+                    for amendment in amendment_motions:
+                        # we want to allow an amendment if it's it's a motion *before* the decision and
+                        # the closest within 4 blocks
+                        motion_pos = self.motion_position(amendment)
+                        dec_motion_distance = abs(motion_pos - dec_pos)
+                        if (
+                            motion_pos < dec_pos
+                            and dec_motion_distance < match_distance
+                        ):
+                            if (
+                                possible_match is None
+                                or dec_motion_distance < match_allowance
+                            ):
+                                possible_match = amendment
+                                match_distance = dec_pos - motion_pos
+                    if possible_match:
+                        self.assign_motion_decision(
+                            possible_match, decision, "scottish amendment"
+                        )
+                        decisions = [x for x in decisions if x != decision]
+                        possible_motions = [
+                            x for x in possible_motions if x != possible_match
+                        ]
+                        continue
+
             # try and match up decisions on amendment with the original motions
             # find the relevant amendment string and see if it's in the motion
 
@@ -715,6 +770,23 @@ class MotionMapper:
                 motion = manual_motions[decision.gid]
                 self.assign_motion_decision(motion, decision, "manual text")
 
+    def assign_scotland(self):
+        for d in list(self.found_divisions) + list(self.found_agreements):
+            after_motions = extract_sp_motions(d.after)
+            # what we need to check here is if we've got S6M-15508.1 amending S6M-15508 - we only want the long verson.
+            # discard any motions that are fully contained in another
+
+            if len(after_motions) > 1:
+                raise ValueError(
+                    f"Multiple scottish motions found in {d.gid} - {after_motions}"
+                )
+            if len(after_motions) == 1:
+                if "as amended" in d.after.lower():
+                    # there will be a motion text in the actual transcript that should be easily extracted
+                    continue
+                motion = get_sp_manager().construct_from_decision(after_motions[0], d)
+                self.assign_motion_decision(motion, d, "scottish motion")
+
     def assigned_gids(self):
         division_gids = [x.gid for x in self.division_assignments]
         agreement_gids = [x.gid for x in self.agreement_assignments]
@@ -733,6 +805,8 @@ class MotionMapper:
 
         # assign manual ones first so these can reach across major heading divides
         self.assign_manual()
+
+        self.assign_scotland()
 
         # remove inappriprate motions
 
