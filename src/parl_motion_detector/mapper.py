@@ -95,6 +95,10 @@ can_be_self_motion = PhraseDetector(
         re.compile(r"^That the draft .+ be approved", re.IGNORECASE),
         re.compile(r"^That the .+ be approved.$", re.IGNORECASE),
         re.compile(r"amendment \(\w+\) to Lords amendment \d+ be made", re.IGNORECASE),
+        re.compile(r"^Amendment.*?agreed to", re.IGNORECASE),
+        re.compile(
+            r"Amendments? \d+( and \d+)* moved—\[.*?\]—and agreed to\.", re.IGNORECASE
+        ),
     ]
 )
 
@@ -416,9 +420,12 @@ class MotionMapper:
                         "just one after decision motion",
                     )
                     decisions = [x for x in decisions if x != as_amended_decisions[0]]
+                    old_motion_count = len(possible_motions)
                     possible_motions = [
                         x for x in possible_motions if x != after_decision_motions[0]
                     ]
+                    if len(possible_motions) != old_motion_count - 1:
+                        raise ValueError("After decision motion not removed")
                     continue
 
             if self.chamber == Chamber.SCOTLAND:
@@ -426,30 +433,45 @@ class MotionMapper:
                 # these should happen pretty good in order! But there may be a bit more spacing than usual
                 # for no! and some comments
 
-                amendment_motions = [
-                    x
-                    for x in possible_motions
-                    if x.has_flag(Flag.MOTION_AMENDMENT)
-                    or x.has_flag(Flag.SCOTTISH_EXPANDED_MOTION)
-                ]
-                match_allowance = 4
+                match_allowance = 20
                 for decision in decisions:
+                    amendment_motions = [
+                        x
+                        for x in possible_motions
+                        if x.has_flag(Flag.MOTION_AMENDMENT)
+                        or x.has_flag(Flag.SCOTTISH_EXPANDED_MOTION)
+                    ]
                     dec_pos = self.decision_position(decision)
                     possible_match = None
                     match_distance = 1000
+
                     for amendment in amendment_motions:
+                        close_attention = (
+                            amendment.gid == "uk.org.publicwhip/spor/2024-06-25.4.125.0"
+                        ) and (
+                            decision.gid == "uk.org.publicwhip/spor/2024-06-25.4.132"
+                        )
                         # we want to allow an amendment if it's it's a motion *before* the decision and
-                        # the closest within 4 blocks
+                        # the closest within match_allowance blocks
                         motion_pos = self.motion_position(amendment)
                         dec_motion_distance = abs(motion_pos - dec_pos)
+                        if close_attention:
+                            print("close attention")
+                            print(
+                                f"motion pos: {motion_pos} dec pos: {dec_pos} distance: {dec_motion_distance}"
+                            )
                         if (
                             motion_pos < dec_pos
-                            and dec_motion_distance < match_distance
+                            and dec_motion_distance < match_allowance
                         ):
                             if (
                                 possible_match is None
-                                or dec_motion_distance < match_allowance
+                                or dec_motion_distance < match_distance
                             ):
+                                if DEBUG:
+                                    print(
+                                        f"assigning {amendment.speech_id} to {decision.gid} based on distance {dec_motion_distance}"
+                                    )
                                 possible_match = amendment
                                 match_distance = dec_pos - motion_pos
                     if possible_match:

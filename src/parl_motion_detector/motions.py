@@ -232,7 +232,11 @@ amendment_flag = PhraseDetector(
         "I beg to move amendment",
         "Amendment proposed: at the end of the Question",
         re.compile(
-            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
+            r"question is, (?:that|the) amendment \d+\w? be agreed to\. Are we(?: all)? agreed\?",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"We move to the division on amendment \d+. Members should cast their votes now.",
             re.IGNORECASE,
         ),
     ]
@@ -365,9 +369,14 @@ motion_start = PhraseDetector(
             r"^Amendment\s*\d+\s*,\s*page\s*\d+\s*,\s*line\s*\d+\s*", re.IGNORECASE
         ),
         re.compile(
-            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
+            r"question is, (?:that|the) amendment \d+\w? be agreed to\. Are we(?: all)? agreed\?",
             re.IGNORECASE,
         ),
+        re.compile(
+            r"We move to the division on amendment \d+. Members should cast their votes now.",
+            re.IGNORECASE,
+        ),
+        re.compile(r"The next question is, that motion .* be agreed to", re.IGNORECASE),
     ]
 )
 
@@ -423,9 +432,14 @@ one_line_motion = PhraseDetector(
             re.IGNORECASE,
         ),
         re.compile(
-            r"The question is, that amendment \d+ be agreed to\. Are we(?: all)? agreed\?",
+            r"question is, (?:that|the) amendment \d+\w? be agreed to\. Are we(?: all)? agreed\?",
             re.IGNORECASE,
         ),
+        re.compile(
+            r"We move to the division on amendment \d+. Members should cast their votes now.",
+            re.IGNORECASE,
+        ),
+        re.compile(r"The next question is, that motion .* be agreed to", re.IGNORECASE),
     ]
 )
 
@@ -616,7 +630,7 @@ def get_motions(
                         current_motion = current_motion.finish(
                             collection, "new clause clean up"
                         )
-                    current_motion = new_motion(paragraph.pid)
+                    current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                     current_motion.add(transcript_group.minor_heading)
                     current_motion += Flag.CLAUSE_MOTION
                     current_motion += Flag.COMPLEX_MOTION
@@ -632,14 +646,14 @@ def get_motions(
                 motion_start(paragraph) or malformed_motion_start(paragraph)
             ):
                 debug_test(paragraph, "motion start")
-                current_motion = new_motion(paragraph.pid)
+                current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                 if resolved_start(paragraph):
                     current_motion += Flag.AFTER_DECISION
 
             if current_motion is None:
                 # similarly if there's the shortform amendment (and) the amendment close language in the same line
                 if in_line_amendment(paragraph) and signature_close(paragraph):
-                    current_motion = new_motion(paragraph.pid)
+                    current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                     current_motion.add(
                         paragraph, new_final_id=transcript_group.speech.id
                     )
@@ -655,7 +669,7 @@ def get_motions(
                     transcript_group.speech.person_id is None
                     and motion_amendment_jump_in(paragraph)
                 ):
-                    current_motion = new_motion(paragraph.pid)
+                    current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                     current_motion.add(
                         paragraph, new_final_id=transcript_group.speech.id
                     )
@@ -674,7 +688,7 @@ def get_motions(
                             collection, "in line amendment"
                         )
                     # start new one
-                    current_motion = new_motion(paragraph.pid)
+                    current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                     current_motion += Flag.INLINE_AMENDMENT
                 if amendment_explainer(paragraph):
                     # if the amendment is being explained - we're done

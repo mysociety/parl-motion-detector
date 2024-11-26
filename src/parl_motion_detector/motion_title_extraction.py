@@ -47,7 +47,7 @@ move_amendment = PhraseDetector(
         "beg to move amendment",
         "Amendment proposed",
         re.compile(
-            r"The question is, that amendment \d+ be agreed to\. Are we agreed\?",
+            r"The question is, (?:that|the) amendment \d+ be agreed to\. Are we agreed\?",
             re.IGNORECASE,
         ),
     ]
