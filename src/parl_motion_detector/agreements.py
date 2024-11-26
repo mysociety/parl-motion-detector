@@ -107,7 +107,7 @@ class Agreement(HasSpeechAndDate):
         else:
             motion_lines = [self.preceeding_text, self.agreed_text]
 
-        return Motion(
+        motion = Motion(
             date=self.date,
             chamber=self.chamber,
             major_heading_id=self.major_heading_id,
@@ -115,7 +115,10 @@ class Agreement(HasSpeechAndDate):
             speech_id=self.speech_id,
             speech_start_pid=self.paragraph_pid,
             motion_lines=motion_lines,
-        ).add_title()
+        )
+        motion.add_title()
+        motion.self_flag()
+        return motion
 
     @computed_field
     @property
@@ -165,7 +168,7 @@ class DivisionHolder(HasSpeechAndDate):
         Sometimes (like for clauses) there isn't actually a perfect motion to hold onto
         We're just going to cheat and make one.
         """
-        return Motion(
+        motion = Motion(
             date=self.date,
             chamber=self.chamber,
             major_heading_id=self.major_heading_id,
@@ -173,7 +176,10 @@ class DivisionHolder(HasSpeechAndDate):
             speech_id=self.speech_id,
             speech_start_pid="",
             motion_lines=[self.minor_heading_text, self.preceding_speech],
-        ).add_title()
+        )
+        motion.add_title()
+        motion.self_flag()
+        return motion
 
     @computed_field
     @property

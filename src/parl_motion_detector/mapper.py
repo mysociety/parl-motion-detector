@@ -102,6 +102,7 @@ can_be_self_motion = PhraseDetector(
     ]
 )
 
+
 preamble = ["Motion made, and Question put,", "Resolved,"]
 
 similar_phrases = {"additional amendment": "amendment"}
@@ -399,6 +400,27 @@ class MotionMapper:
         possible_motions = condense_motions(possible_motions)
         previous_loop = len(decisions) + 1
 
+        second_stage_motions = [
+            x for x in possible_motions if x.has_flag(Flag.SECOND_STAGE)
+        ]
+        if len(second_stage_motions) > 1:
+            # if we have multiple second stage motions - we want to just keep the first
+            # because it might confuse reasoned amendment assignment
+            possible_motions = [
+                x for x in possible_motions if x not in second_stage_motions[1:]
+            ]
+
+        if any(x.has_flag(Flag.REASONED_AMENDMENT_FULL) for x in possible_motions):
+            # remove any partial reasoned amendments if so
+            # this is because ANNOYINGLY sometimes they don't print the reasoned amendment
+            # so we need to fall back to another way of catagorising it to get the right map
+            # given this is ALWAYS in the same vote as a staged vote
+            possible_motions = [
+                x
+                for x in possible_motions
+                if not x.has_flag(Flag.REASONED_AMENDMENT_PARTIAL)
+            ]
+
         while len(decisions) < previous_loop:
             previous_loop = len(decisions)
             # print(len(decisions), previous_loop)
@@ -426,6 +448,28 @@ class MotionMapper:
                     ]
                     if len(possible_motions) != old_motion_count - 1:
                         raise ValueError("After decision motion not removed")
+                    continue
+
+            # hints from flags
+            # if we try and construct a motion from the text surrounding the decision
+            # does it share a flag with one of the motions
+            for decision in decisions:
+                constructed_motion = decision.construct_motion()
+                possible_flagged_motions = []
+                for motion in possible_motions:
+                    overlap_flags = set(motion.flags) & set(constructed_motion.flags)
+                    if overlap_flags:
+                        possible_flagged_motions.append(motion)
+                if len(possible_flagged_motions) == 1:
+                    self.assign_motion_decision(
+                        possible_flagged_motions[0],
+                        decision,
+                        "constructed motion flag match",
+                    )
+                    decisions = [x for x in decisions if x != decision]
+                    possible_motions = [
+                        x for x in possible_motions if x != possible_flagged_motions[0]
+                    ]
                     continue
 
             if self.chamber == Chamber.SCOTLAND:
