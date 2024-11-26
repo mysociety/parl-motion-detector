@@ -1,7 +1,7 @@
 title: Division Links
 description: Lookup between GID for a division and the relevant motion
 custom:
-  row_count: 1290
+  row_count: 1294
 path: division-links.parquet
 name: division-links
 profile: data-resource
@@ -31,4 +31,4 @@ schema:
       enum:
       - house-of-commons
     example: house-of-commons
-hash: ad282a9481d69f6613b7fa9b5a050080
+hash: 0649a814212d5dcbbfbe43625541e755
