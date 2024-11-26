@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from mysoc_validator import Transcript
+from mysoc_validator.models.transcripts import Chamber
 
 from parl_motion_detector.downloader import get_latest_for_date
 from parl_motion_detector.motions import get_motions
@@ -12,11 +13,12 @@ tests_path = Path("data") / "tests" / "motions"
 
 
 def compare_date(debate_date: str):
+    chamber = Chamber.COMMONS
     transcript_path = get_latest_for_date(
         datetime.date.fromisoformat(debate_date), download_path=debates_path
     )
     transcript = Transcript.from_xml_path(transcript_path)
-    current_data = get_motions(transcript, debate_date).basic_dict()
+    current_data = get_motions(chamber, transcript, debate_date).basic_dict()
     with (tests_path / f"{debate_date}.json").open() as f:
         past_data = json.load(f)
     assert current_data == past_data
