@@ -33,7 +33,8 @@ jobs:
           run: |
             export PATH="/root/.local/bin:$PATH"
             script/test
-            project process-current-year
+            project process-current-year --chamber house-of-commons
+            project process-current-year --chamber scottish-parliament
             dataset build --all
             dataset version static --auto-ban major --all --publish
             project remove-current-year-parquets

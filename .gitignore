@@ -9,3 +9,4 @@ UNKNOWN.egg-info
 data/interim/results/
 data/process
 data/packages/parliamentary_motions/*.parquet
+data/raw/sp

@@ -40,7 +40,15 @@ legislation_patterns = [
     re.compile(r"draft\s+(.*?\d{4}\s+\(.*?\)\s+Order\s+\d{4})"),
 ]
 move_amendment = PhraseDetector(
-    criteria=["beg to move an amendment", "beg to move amendment", "Amendment proposed"]
+    criteria=[
+        "beg to move an amendment",
+        "beg to move amendment",
+        "Amendment proposed",
+        re.compile(
+            r"The question is, that amendment \d+ be agreed to\. Are we agreed\?",
+            re.IGNORECASE,
+        ),
+    ]
 )
 
 second_reading = PhraseDetector(criteria=["read a Second time", "read the Second time"])
@@ -50,7 +58,13 @@ third_reading = PhraseDetector(criteria=["read a Third time", "read the Third ti
 private_sitting = PhraseDetector(criteria=["the House sit in private"])
 
 in_text_clause = re.compile(r"^New clause (\d+)", re.IGNORECASE)
-in_text_amendment = re.compile(r"^Amendment (\d+),", re.IGNORECASE)
+
+in_text_amendment_patterns = [
+    re.compile(r"^Amendment (\d+),", re.IGNORECASE),
+    re.compile(r"Amendments? (\d+ and \d+)", re.IGNORECASE),
+    re.compile(r"Amendment (\d+)", re.IGNORECASE),
+]
+
 
 new_order = PhraseDetector(criteria=["and makes provision as set out in this Order"])
 
@@ -137,8 +151,9 @@ def extract_motion_title(motion: Motion) -> str:
     if leave_for_bill(content):
         return f"Leave for Bill: {motion.major_heading_title}"
 
-    if match := in_text_amendment.search(content):
-        return f"Amendment {match.group(1)}: {motion.major_heading_title}"
+    for pattern in in_text_amendment_patterns:
+        if match := pattern.search(content):
+            return f"Amendment {match.group(1)}: {motion.major_heading_title}"
 
     if "clause" in motion.minor_heading_title.lower():
         if match := in_text_clause.search(content):

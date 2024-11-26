@@ -6,9 +6,9 @@ from pathlib import Path
 import pandas as pd
 from mysoc_validator import Transcript
 from mysoc_validator.models.transcripts import Chamber
+from mysoc_validator.utils.parlparse.downloader import get_latest_for_date
+from pydantic import ValidationError
 from tqdm import tqdm
-
-from parl_motion_detector.downloader import get_latest_for_date
 
 from .mapper import MotionMapper, ResultsHolder
 
@@ -31,20 +31,37 @@ def render_year(
     # all dates in year to date
     dates_in_year = [x.isoformat() for x in dates_in_year if x <= current_date]
 
+    xml_path = data_dir / "scrapedxml" / chamber
+
     for debate_date in tqdm(dates_in_year, desc=str(year)):
         try:
             transcript_path = get_latest_for_date(
-                datetime.date.fromisoformat(debate_date), download_path=data_dir
+                datetime.date.fromisoformat(debate_date),
+                download_path=xml_path,
+                chamber=chamber,
             )
         except FileNotFoundError:
             continue
         # fix 2019 error
         txt = transcript_path.read_text()
+
         if "21&#10;14" in txt:
             txt = txt.replace("21&#10;14", "2114")
             transcript_path.write_text(txt)
-        transcript = Transcript.from_xml_path(transcript_path)
 
+        if "S6M-133651.1" in txt:
+            txt = txt.replace("S6M-133651.1", "S6M-13365.1")
+            transcript_path.write_text(txt)
+
+        if "S6M-013368" in txt:
+            txt = txt.replace("S6M-013368", "S6M-13368")
+            transcript_path.write_text(txt)
+
+        try:
+            transcript = Transcript.from_xml_path(transcript_path)
+        except ValidationError:
+            print(f"Validation error for date: {debate_date}")
+            continue
         mm = MotionMapper(
             transcript, debate_date=debate_date, data_dir=data_dir, chamber=chamber
         )
@@ -59,20 +76,20 @@ def render_year(
     rh.export(data_dir / "processed" / "parquet")
 
 
-def render_historical(data_dir: Path):
+def render_historical(data_dir: Path, chamber: Chamber = Chamber.COMMONS):
     """
     Render motions for all historical dates
     """
     current_year = datetime.datetime.now().year
     for year in range(2019, current_year):
-        render_year(data_dir, year=year, chamber=Chamber.COMMONS)
+        render_year(data_dir, year=year, chamber=chamber)
 
 
-def render_latest(data_dir: Path):
+def render_latest(data_dir: Path, chamber: Chamber = Chamber.COMMONS):
     """
     Render motions for the latest date
     """
-    render_year(data_dir)
+    render_year(data_dir, chamber=chamber)
 
 
 def delete_current_year_parquets(data_dir: Path):

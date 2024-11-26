@@ -211,11 +211,32 @@ agreement_made = PhraseDetector(
         "Question put and agreed to.",
         "Question agreed to.",
         "read the First and Second time, and added to the Bill.",
+        "question put and agreed to",
+        "main question accordingly put and agreed to",
+        "question put and agreed",
+        "question agreed to",
+        "Question put and agree d to",
+        "Main Question put accordingly and agreed to",
+        "Question put (Standing Order No. 23) and agreed to",
+        "Main Question, as amended, put and agreed to",
+        "Main Question, as amended, put forthwith and agreed to",
+        "Question agreed to.",
+        "read the First and Second time, and added to the Bill.",
+        "Brought up, read the First and Second time, and added to the Bill",
+        "Brought up, read the First Time and Second Time and added to the Bill",
+        "Question put and agreed to.",
+        "Question put (Standing Order No.23) and agreed to.",
+        "question put and agreed to",
+        "Motion agreed to,",
     ]
 )
-
 motion_amendment_agreed = PhraseDetector(
-    criteria=[re.compile(r"^Amendment.*?agreed to", re.IGNORECASE)]
+    criteria=[
+        re.compile(r"^Amendment.*?agreed to", re.IGNORECASE),
+        re.compile(
+            r"Amendments? \d+( and \d+)* moved—\[.*?\]—and agreed to\.", re.IGNORECASE
+        ),
+    ]
 )
 
 amended_agreement = PhraseDetector(
@@ -225,25 +246,13 @@ amended_agreement = PhraseDetector(
     ]
 )
 
-
-alts = [
-    "question put and agreed to",
-    "main question accordingly put and agreed to",
-    "question put and agreed",
-    "question agreed to",
-    "Question put and agree d to",
-    "Main Question put accordingly and agreed to",
-    "Question put (Standing Order No. 23) and agreed to",
-    "Main Question, as amended, put and agreed to",
-    "Main Question, as amended, put forthwith and agreed to",
-    "Question agreed to.",
-    "read the First and Second time, and added to the Bill.",
-    "Brought up, read the First and Second time, and added to the Bill",
-    "Brought up, read the First Time and Second Time and added to the Bill",
-    "Question put and agreed to.",
-    "Question put (Standing Order No.23) and agreed to.",
-    "question put and agreed to",
-]
+not_agreement_based_on_previous = PhraseDetector(
+    criteria=[
+        re.compile(r"^The result of the division on amendment", re.IGNORECASE),
+        re.compile(r"^The result of the division is", re.IGNORECASE),
+        re.compile(r"^The result of the division on", re.IGNORECASE),
+    ]
+)
 
 
 def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
@@ -315,13 +324,17 @@ def get_agreements(transcript: Transcript, date_str: str) -> AgreementCollection
             if amended_agreement(paragraph):
                 end_reason = "amended_motion_agreed"
 
+            if end_reason and not_agreement_based_on_previous(previous_paragraph):
+                # this is catching divisions in the scottish govenrment which restate what happened
+                end_reason = None
+
             if end_reason:
                 current_agreement = Agreement(
                     date=date_str,
                     major_heading_id=major_heading_id,
                     minor_heading_id=minor_heading_id,
                     speech_id=transcript_group.speech.id,
-                    paragraph_pid=paragraph.pid or "",
+                    paragraph_pid=paragraph.pid or f"para/{index}",
                     agreed_text=str(paragraph),
                     preceeding_text=previous_paragraph,
                     after_text=next_paragraph,
