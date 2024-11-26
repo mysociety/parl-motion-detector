@@ -40,7 +40,7 @@ custom:
       exclude: none
       render: true
   change_log:
-    0.1.0: Don't need to increment, first version
+    0.1.0: 'Change in data for resource(s): agreements,division-links,motions'
   datasette:
     about: Info & Downloads
     about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0
@@ -48,7 +48,7 @@ resources:
 - title: Agreements
   description: dataset of agreements extracted from parliamentary debates
   custom:
-    row_count: 3673
+    row_count: 3682
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements
@@ -128,11 +128,11 @@ resources:
         enum:
         - house-of-commons
       example: house-of-commons
-  hash: ae2ef83fb9ac5ef5bd85ff4ffa08af2d
+  hash: c8d475636b72ea33e1b4156876aefbf3
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
-    row_count: 1290
+    row_count: 1294
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links
@@ -165,11 +165,11 @@ resources:
         enum:
         - house-of-commons
       example: house-of-commons
-  hash: ad282a9481d69f6613b7fa9b5a050080
+  hash: 0649a814212d5dcbbfbe43625541e755
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
-    row_count: 4963
+    row_count: 4976
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions
@@ -222,7 +222,7 @@ resources:
         enum:
         - house-of-commons
       example: house-of-commons
-  hash: dc57c5d10f9d501543f3190412fe3208
+  hash: 48c20dcd110e53abd874e92c02a88316
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
