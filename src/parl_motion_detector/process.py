@@ -33,6 +33,8 @@ def render_year(
 
     xml_path = data_dir / "scrapedxml" / chamber
 
+    xml_path.mkdir(parents=True, exist_ok=True)
+
     for debate_date in tqdm(dates_in_year, desc=str(year)):
         try:
             transcript_path = get_latest_for_date(
