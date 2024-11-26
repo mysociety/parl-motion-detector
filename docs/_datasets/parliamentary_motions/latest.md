@@ -48,7 +48,7 @@ resources:
 - title: Agreements
   description: dataset of agreements extracted from parliamentary debates
   custom:
-    row_count: 3682
+    row_count: 3876
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements
@@ -113,7 +113,7 @@ resources:
       description: Title of the motion
       constraints:
         unique: false
-      example: 20 YEARS OF DEVOLUTION
+      example: ''
     - name: motion_gid
       type: string
       description: ID of the motion
@@ -127,12 +127,13 @@ resources:
         unique: false
         enum:
         - house-of-commons
+        - scottish-parliament
       example: house-of-commons
-  hash: c8d475636b72ea33e1b4156876aefbf3
+  hash: 589ffa6cca4f1e67850a6832a6bc7cef
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
-    row_count: 1294
+    row_count: 1599
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links
@@ -164,12 +165,13 @@ resources:
         unique: false
         enum:
         - house-of-commons
+        - scottish-parliament
       example: house-of-commons
-  hash: 0649a814212d5dcbbfbe43625541e755
+  hash: ecb803ab60df72fca26b00cbd419f9cd
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
-    row_count: 4976
+    row_count: 5475
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions
@@ -205,15 +207,28 @@ resources:
       description: Title of the motion
       constraints:
         unique: false
-      example: 18. Pensions (lifetime allowance charge and annual allowance)
+      example: ''
     - name: motion_text
       type: string
       description: Text of the motion
       constraints:
         unique: false
-      example: "After Clause 46 - Register of members: information to be included\
-        \ and powers to obtain it\nQuestion put, That amendment (a) to Lords amendment\
-        \ 23 be made."
+      example: "&nbsp;As an amendment to motion S6M-15086 in the name of Kenneth Gibson\
+        \ (Scotland&rsquo;s Commissioner Landscape), leave out from \"; agrees with\"\
+        \ to end and insert \", and notes the recommendation that a dedicated committee\
+        \ should be established to carry out a 'root and branch' review, to be concluded\
+        \ by June 2025, with the purpose of creating a clear strategic framework to\
+        \ underpin and provide more coherence and structure to the Scottish Parliamentary\
+        \ Corporate Body (SPCB) supported body landscape.\"&nbsp;\n\nOriginal motion(S6M-15086):\n\
+        That the Parliament welcomes the Finance and Public Administration Committee&rsquo;s\
+        \ 7th Report, 2024 (Session 6),&nbsp;Scotland&rsquo;s Commissioner Landscape:\
+        \ A Strategic Approach&nbsp;(SP Paper 642); agrees with the recommendation\
+        \ that a dedicated committee should be established to carry out a \"root and\
+        \ branch\" review, with the purpose of creating a clear strategic framework\
+        \ to underpin and provide more coherence and structure to the Scottish Parliamentary\
+        \ Corporate Body (SPCB) supported body landscape, and further agrees that,\
+        \ while this review is undertaken, there should be a moratorium on creating\
+        \ any new SPCB supported bodies, or expanding the remit of existing bodies."
     - name: chamber
       type: string
       description: Chamber in which the motion was made
@@ -221,8 +236,9 @@ resources:
         unique: false
         enum:
         - house-of-commons
+        - scottish-parliament
       example: house-of-commons
-  hash: 48c20dcd110e53abd874e92c02a88316
+  hash: 19dcefc6ca4d267de3f294d17bb3979a
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
