@@ -9,6 +9,7 @@ from typing import Optional, TypeVar
 import pandas as pd
 from bs4 import BeautifulSoup
 from mysoc_validator import Transcript
+from mysoc_validator.models.transcripts import Chamber
 from pydantic import BaseModel, Field, computed_field
 
 from parl_motion_detector.detector import PhraseDetector, StartsWith, Stringifiable
@@ -89,6 +90,7 @@ class Motion(BaseModel):
     speech_id: str
     final_speech_id: str = ""
     end_reason: str = ""
+    chamber: Chamber
     motion_lines: list[str] = Field(default_factory=list)
     flags: list[Flag] = Field(default_factory=list)
 
@@ -508,7 +510,9 @@ debug_test = HereTest("")
 debug_mode = debug_test.criteria != ""
 
 
-def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
+def get_motions(
+    chamber: Chamber, transcript: Transcript, date_str: str
+) -> MotionCollection:
     collection = MotionCollection()
 
     # iterate through the transcript
@@ -522,6 +526,7 @@ def get_motions(transcript: Transcript, date_str: str) -> MotionCollection:
             if speech_start_pid is None:
                 speech_start_pid = ""
             return Motion(
+                chamber=chamber,
                 speech_start_pid=speech_start_pid,
                 speech_id=transcript_group.speech.id,
                 minor_heading_id=minor_heading_id,

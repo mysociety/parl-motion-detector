@@ -102,6 +102,7 @@
     {
         "decision_gid": "uk.org.publicwhip/debate/2024-10-09c.415.0",
         "motion": {
+            "chamber": "house-of-commons",
             "date": "2024-10-09",
             "gid": "uk.org.publicwhip/debate/2024-10-09c.332.0.2",
             "speech_id": "uk.org.publicwhip/debate/2024-10-09c.332.0",

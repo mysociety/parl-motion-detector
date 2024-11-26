@@ -313,9 +313,9 @@ class MotionMapper:
         self.data_dir = data_dir
         self.debate_date = debate_date
         self.chamber = chamber
-        self.found_motions = get_motions(transcript, debate_date)
-        self.found_agreements = get_agreements(transcript, debate_date)
-        self.found_divisions = get_divisions(transcript, debate_date)
+        self.found_motions = get_motions(self.chamber, transcript, debate_date)
+        self.found_agreements = get_agreements(self.chamber, transcript, debate_date)
+        self.found_divisions = get_divisions(self.chamber, transcript, debate_date)
         self.division_assignments: list[DivisionHolder] = []
         self.agreement_assignments: list[Agreement] = []
 
