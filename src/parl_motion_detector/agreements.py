@@ -12,6 +12,7 @@ from typing import (
 
 from mysoc_validator import Transcript
 from mysoc_validator.models.transcripts import (
+    Chamber,
     Division,
     MajorHeading,
     MinorHeading,
@@ -63,6 +64,7 @@ class Agreement(HasSpeechAndDate):
     major_heading_id: str
     minor_heading_id: str
     speech_id: str
+    chamber: Chamber
     paragraph_pid: str = ""
     end_reason: str = ""
     agreement_pid: str = ""
@@ -107,6 +109,7 @@ class Agreement(HasSpeechAndDate):
 
         return Motion(
             date=self.date,
+            chamber=self.chamber,
             major_heading_id=self.major_heading_id,
             minor_heading_id=self.minor_heading_id,
             speech_id=self.speech_id,
@@ -135,6 +138,7 @@ class DivisionHolder(HasSpeechAndDate):
     major_heading_id: str
     minor_heading_id: str
     minor_heading_text: str
+    chamber: Chamber
     speech_id: str  # actually the division id for these purposes
     paragraph_pid: str = ""
     preceding_speech: str
@@ -163,6 +167,7 @@ class DivisionHolder(HasSpeechAndDate):
         """
         return Motion(
             date=self.date,
+            chamber=self.chamber,
             major_heading_id=self.major_heading_id,
             minor_heading_id=self.minor_heading_id,
             speech_id=self.speech_id,
@@ -255,7 +260,9 @@ not_agreement_based_on_previous = PhraseDetector(
 )
 
 
-def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
+def get_divisions(
+    chamber: Chamber, transcript: Transcript, date_str: str
+) -> DivisionCollection:
     previous = None
     major_heading = None
     minor_heading = None
@@ -281,6 +288,7 @@ def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
                 next_speech = ""
             current_division = DivisionHolder(
                 date=date_str,
+                chamber=chamber,
                 major_heading_id=major_heading.id if major_heading else "",
                 minor_heading_id=minor_heading.id if minor_heading else "",
                 minor_heading_text=str(minor_heading) if minor_heading else "",
@@ -295,7 +303,9 @@ def get_divisions(transcript: Transcript, date_str: str) -> DivisionCollection:
     return collection
 
 
-def get_agreements(transcript: Transcript, date_str: str) -> AgreementCollection:
+def get_agreements(
+    chamber: Chamber, transcript: Transcript, date_str: str
+) -> AgreementCollection:
     collection = AgreementCollection()
 
     for transcript_group in transcript.iter_headed_speeches():
@@ -330,6 +340,7 @@ def get_agreements(transcript: Transcript, date_str: str) -> AgreementCollection
 
             if end_reason:
                 current_agreement = Agreement(
+                    chamber=chamber,
                     date=date_str,
                     major_heading_id=major_heading_id,
                     minor_heading_id=minor_heading_id,

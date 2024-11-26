@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Annotated
 
 import httpx
+from mysoc_validator.models.transcripts import Chamber
 from pydantic import (
     AfterValidator,
     AliasGenerator,
@@ -71,6 +72,7 @@ class SPMotionManager:
 
         return Motion(
             date=decision.date,
+            chamber=Chamber.SCOTLAND,
             speech_id=decision.speech_id,
             motion_title=motion_data.title,
             motion_lines=motion_data.item_text.split("\n"),

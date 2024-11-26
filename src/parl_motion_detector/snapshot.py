@@ -4,6 +4,7 @@ import datetime
 from pathlib import Path
 
 from mysoc_validator import Transcript
+from mysoc_validator.models.transcripts import Chamber
 
 from .downloader import get_latest_for_date
 from .mapper import MotionMapper
@@ -25,11 +26,12 @@ anchor_dates = [
 
 
 def generate_motion_snapshot(date: str):
+    chamber = Chamber.COMMONS
     transcript_path = get_latest_for_date(
         datetime.date.fromisoformat(date), download_path=debates_path
     )
     transcript = Transcript.from_xml_path(transcript_path)
-    found_motions = get_motions(transcript, date)
+    found_motions = get_motions(chamber, transcript, date)
     found_motions.dump_test_data(tests_path / "motions")
 
 
