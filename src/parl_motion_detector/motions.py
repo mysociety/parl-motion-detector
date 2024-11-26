@@ -77,6 +77,9 @@ class Flag(StrEnum):
     MAIN_QUESTION = "main_question"
     MOTION_AMENDMENT = "motion_amendment"
     SCOTTISH_EXPANDED_MOTION = "scottish_expanded_motion"
+    REASONED_AMENDMENT_FULL = "reasoned_amendment_full"
+    REASONED_AMENDMENT_PARTIAL = "reasoned_amendment_partial"
+    SECOND_STAGE = "second_stage"
 
 
 class Motion(BaseModel):
@@ -167,10 +170,17 @@ class Motion(BaseModel):
         """
         Any extra tags to add based on the final content
         """
-        content = str(self).lower()
+        content = str(self).lower().replace("\n", " ").replace("  ", " ")
         if len(self.motion_lines) < 3:
             if abstract_motion(content):
                 self.add_flag(Flag.ABSTRACT_MOTION)
+
+        if reasoned_amendment_full(content):
+            self.add_flag(Flag.REASONED_AMENDMENT_FULL)
+        if second_time_flag(content):
+            self.add_flag(Flag.SECOND_STAGE)
+        if reasoned_amendment_partial(content):
+            self.add_flag(Flag.REASONED_AMENDMENT_PARTIAL)
 
         if amendment_flag(content):
             self.add_flag(Flag.MOTION_AMENDMENT)
@@ -225,12 +235,23 @@ abstract_motion = PhraseDetector(
     ]
 )
 
+reasoned_amendment_partial = PhraseDetector(
+    criteria=[
+        re.compile(r"The reasoned amendment .* has been selected", re.IGNORECASE),
+    ]
+)
+
+reasoned_amendment_full = PhraseDetector(
+    criteria=["declines to give a second reading", "declines to give a third reading"]
+)
+
 # for adding a flag after bringing the contents together
 amendment_flag = PhraseDetector(
     criteria=[
         "I beg to move an amendment",
         "I beg to move amendment",
         "Amendment proposed: at the end of the Question",
+        re.compile(r"The reasoned amendment .* has been selected", re.IGNORECASE),
         re.compile(
             r"question is, (?:that|the) amendment \d+\w? be agreed to\. Are we(?: all)? agreed\?",
             re.IGNORECASE,
@@ -377,6 +398,17 @@ motion_start = PhraseDetector(
             re.IGNORECASE,
         ),
         re.compile(r"The next question is, that motion .* be agreed to", re.IGNORECASE),
+        re.compile(r"The reasoned amendment .* has been selected", re.IGNORECASE),
+    ]
+)
+
+second_time_flag = PhraseDetector(
+    criteria=[
+        "That the Bill be now read a Second time",
+        "Motion made, That the Bill be read be now read a Second time",
+        "Motion made, That the Bill be now read a Secondtime",
+        "That the Bill be now read a second time",
+        "the Bill be now read a Second time",
     ]
 )
 
@@ -440,6 +472,7 @@ one_line_motion = PhraseDetector(
             re.IGNORECASE,
         ),
         re.compile(r"The next question is, that motion .* be agreed to", re.IGNORECASE),
+        re.compile(r"The reasoned amendment .* has been selected", re.IGNORECASE),
     ]
 )
 
