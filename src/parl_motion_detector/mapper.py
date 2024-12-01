@@ -369,8 +369,9 @@ class MotionMapper:
         assignment_reason: str,
     ):
         if DEBUG:
+            motion_start = str(motion)[:30]
             print(
-                f"Assigning motion: {motion.speech_id} to decision: {decision.gid} - {assignment_reason}"
+                f"Assigning motion: {motion.speech_id} ({motion_start})  to {type(decision).__name__}: {decision.gid} - {assignment_reason}"
             )
         decision.motion = motion
         decision.motion_assignment_reason = assignment_reason
@@ -453,12 +454,16 @@ class MotionMapper:
             # hints from flags
             # if we try and construct a motion from the text surrounding the decision
             # does it share a flag with one of the motions
+            banned_overlap_flags = [Flag.MAIN_QUESTION, Flag.AFTER_DECISION]
             for decision in decisions:
-                constructed_motion = decision.construct_motion()
+                constructed_motion = decision.construct_motion(use_agreed_only=True)
                 possible_flagged_motions = []
                 for motion in possible_motions:
-                    overlap_flags = set(motion.flags) & set(constructed_motion.flags)
+                    overlap_flags = (
+                        set(motion.flags) & set(constructed_motion.flags)
+                    ) - set(banned_overlap_flags)
                     if overlap_flags:
+                        # print(f"overlap flags: {overlap_flags}")
                         possible_flagged_motions.append(motion)
                 if len(possible_flagged_motions) == 1:
                     self.assign_motion_decision(
@@ -490,20 +495,11 @@ class MotionMapper:
                     match_distance = 1000
 
                     for amendment in amendment_motions:
-                        close_attention = (
-                            amendment.gid == "uk.org.publicwhip/spor/2024-06-25.4.125.0"
-                        ) and (
-                            decision.gid == "uk.org.publicwhip/spor/2024-06-25.4.132"
-                        )
                         # we want to allow an amendment if it's it's a motion *before* the decision and
                         # the closest within match_allowance blocks
                         motion_pos = self.motion_position(amendment)
                         dec_motion_distance = abs(motion_pos - dec_pos)
-                        if close_attention:
-                            print("close attention")
-                            print(
-                                f"motion pos: {motion_pos} dec pos: {dec_pos} distance: {dec_motion_distance}"
-                            )
+
                         if (
                             motion_pos < dec_pos
                             and dec_motion_distance < match_allowance
@@ -644,6 +640,8 @@ class MotionMapper:
                         # ignore after_decision motions that come *before* the motion we're concerned about.
                         continue
                     elif motion_pos == decision_pos:
+                        # if this is the case, we need to check the motion comes before the decision
+                        # we implicitly know this is an agreement because a devision would have a minimum distance of 1
                         exact_matches.append(motion)
                     elif abs(motion_pos - decision_pos) <= 2:
                         nearby_matches.append(motion)
@@ -664,6 +662,8 @@ class MotionMapper:
                         relevant_motions = [relevant_motions[-1]]
 
                 if len(relevant_motions) == 1:
+                    # print(f"motion_pos: {motion_pos} decision_pos: {decision_pos}")
+                    # print(f"is_before: {motion_pos < decision_pos}")
                     self.assign_motion_decision(
                         relevant_motions[0], decision, reason_str
                     )

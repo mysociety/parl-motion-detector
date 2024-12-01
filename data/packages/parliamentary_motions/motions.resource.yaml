@@ -1,7 +1,7 @@
 title: Motions
 description: Motions extracted from parliamentary debates
 custom:
-  row_count: 4976
+  row_count: 5325
 path: motions.parquet
 name: motions
 profile: data-resource
@@ -34,15 +34,28 @@ schema:
     description: Title of the motion
     constraints:
       unique: false
-    example: 18. Pensions (lifetime allowance charge and annual allowance)
+    example: ' Approval of SSI'
   - name: motion_text
     type: string
     description: Text of the motion
     constraints:
       unique: false
-    example: "After Clause 46 - Register of members: information to be included and\
-      \ powers to obtain it\nQuestion put, That amendment (a) to Lords amendment 23\
-      \ be made."
+    example: "&nbsp;As an amendment to motion S6M-15086 in the name of Kenneth Gibson\
+      \ (Scotland&rsquo;s Commissioner Landscape), leave out from \"; agrees with\"\
+      \ to end and insert \", and notes the recommendation that a dedicated committee\
+      \ should be established to carry out a 'root and branch' review, to be concluded\
+      \ by June 2025, with the purpose of creating a clear strategic framework to\
+      \ underpin and provide more coherence and structure to the Scottish Parliamentary\
+      \ Corporate Body (SPCB) supported body landscape.\"&nbsp;\n\nOriginal motion(S6M-15086):\n\
+      That the Parliament welcomes the Finance and Public Administration Committee&rsquo;s\
+      \ 7th Report, 2024 (Session 6),&nbsp;Scotland&rsquo;s Commissioner Landscape:\
+      \ A Strategic Approach&nbsp;(SP Paper 642); agrees with the recommendation that\
+      \ a dedicated committee should be established to carry out a \"root and branch\"\
+      \ review, with the purpose of creating a clear strategic framework to underpin\
+      \ and provide more coherence and structure to the Scottish Parliamentary Corporate\
+      \ Body (SPCB) supported body landscape, and further agrees that, while this\
+      \ review is undertaken, there should be a moratorium on creating any new SPCB\
+      \ supported bodies, or expanding the remit of existing bodies."
   - name: chamber
     type: string
     description: Chamber in which the motion was made
@@ -50,5 +63,6 @@ schema:
       unique: false
       enum:
       - house-of-commons
+      - scottish-parliament
     example: house-of-commons
-hash: 48c20dcd110e53abd874e92c02a88316
+hash: 3b06bee61ac467d61b4da33efa901536

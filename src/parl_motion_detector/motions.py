@@ -316,6 +316,7 @@ motion_start = PhraseDetector(
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
         "The Deputy Speaker put forthwith",
+        "claimed to move the closure (Standing Order No. 36)",
         re.compile(r"^To leave out from “That”", re.IGNORECASE),
         # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
         re.compile(r"^Question put,$", re.IGNORECASE),
@@ -436,6 +437,7 @@ one_line_motion = PhraseDetector(
         "That the original words stand part of the Question",
         "That this House authorises",
         "That this House do now adjourn.",
+        "claimed to move the closure (Standing Order No. 36).",
         re.compile(
             r"Question, That new clause \d+ be added to the Bill.", re.IGNORECASE
         ),
