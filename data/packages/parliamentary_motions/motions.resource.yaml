@@ -1,7 +1,7 @@
 title: Motions
 description: Motions extracted from parliamentary debates
 custom:
-  row_count: 5325
+  row_count: 5515
 path: motions.parquet
 name: motions
 profile: data-resource
@@ -34,7 +34,7 @@ schema:
     description: Title of the motion
     constraints:
       unique: false
-    example: ' Approval of SSI'
+    example: ''
   - name: motion_text
     type: string
     description: Text of the motion
@@ -65,4 +65,4 @@ schema:
       - house-of-commons
       - scottish-parliament
     example: house-of-commons
-hash: 3b06bee61ac467d61b4da33efa901536
+hash: d6c3b7c19d578571a7a9a03342e37cc4

@@ -1,7 +1,7 @@
 title: Agreements
 description: dataset of agreements extracted from parliamentary debates
 custom:
-  row_count: 3682
+  row_count: 3910
 path: agreements.parquet
 name: agreements
 profile: data-resource
@@ -62,7 +62,7 @@ schema:
     description: Title of the motion
     constraints:
       unique: false
-    example: 20 YEARS OF DEVOLUTION
+    example: ''
   - name: motion_gid
     type: string
     description: ID of the motion
@@ -76,5 +76,12 @@ schema:
       unique: false
       enum:
       - house-of-commons
+      - scottish-parliament
     example: house-of-commons
-hash: c8d475636b72ea33e1b4156876aefbf3
+  - name: negative
+    type: string
+    description: Boolean on if the agreement is to reject the motion
+    constraints:
+      unique: false
+    example: 'False'
+hash: ac7b1f92c5899765ea70b3ce484d06fa
