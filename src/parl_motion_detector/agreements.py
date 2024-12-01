@@ -74,6 +74,13 @@ class Agreement(HasSpeechAndDate):
     motion: Optional[Motion] = None
     motion_assignment_reason: str = ""
 
+    @computed_field
+    @property
+    def negative(self) -> bool:
+        if "negatived" in self.agreed_text.lower():
+            return True
+        return False
+
     def flat(self):
         return {
             "gid": self.gid,
@@ -83,6 +90,7 @@ class Agreement(HasSpeechAndDate):
             "speech_id": self.speech_id,
             "paragraph_pid": self.paragraph_pid,
             "agreed_text": self.agreed_text,
+            "negative": self.negative,
             "motion_title": self.motion.motion_title if self.motion else "",
             "motion_gid": self.motion.gid if self.motion else "",
         }
@@ -101,11 +109,14 @@ class Agreement(HasSpeechAndDate):
         else:
             return ""
 
-    def construct_motion(self):
-        if construct_reading_pass(self.after_text.lower()):
-            motion_lines = [self.agreed_text, self.after_text]
+    def construct_motion(self, use_agreed_only: bool = False):
+        if use_agreed_only:
+            motion_lines = [self.agreed_text]
         else:
-            motion_lines = [self.preceeding_text, self.agreed_text]
+            if construct_reading_pass(self.after_text.lower()):
+                motion_lines = [self.agreed_text, self.after_text]
+            else:
+                motion_lines = [self.preceeding_text, self.agreed_text]
 
         motion = Motion(
             date=self.date,
@@ -163,10 +174,11 @@ class DivisionHolder(HasSpeechAndDate):
         else:
             return ""
 
-    def construct_motion(self):
+    def construct_motion(self, use_agreed_only: bool = False):
         """
         Sometimes (like for clauses) there isn't actually a perfect motion to hold onto
         We're just going to cheat and make one.
+        use_agreed_only - does nothing but compatible with agreement vesion.
         """
         motion = Motion(
             date=self.date,
@@ -231,6 +243,7 @@ agreement_made = PhraseDetector(
         "Question put (Standing Order No. 23) and agreed to",
         "Main Question, as amended, put and agreed to",
         "Main Question, as amended, put forthwith and agreed to",
+        "Question put forthwith (Standing Order No. 163) and negatived",
         "Question agreed to.",
         "read the First and Second time, and added to the Bill.",
         "Brought up, read the First and Second time, and added to the Bill",
