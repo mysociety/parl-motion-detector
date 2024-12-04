@@ -53,7 +53,7 @@
             }
         },
         "change_log": {
-            "0.1.0": "New field(s) added to end of resource: negative"
+            "0.1.0": "Change in data for resource(s): agreements,division-links,motions"
         },
         "datasette": {
             "about": "Info & Downloads",
@@ -65,7 +65,7 @@
             "title": "Agreements",
             "description": "dataset of agreements extracted from parliamentary debates",
             "custom": {
-                "row_count": 3910,
+                "row_count": 3916,
                 "datasette": {
                     "about": "Info & Downloads",
                     "about_url": "https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements"
@@ -185,13 +185,13 @@
                     }
                 ]
             },
-            "hash": "ac7b1f92c5899765ea70b3ce484d06fa"
+            "hash": "908a9a81bff438a03e60ba7a321d5ea8"
         },
         {
             "title": "Division Links",
             "description": "Lookup between GID for a division and the relevant motion",
             "custom": {
-                "row_count": 1605,
+                "row_count": 1611,
                 "datasette": {
                     "about": "Info & Downloads",
                     "about_url": "https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links"
@@ -239,13 +239,13 @@
                     }
                 ]
             },
-            "hash": "1fff0bfc970a6d782621c51d91476010"
+            "hash": "5b47f9a733c6dda97d4a95f5846f35fc"
         },
         {
             "title": "Motions",
             "description": "Motions extracted from parliamentary debates",
             "custom": {
-                "row_count": 5515,
+                "row_count": 5527,
                 "datasette": {
                     "about": "Info & Downloads",
                     "about_url": "https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions"
@@ -320,7 +320,7 @@
                     }
                 ]
             },
-            "hash": "d6c3b7c19d578571a7a9a03342e37cc4"
+            "hash": "4bb4d214452b78f2288da5ae83e998e9"
         }
     ]
 }
