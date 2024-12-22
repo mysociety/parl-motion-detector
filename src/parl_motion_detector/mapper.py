@@ -79,6 +79,13 @@ main_question_put = PhraseDetector(
     criteria=["question put and agreed to", "That the amendment be made."]
 )
 
+lords_amendment_agreement = PhraseDetector(
+    criteria=[
+        re.compile(r"lords amendment \d+ agreed to", re.IGNORECASE),
+        re.compile(r"amendment \(a\) in lieu of Lords", re.IGNORECASE),
+    ]
+)
+
 # These are phrases that indicate in the worst case - we can just extract a motion from
 # information the decision itself has
 can_be_self_motion = PhraseDetector(
@@ -291,7 +298,13 @@ class ResultsHolder(BaseModel):
     @classmethod
     def from_data_dir_composite(cls, data_dir: Path, date: str, chamber: Chamber):
         items: list[ResultsHolder] = []
-        for file_path in data_dir.glob(f"{chamber}-{date}*.json"):
+        if date == "custom":
+            file_paths = []
+            for year in range(2000, 2019):
+                file_paths.extend(data_dir.glob(f"{chamber}-{year}*.json"))
+        else:
+            file_paths = data_dir.glob(f"{chamber}-{date}*.json")
+        for file_path in file_paths:
             with file_path.open() as f:
                 item = cls.model_validate_json(f.read())
                 items.append(item)
@@ -558,9 +571,23 @@ class MotionMapper:
                         continue
 
                     if len(possible_amendment_motions) > 1:
+                        if isinstance(decision, Agreement):
+                            if lords_amendment_agreement(decision.agreed_text):
+                                motion = decision.construct_motion(use_agreed_only=True)
+                                if motion:
+                                    self.assign_motion_decision(
+                                        motion, decision, "lords amendment"
+                                    )
+                                    decisions = [x for x in decisions if x != decision]
+                                    continue
+
+                    if len(possible_amendment_motions) > 1:
                         rich.print(decision)
                         rich.print(possible_amendment_motions)
-                        raise ValueError("Too many amendment motions found")
+
+                        raise ValueError(
+                            f"Too many amendment motions found on {self.debate_date}"
+                        )
 
                 ## are there any motions that almost exactly match the preceeding text of the question
                 # e.g.That the Bill be now read the Third time.
@@ -813,7 +840,7 @@ class MotionMapper:
         if len(decisions) > 0:
             rich.print(decisions)
             rich.print(possible_motions)
-            raise ValueError("Unassigned decisions remain")
+            raise ValueError(f"Unassigned decisions remain on date {self.debate_date}")
 
     def assign_manual(self):
         manual_lookup = get_manual_connections(self.data_dir)

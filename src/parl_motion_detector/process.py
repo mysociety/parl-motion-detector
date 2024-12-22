@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -16,7 +17,11 @@ data_dir = Path(__file__).parent.parent.parent / "data"
 
 
 def render_year(
-    data_dir: Path, year: int | None = None, chamber: Chamber = Chamber.COMMONS
+    data_dir: Path,
+    year: int | None = None,
+    dates_in_year: list[datetime.date] | None = None,
+    chamber: Chamber = Chamber.COMMONS,
+    fail_day: bool = False,
 ):
     """
     Render motions for a specify year
@@ -25,17 +30,23 @@ def render_year(
     if year is None:
         year = current_date.year
     # all dates in year to date
-    dates_in_year = [
-        datetime.date(year, 1, 1) + datetime.timedelta(days=i) for i in range(365)
-    ]
+    if dates_in_year:
+        label = "custom"
+    if not dates_in_year:
+        label = str(year)
+        dates_in_year = [
+            datetime.date(year, 1, 1) + datetime.timedelta(days=i) for i in range(365)
+        ]
     # all dates in year to date
-    dates_in_year = [x.isoformat() for x in dates_in_year if x <= current_date]
+    str_dates_in_year = [x.isoformat() for x in dates_in_year if x <= current_date]
 
     xml_path = data_dir / "scrapedxml" / chamber
 
     xml_path.mkdir(parents=True, exist_ok=True)
 
-    for debate_date in tqdm(dates_in_year, desc=str(year)):
+    fails_on = []
+
+    for debate_date in tqdm(str_dates_in_year, desc=label):
         try:
             transcript_path = get_latest_for_date(
                 datetime.date.fromisoformat(debate_date),
@@ -64,18 +75,40 @@ def render_year(
         except ValidationError:
             print(f"Validation error for date: {debate_date}")
             continue
+
         mm = MotionMapper(
             transcript, debate_date=debate_date, data_dir=data_dir, chamber=chamber
         )
 
-        mm.assign()
+        try:
+            mm.assign()
+        except Exception as e:
+            if fail_day:
+                fails_on.append(debate_date)
+                # just print the content of the error
+                print(e)
+                continue
+            raise e
         results = mm.export()
         results.to_data_dir(data_dir / "interim" / "results")
 
+    if fail_day:
+        day_fails = len(fails_on)
+        if day_fails > 0:
+            print(f"Fails on {day_fails} days")
+            print(fails_on)
+
     rh = ResultsHolder.from_data_dir_composite(
-        data_dir / "interim" / "results", date=str(year), chamber=chamber
+        data_dir / "interim" / "results", date=label, chamber=chamber
     )
     rh.export(data_dir / "processed" / "parquet")
+
+
+def render_policy_days(data_dir: Path, chamber: Chamber = Chamber.COMMONS):
+    data = json.loads(Path("data", "raw", "pre_2019_dates.json").read_text())
+    dates = [datetime.date.fromisoformat(x) for x in data]
+    dates.sort()
+    render_year(data_dir, dates_in_year=dates, chamber=chamber, fail_day=True)
 
 
 def render_historical(data_dir: Path, chamber: Chamber = Chamber.COMMONS):

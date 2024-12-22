@@ -8,6 +8,7 @@ from .process import (
     move_to_package,
     render_historical,
     render_latest,
+    render_policy_days,
     render_year,
 )
 from .snapshot import generate_all_snapshots
@@ -51,6 +52,17 @@ def process_historical(chamber: Chamber = Chamber.COMMONS):
     """
     chamber = Chamber(chamber)
     render_historical(data_dir, chamber=chamber)
+    move_to_package(data_dir)
+
+
+@cli.command()
+@click.option("--chamber", type=str, default=Chamber.COMMONS)
+def process_historical_policy_days(chamber: Chamber = Chamber.COMMONS):
+    """
+    Regenerate parquets for historical information
+    """
+    chamber = Chamber(chamber)
+    render_policy_days(data_dir, chamber=chamber)
     move_to_package(data_dir)
 
 

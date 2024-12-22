@@ -317,6 +317,7 @@ motion_start = PhraseDetector(
         "Motion made, and Question put",
         "The Deputy Speaker put forthwith",
         "claimed to move the closure (Standing Order No. 36)",
+        re.compile(r"^Lords amendment:", re.IGNORECASE),
         re.compile(r"^To leave out from “That”", re.IGNORECASE),
         # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
         re.compile(r"^Question put,$", re.IGNORECASE),
@@ -799,6 +800,9 @@ def get_motions(
                             collection, "amendment closed with name"
                         )
                         continue
+
+                    if is_subitem(next_item):
+                        current_motion += Flag.COMPLEX_MOTION
 
                     if current_motion.has_flag(Flag.COMPLEX_MOTION) is False:
                         # Normally a hint we're done for simple motions
