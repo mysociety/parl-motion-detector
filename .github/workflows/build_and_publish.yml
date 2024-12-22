@@ -38,7 +38,7 @@ jobs:
             dataset build --all
             dataset version static --auto-ban major --all --publish
             project remove-current-year-parquets
-
+            dataset publish --all
             
       - name: Push new data
         id: auto-commit-action
