@@ -799,7 +799,9 @@ class MotionMapper:
                         or can_be_self_motion(decision.preceeding)
                         or can_be_self_motion(decision.after)
                     ):
-                        motion = decision.construct_motion()
+                        motion = decision.construct_motion(
+                            use_agreed_only=isinstance(decision, Agreement)
+                        )
                         if motion:
                             self.assign_motion_decision(
                                 motion, decision, "constructed motion"
