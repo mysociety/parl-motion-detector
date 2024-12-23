@@ -1,7 +1,7 @@
 title: Division Links
 description: Lookup between GID for a division and the relevant motion
 custom:
-  row_count: 1636
+  row_count: 2555
 path: division-links.parquet
 name: division-links
 profile: data-resource
@@ -16,13 +16,13 @@ schema:
     description: GID of the division
     constraints:
       unique: true
-    example: uk.org.publicwhip/debate/2019-01-08b.243.1
+    example: uk.org.publicwhip/debate/2001-10-24.325.0
   - name: motion_gid
     type: string
     description: GID of the motion
     constraints:
       unique: true
-    example: uk.org.publicwhip/debate/2019-01-08b.212.3.1
+    example: uk.org.publicwhip/debate/2001-10-24.321.1.1
   - name: chamber
     type: string
     description: Chamber in which the motion was made
@@ -32,4 +32,4 @@ schema:
       - house-of-commons
       - scottish-parliament
     example: house-of-commons
-hash: f4b5e6ec1bf6efa4fd52f9bf1ed5d1d5
+hash: d3bf300149192b0133bbd86e8d3b5626
