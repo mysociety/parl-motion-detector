@@ -63,6 +63,7 @@ class Agreement(HasSpeechAndDate):
     date: str
     major_heading_id: str
     minor_heading_id: str
+    major_heading_title: str = ""
     speech_id: str
     chamber: Chamber
     paragraph_pid: str = ""
@@ -123,6 +124,7 @@ class Agreement(HasSpeechAndDate):
             chamber=self.chamber,
             major_heading_id=self.major_heading_id,
             minor_heading_id=self.minor_heading_id,
+            major_heading_title=self.major_heading_title,
             speech_id=self.speech_id,
             speech_start_pid=self.paragraph_pid,
             motion_lines=motion_lines,
@@ -256,7 +258,7 @@ agreement_made = PhraseDetector(
 )
 motion_amendment_agreed = PhraseDetector(
     criteria=[
-        re.compile(r"^Amendment.*?agreed to", re.IGNORECASE),
+        re.compile(r"^Amendment.{1,5}?agreed to", re.IGNORECASE),
         re.compile(
             r"Amendments? \d+( and \d+)* moved—\[.*?\]—and agreed to\.", re.IGNORECASE
         ),
@@ -335,6 +337,12 @@ def get_agreements(
             transcript_group.major_heading.id if transcript_group.major_heading else ""
         )
 
+        major_heading_text = (
+            str(transcript_group.major_heading)
+            if transcript_group.major_heading
+            else ""
+        )
+
         for index, paragraph in enumerate(transcript_group.speech.items):
             try:
                 previous_paragraph = str(transcript_group.speech.items[index - 1])
@@ -363,6 +371,7 @@ def get_agreements(
                     date=date_str,
                     major_heading_id=major_heading_id,
                     minor_heading_id=minor_heading_id,
+                    major_heading_title=major_heading_text,
                     speech_id=transcript_group.speech.id,
                     paragraph_pid=paragraph.pid or f"para/{index}",
                     agreed_text=str(paragraph),
