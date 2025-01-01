@@ -115,8 +115,14 @@ def render_historical(data_dir: Path, chamber: Chamber = Chamber.COMMONS):
     """
     Render motions for all historical dates
     """
+    if chamber == Chamber.COMMONS:
+        start_year = 2019
+    elif chamber == Chamber.SCOTLAND:
+        start_year = 2024
+    else:
+        raise ValueError("Chamber not supported")
     current_year = datetime.datetime.now().year
-    for year in range(2019, current_year):
+    for year in range(start_year, current_year):
         render_year(data_dir, year=year, chamber=chamber)
 
 
