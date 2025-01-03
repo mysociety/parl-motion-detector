@@ -153,9 +153,12 @@ def move_to_package(data_dir: Path = data_dir):
     for file_ending in file_endings:
         dfs = []
         for file in parquet_dir.glob(f"*-{file_ending}"):
-            dfs.append(pd.read_parquet(file))
+            df = pd.read_parquet(file)
+            if len(df) > 1:
+                dfs.append(pd.read_parquet(file))
 
         df = pd.concat(dfs)
+
         # sort by first column
         df = df.sort_values(by=df.columns[0])
 
