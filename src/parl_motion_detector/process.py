@@ -165,6 +165,7 @@ def move_to_package(data_dir: Path = data_dir):
         # check there are no duplicated values in the first column
 
         if df[df.columns[0]].duplicated().sum() != 0:
-            raise ValueError("Duplicated values in the first column")
+            dulicate_vals = df[df.columns[0]][df[df.columns[0]].duplicated()]
+            raise ValueError(f"Duplicated values in the first column: {dulicate_vals}")
 
         df.to_parquet(package_dir / file_ending)
