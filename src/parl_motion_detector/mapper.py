@@ -914,6 +914,13 @@ class MotionMapper:
                 return True
             return False
 
+        # this is currently just dealing with a weird multi way speaker election that should be orphaned.
+        decisions_to_ignore = ["uk.org.publicwhip/spor/2024-05-07.4.22"]
+
+        self.found_divisions = [
+            x for x in self.found_divisions if x.gid not in decisions_to_ignore
+        ]
+
         self.found_motions = [x for x in self.found_motions if not is_inappropriate(x)]
 
         remaining_items = [
