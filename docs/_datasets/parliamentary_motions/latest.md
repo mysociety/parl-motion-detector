@@ -48,7 +48,7 @@ resources:
 - title: Agreements
   description: dataset of agreements extracted from parliamentary debates
   custom:
-    row_count: 5466
+    row_count: 5477
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements
@@ -134,11 +134,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 59fd6019668bcd02fd8faa5c2c892b99
+  hash: d39fceb3e6ad7193522e22922ff58352
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
-    row_count: 2628
+    row_count: 2632
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links
@@ -172,11 +172,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: de63b84ca138c0b2b9281195e1c85ae4
+  hash: a36262bfa461adb490320d3d2b4b9100
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
-    row_count: 8095
+    row_count: 8111
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions
@@ -252,7 +252,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 5c74a33a64664b2e3bc3d91a679ca07d
+  hash: a8abd6252b066666f70c836ff1a751b4
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
