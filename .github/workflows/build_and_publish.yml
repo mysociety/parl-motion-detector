@@ -98,3 +98,11 @@ jobs:
       - uses: geekyeggo/delete-artifact@v5
         with:
           name: github-pages
+  
+      # use curl in bash
+      - name: Webhook to instruct twfyvotes to fetch new info
+        run: |
+          curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"shortcut":"refresh_motions_agreements"}' https://votes.theyworkforyou.com/webhooks/refresh 
+        env:
+          TOKEN: ${{ secrets.VOTES_REFRESH_TOKEN }}
+      
