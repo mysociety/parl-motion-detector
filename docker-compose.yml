@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    working_dir: /workspaces/parl_motion_detector      
+    working_dir: /workspaces/parl_motion_detector
+    environment:
+      - VOTES_REFRESH_TOKEN=${VOTES_REFRESH_TOKEN:-xxx}
     volumes:
       - ./:/workspaces/parl_motion_detector/
