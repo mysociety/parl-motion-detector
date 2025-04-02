@@ -638,6 +638,7 @@ def get_motions(
                     current_motion.add(paragraph)
                     try:
                         actual_content = get_sp_manager().get_motion(sp_motions[0])
+                        current_motion.motion_title = actual_content.title
                         current_motion.add(actual_content.item_text)
                         current_motion.add_flag(Flag.SCOTTISH_EXPANDED_MOTION)
                         current_motion = current_motion.finish(collection, "sp_motion")
