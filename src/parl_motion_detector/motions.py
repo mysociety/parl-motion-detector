@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from functools import lru_cache
+from itertools import groupby
 from pathlib import Path
 from typing import Optional, TypeVar
 
@@ -209,6 +210,22 @@ class MotionCollection(BaseModel):
 
     def prune(self):
         self.motions = [m for m in self.motions if not m.contentless()]
+
+        # also we need to move the title around here for scottish motions
+        # basically correcting when the after decision has become orphaned
+        # from a relevant motion
+
+        self.motions.sort(key=lambda x: x.speech_id)
+        for speech_id, group in groupby(self.motions, key=lambda x: x.speech_id):
+            group = list(group)
+            expanded_scottish_motion = [
+                m for m in group if m.has_flag(Flag.SCOTTISH_EXPANDED_MOTION)
+            ]
+            if len(expanded_scottish_motion) > 0:
+                title = expanded_scottish_motion[0].motion_title
+                for m in group:
+                    if m.has_flag(Flag.AFTER_DECISION):
+                        m.motion_title = title
 
     def __iter__(self):
         return iter(self.motions)
