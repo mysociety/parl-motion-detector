@@ -497,10 +497,16 @@ class MotionMapper:
             if self.chamber == Chamber.SCOTLAND:
                 # Here we have some special casing for amendments in the scottish Parliament
                 # these should happen pretty good in order! But there may be a bit more spacing than usual
-                # for no! and some comments
 
                 match_allowance = 20
                 for decision in decisions:
+                    sp_motions = extract_sp_motions(decision.after)
+                    if sp_motions and not any([x for x in sp_motions if "." in x]):
+                        # this is if there is a scottish motion mentioned, but it's not an amendment
+                        # motion so we don't want to do this special casing handing of amendments
+                        # it should fall back to another way of linking the two
+                        continue
+
                     amendment_motions = [
                         x
                         for x in possible_motions

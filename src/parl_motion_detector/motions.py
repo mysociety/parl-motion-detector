@@ -641,6 +641,11 @@ def get_motions(
                     next_item = next_transcript_group.speech.items[0]
                 except IndexError:
                     next_item = None
+            # and the previous_item
+            try:
+                previous_item = transcript_group.speech.items[index - 1]
+            except IndexError:
+                previous_item = None
 
             sp_motions = extract_sp_motions(str(paragraph))
 
@@ -705,8 +710,14 @@ def get_motions(
                 debug_test(paragraph, "motion start")
                 current_motion = new_motion(paragraph.pid or f"subitem/{index}")
                 if resolved_start(paragraph):
+                    # add the preceding text to the motion because it has useful clues usually
+                    # if there are scottish motions in this
+                    prev_sp_motions = extract_sp_motions(str(previous_item))
+                    if len(prev_sp_motions) > 0:
+                        if previous_item:
+                            current_motion.add(previous_item)
+                        current_motion.add_flag(Flag.SCOTTISH_EXPANDED_MOTION)
                     current_motion += Flag.AFTER_DECISION
-
             if current_motion is None:
                 # similarly if there's the shortform amendment (and) the amendment close language in the same line
                 if in_line_amendment(paragraph) and signature_close(paragraph):

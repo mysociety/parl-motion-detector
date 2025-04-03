@@ -110,6 +110,19 @@ def extract_motion_title(motion: Motion) -> str:
     content = str(motion).replace("\n", " ")
     # Extract the motion title from the motion object
 
+    # if a scottish motion
+    from .motions import extract_sp_motions, get_sp_manager
+
+    if motion.chamber == Chamber.SCOTLAND:
+        possible_motions = extract_sp_motions(content)
+
+        if len(possible_motions) == 1:
+            try:
+                motion_data = get_sp_manager().get_motion(possible_motions[0])
+                return motion_data.nice_title()
+            except KeyError:
+                pass
+
     # Check if the motion title contains a disagreement with a Lords amendment
     if d := extract_disagreement(content):
         return d
