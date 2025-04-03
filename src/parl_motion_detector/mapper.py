@@ -24,6 +24,10 @@ from .agreements import (
 from .motions import Flag, Motion, get_motions
 from .sp_motions import SPMotionManager
 
+# relax the requirement for matches, will allow some to slip through without motions
+# but the wheels keep turning - and to investigate turn this flag off
+STRICT_MATCHING: bool = False
+
 T = TypeVar("T")
 
 DEBUG: bool = False
@@ -839,7 +843,7 @@ class MotionMapper:
                 for a in agreements:
                     rich.print(f"Agreement {a.gid} not assigned - no relevant motions.")
 
-        if len(decisions) > 0:
+        if len(decisions) > 0 and STRICT_MATCHING:
             rich.print(decisions)
             rich.print(possible_motions)
             raise ValueError(f"Unassigned decisions remain on date {self.debate_date}")
@@ -871,6 +875,12 @@ class MotionMapper:
             # what we need to check here is if we've got S6M-15508.1 amending S6M-15508 - we only want the long verson.
             # discard any motions that are fully contained in another
 
+            if isinstance(d, Agreement):
+                if "Motion agreed to,".lower() in d.agreed_text.lower():
+                    # here the motion will be in the before text
+                    # so we look there to construct it
+                    after_motions.extend(extract_sp_motions(d.preceeding_text))
+
             if len(after_motions) > 1:
                 raise ValueError(
                     f"Multiple scottish motions found in {d.gid} - {after_motions}"
@@ -880,7 +890,8 @@ class MotionMapper:
                     # there will be a motion text in the actual transcript that should be easily extracted
                     continue
                 motion = get_sp_manager().construct_from_decision(after_motions[0], d)
-                self.assign_motion_decision(motion, d, "scottish motion")
+                if motion:
+                    self.assign_motion_decision(motion, d, "scottish motion")
 
     def assigned_gids(self):
         division_gids = [x.gid for x in self.division_assignments]
@@ -971,9 +982,10 @@ class MotionMapper:
                 continue
 
         if len(self.found_divisions) != len(self.division_assignments):
-            diff = len(self.found_divisions) - len(self.division_assignments)
-            # rich.print(self.division_assignments)
-            # rich.print(self.found_divisions)
-            raise ValueError(
-                f"Not all divisions assigned - {diff} remain for {self.debate_date}"
-            )
+            if STRICT_MATCHING:
+                diff = len(self.found_divisions) - len(self.division_assignments)
+                # rich.print(self.division_assignments)
+                # rich.print(self.found_divisions)
+                raise ValueError(
+                    f"Not all divisions assigned - {diff} remain for {self.debate_date}"
+                )

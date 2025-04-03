@@ -118,7 +118,7 @@ def render_historical(data_dir: Path, chamber: Chamber = Chamber.COMMONS):
     if chamber == Chamber.COMMONS:
         start_year = 2019
     elif chamber == Chamber.SCOTLAND:
-        start_year = 2024
+        start_year = 2021
     else:
         raise ValueError("Chamber not supported")
     current_year = datetime.datetime.now().year
@@ -165,10 +165,36 @@ def move_to_package(data_dir: Path = data_dir):
         # remove duplicate rows
         df = df.drop_duplicates()
 
-        # check there are no duplicated values in the first column
+        # ok, so a reason a duplicate might survive that is where one variant has picked up
+        # the 'good' motion_title for scotland and the other is stuck on 'Decision Time'
+        # so to deal with this, we want look at all duplicated, check there is at least
+        # one non 'Decision Time' and then drop the rest
+        # the first col is usually gid not motion_title
+        indexes_to_drop = []
+        if "motion_title" in df.columns:
+            for gid, group_df in df.groupby(df.columns[0]):
+                if len(group_df) > 1:
+                    unique_titles = group_df["motion_title"].unique()
+                    if len(unique_titles) > 1:
+                        # check if there is a non 'Decision Time' title
+                        if "Decision Time" in unique_titles:
+                            # drop the 'Decision Time' title
+                            indexes_to_drop.extend(
+                                group_df[
+                                    group_df["motion_title"] == "Decision Time"
+                                ].index.tolist()
+                            )
+
+        # drop these indexes
+        df = df.drop(indexes_to_drop)
+
+        # check there are no remaining duplicated values in the first column
 
         if df[df.columns[0]].duplicated().sum() != 0:
-            dulicate_vals = df[df.columns[0]][df[df.columns[0]].duplicated()]
-            raise ValueError(f"Duplicated values in the first column: {dulicate_vals}")
+            dulicate_vals = df[df.columns[0]][df[df.columns[0]].duplicated()].tolist()
+
+            raise ValueError(
+                f"Duplicated values in the first column for {file_ending}: {dulicate_vals}"
+            )
 
         df.to_parquet(package_dir / file_ending)

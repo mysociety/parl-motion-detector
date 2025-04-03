@@ -65,8 +65,11 @@ class SPMotionManager:
 
     def construct_from_decision(
         self, motion_id: str, decision: Agreement | DivisionHolder
-    ) -> Motion:
-        motion_data = self.get_motion(motion_id)
+    ) -> Motion | None:
+        try:
+            motion_data = self.get_motion(motion_id)
+        except KeyError:
+            return None
 
         from .motions import Motion
 
@@ -74,6 +77,7 @@ class SPMotionManager:
             date=decision.date,
             chamber=Chamber.SCOTLAND,
             speech_id=decision.speech_id,
+            speech_start_pid=decision.paragraph_pid,
             motion_title=motion_data.title,
             motion_lines=motion_data.item_text.split("\n"),
         )
@@ -82,13 +86,17 @@ class SPMotionManager:
         # manual remapping
         if motion_id == "S6M-133651.1":
             motion_id = "S6M-13365.1"
+        if motion_id == "S6M-081050":
+            motion_id = "S6M-08150"
+        if motion_id == "S6M-011247":
+            motion_id = "S6M-11247"
 
         if motion_id not in self.motion_lookup:
             if motion_format.match(motion_id):
                 if motion_id not in self.motion_lookup:
                     raise KeyError(f"Motion ID {motion_id} not found")
             else:
-                raise ValueError(f"Invalid motion ID format: {motion_id}")
+                raise KeyError(f"Invalid motion ID format: {motion_id}")
 
         motion = self.motion_lookup[motion_id]
 

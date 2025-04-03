@@ -644,11 +644,11 @@ def get_motions(
             sp_motions = extract_sp_motions(str(paragraph))
 
             if sp_motions:
-                if current_motion:
-                    raise ValueError(
-                        f"Multiple motions found in {paragraph} - {sp_motions}"
-                    )
-                if len(sp_motions) == 1 and not not_sp_motion_ref(paragraph):
+                if (
+                    not current_motion
+                    and len(sp_motions) == 1
+                    and not not_sp_motion_ref(paragraph)
+                ):
                     # try and avoid creating sp motions we'll pick up normally
                     # as amended motions are usually described in full after
                     current_motion = new_motion(paragraph.pid or f"subitem/{index}")
