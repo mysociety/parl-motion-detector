@@ -44,6 +44,13 @@ class SPMotion(BaseModel):
     title: str
     item_text: StrippedStr
 
+    def nice_title(self) -> str:
+        # Add Amendment x if we know it based on event_id
+        if "." in self.event_id:
+            amendment_number = self.event_id.split(".")[1]
+            return f"{self.title} (Amendment {amendment_number})"
+        return self.title
+
 
 MotionList = TypeAdapter(list[SPMotion])
 
@@ -78,8 +85,8 @@ class SPMotionManager:
             chamber=Chamber.SCOTLAND,
             speech_id=decision.speech_id,
             speech_start_pid=decision.paragraph_pid,
-            motion_title=motion_data.title,
-            motion_lines=motion_data.item_text.split("\n"),
+            motion_title=motion_data.nice_title(),
+            motion_lines=(f"{motion_id}: " + motion_data.item_text).split("\n"),
         )
 
     def get_motion(self, motion_id: str):
@@ -90,6 +97,10 @@ class SPMotionManager:
             motion_id = "S6M-08150"
         if motion_id == "S6M-011247":
             motion_id = "S6M-11247"
+        if motion_id == "S6M-15408.1":
+            motion_id = "S6M-15048.1"
+        if motion_id == "S6M-12550.4":
+            motion_id = "S6M-12855.4"
 
         if motion_id not in self.motion_lookup:
             if motion_format.match(motion_id):

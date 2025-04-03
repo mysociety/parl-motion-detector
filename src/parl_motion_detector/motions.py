@@ -32,7 +32,8 @@ def extract_sp_motions(text: str) -> list[str]:
     returns the longest amendment
     """
     matches = sp_motion_pattern.findall(text)
-    return [x for x in matches if not any(y in x for y in matches if x != y)]
+    reduced = [x for x in matches if not any(x in y for y in matches if x != y)]
+    return reduced
 
 
 def html_to_markdown(html_table: str) -> str | None:
@@ -655,8 +656,10 @@ def get_motions(
                     current_motion.add(paragraph)
                     try:
                         actual_content = get_sp_manager().get_motion(sp_motions[0])
-                        current_motion.motion_title = actual_content.title
-                        current_motion.add(actual_content.item_text)
+                        current_motion.motion_title = actual_content.nice_title()
+                        current_motion.add(
+                            sp_motions[0] + ": " + actual_content.item_text
+                        )
                         current_motion.add_flag(Flag.SCOTTISH_EXPANDED_MOTION)
                         current_motion = current_motion.finish(collection, "sp_motion")
                     except KeyError as e:
