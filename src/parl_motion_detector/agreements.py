@@ -269,6 +269,7 @@ amended_agreement = PhraseDetector(
     criteria=[
         "Main Question, as amended, put and agreed to",
         "Main Question, as amended, put forthwith and agreed to",
+        "The Deputy Speaker declared the main Question, as amended, to be agreed to (Standing Order No. 31(2)).",
     ]
 )
 
