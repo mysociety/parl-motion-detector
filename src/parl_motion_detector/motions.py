@@ -335,6 +335,7 @@ motion_start = PhraseDetector(
         "Amendment proposed : at the end of the Question to add:",
         "Motion made, and Question put",
         "The Deputy Speaker put forthwith",
+        "The Deputy Speaker declared the main Question",
         "claimed to move the closure (Standing Order No. 36)",
         re.compile(r"^Lords amendment:", re.IGNORECASE),
         re.compile(r"^To leave out from “That”", re.IGNORECASE),
