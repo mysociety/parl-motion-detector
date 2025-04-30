@@ -327,6 +327,7 @@ motion_start_sequence = PhraseDetector(
 # These kick the detector into action - basically a set of phrases that indicate a motion is starting
 motion_start = PhraseDetector(
     criteria=[
+        "The next question is,",
         "I beg to move",
         "I beg move to move",
         "I therefore beg to move,",

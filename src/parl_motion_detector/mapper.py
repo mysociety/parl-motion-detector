@@ -90,6 +90,12 @@ lords_amendment_agreement = PhraseDetector(
     ]
 )
 
+# handling issues in misassignment of division motjions to agreements
+is_division_motion = PhraseDetector(
+    criteria=["The result of the division on", "We come to the vote on amendment"]
+)
+
+
 # These are phrases that indicate in the worst case - we can just extract a motion from
 # information the decision itself has
 can_be_self_motion = PhraseDetector(
@@ -390,6 +396,12 @@ class MotionMapper:
             print(
                 f"Assigning motion: {motion.speech_id} ({motion_start})  to {type(decision).__name__}: {decision.gid} - {assignment_reason}"
             )
+
+        if is_division_motion(motion) and isinstance(decision, Agreement):
+            raise ValueError(
+                f"Motion '{motion.speech_id}' contains division text but is being assigned to an Agreement."
+            )
+
         decision.motion = motion
         decision.motion_assignment_reason = assignment_reason
         match decision:
@@ -416,6 +428,9 @@ class MotionMapper:
             previous_motions = []
 
         possible_motions = condense_motions(possible_motions)
+
+        # rich.print(possible_motions)
+
         previous_loop = len(decisions) + 1
 
         second_stage_motions = [
@@ -513,6 +528,26 @@ class MotionMapper:
                         if x.has_flag(Flag.MOTION_AMENDMENT)
                         or x.has_flag(Flag.SCOTTISH_EXPANDED_MOTION)
                     ]
+                    if DEBUG:
+                        print("amendment motions")
+                        print([x.gid for x in amendment_motions])
+
+                    # if decision is an agreement and is_division_motion - remove from amendment motions
+                    if isinstance(decision, Agreement):
+                        before_len = len(amendment_motions)
+                        to_remove = [
+                            x for x in amendment_motions if is_division_motion(x)
+                        ]
+                        amendment_motions = [
+                            x for x in amendment_motions if not is_division_motion(x)
+                        ]
+                        if DEBUG:
+                            print(
+                                f"Reducing from {before_len} to {len(amendment_motions)}"
+                            )
+                            removed_ids = [x.gid for x in to_remove]
+                            print(f"Removed {removed_ids}")
+
                     dec_pos = self.decision_position(decision)
                     possible_match = None
                     match_distance = 1000
@@ -522,9 +557,12 @@ class MotionMapper:
                         # the closest within match_allowance blocks
                         motion_pos = self.motion_position(amendment)
                         dec_motion_distance = abs(motion_pos - dec_pos)
-
+                        if DEBUG:
+                            print(
+                                f"amendment gid: {amendment.gid}, dec_pos: {dec_pos} motion_pos: {motion_pos} distance: {dec_motion_distance}"
+                            )
                         if (
-                            motion_pos < dec_pos
+                            motion_pos <= dec_pos
                             and dec_motion_distance < match_allowance
                         ):
                             if (
