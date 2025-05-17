@@ -352,6 +352,7 @@ motion_start = PhraseDetector(
         "The Deputy Speaker put forthwith",
         "The Deputy Speaker declared the main Question",
         "claimed to move the closure (Standing Order No. 36)",
+        "claimed to move the closure",
         re.compile(r"^Lords amendment:", re.IGNORECASE),
         re.compile(r"^To leave out from “That”", re.IGNORECASE),
         # catching a minority of approaches where this is the preamble - but *not* where it is the closure to the actual text
@@ -476,7 +477,6 @@ one_line_motion = PhraseDetector(
         "That the original words stand part of the Question",
         "That this House authorises",
         "That this House do now adjourn.",
-        "claimed to move the closure (Standing Order No. 36).",
         re.compile(
             r"Question, That new clause \d+ be added to the Bill.", re.IGNORECASE
         ),
@@ -824,6 +824,9 @@ def get_motions(
                         debug_test(paragraph, "asked immediately")
                         # stash this infomration for iteration later
                         current_motion += Flag.ASKED_IMMEDIATELY
+                        current_motion.add(
+                            paragraph, new_final_id=transcript_group.speech.id
+                        )
                         current_motion = current_motion.finish(
                             collection, "asked immediately"
                         )
