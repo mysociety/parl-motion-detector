@@ -57,6 +57,12 @@ second_reading = PhraseDetector(criteria=["read a Second time", "read the Second
 first_reading = PhraseDetector(criteria=["read a First time", "read the First time"])
 third_reading = PhraseDetector(criteria=["read a Third time", "read the Third time"])
 
+second_clause_reading = PhraseDetector(
+    criteria=[
+        "the clause be read a Second time",
+    ]
+)
+
 private_sitting = PhraseDetector(criteria=["the House sit in private"])
 
 in_text_clause = re.compile(r"^New clause (\d+)", re.IGNORECASE)
@@ -156,8 +162,13 @@ def extract_motion_title(motion: Motion) -> str:
     if new_order(content):
         return f"New Order: {motion.major_heading_title}"
 
-    if second_reading(content):
+    if second_reading(content) and not second_clause_reading(content):
         return f"Second Reading: {motion.major_heading_title}"
+
+    if second_clause_reading(content):
+        clause_name = motion.minor_heading_title
+        bill_name = motion.major_heading_title
+        return f"Add Clause: {clause_name} to {bill_name}"
 
     if first_reading(content):
         return f"First Reading: {motion.major_heading_title}"

@@ -82,6 +82,7 @@ class Flag(StrEnum):
     REASONED_AMENDMENT_FULL = "reasoned_amendment_full"
     REASONED_AMENDMENT_PARTIAL = "reasoned_amendment_partial"
     SECOND_STAGE = "second_stage"
+    SECOND_STAGE_CLAUSE = "second_stage_clause"
 
 
 class Motion(BaseModel):
@@ -184,6 +185,9 @@ class Motion(BaseModel):
         if reasoned_amendment_partial(content):
             self.add_flag(Flag.REASONED_AMENDMENT_PARTIAL)
 
+        if second_reading_clause(content):
+            self.add_flag(Flag.SECOND_STAGE_CLAUSE)
+
         if amendment_flag(content):
             self.add_flag(Flag.MOTION_AMENDMENT)
         elif main_question(content):
@@ -193,6 +197,17 @@ class Motion(BaseModel):
         self.end_reason = end_reason
         self.add_title()
         self.self_flag()
+
+        if self.has_flag(Flag.SECOND_STAGE_CLAUSE):
+            clause_motions = [x for x in collection if x.has_flag(Flag.CLAUSE_MOTION)]
+            if len(clause_motions) > 0:
+                clause_motion = clause_motions[0]
+                self.motion_lines = (
+                    self.motion_lines
+                    + ["", "Clause text:", ""]
+                    + clause_motion.motion_lines
+                )
+
         collection.motions.append(self)
         return None
 
@@ -434,6 +449,9 @@ second_time_flag = PhraseDetector(
     ]
 )
 
+second_reading_clause = PhraseDetector(
+    criteria=["the clause be a Second time", "the clause be read a Second time."]
+)
 
 # these are criteria that say the motion is wrapped up in a single line (and will stop looking)
 one_line_motion = PhraseDetector(
