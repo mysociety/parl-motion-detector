@@ -168,7 +168,7 @@ def extract_motion_title(motion: Motion) -> str:
     if second_clause_reading(content):
         clause_name = motion.minor_heading_title
         bill_name = motion.major_heading_title
-        return f"Add Clause: {clause_name} to {bill_name}"
+        return f"{bill_name}: {clause_name}"
 
     if first_reading(content):
         return f"First Reading: {motion.major_heading_title}"
