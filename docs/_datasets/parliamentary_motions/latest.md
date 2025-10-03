@@ -40,7 +40,7 @@ custom:
       exclude: none
       render: true
   change_log:
-    0.1.0: 'Change in data for resource(s): agreements,motions'
+    0.1.0: 'Change in data for resource(s): agreements,division-links,motions'
   datasette:
     about: Info & Downloads
     about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0
@@ -48,7 +48,7 @@ resources:
 - title: Agreements
   description: dataset of agreements extracted from parliamentary debates
   custom:
-    row_count: 6859
+    row_count: 7794
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements
@@ -118,7 +118,7 @@ resources:
       description: Title of the motion
       constraints:
         unique: false
-      example: ''
+      example: ' Alternative Pathways to Primary Care'
     - name: motion_gid
       type: string
       description: ID of the motion
@@ -134,11 +134,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 70ea901d0a927f9bf674d92d208fb6e8
+  hash: 273d039f85e54f8e9488e6fb9e4379c4
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
-    row_count: 4282
+    row_count: 4741
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links
@@ -172,11 +172,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 2bfb21b2a70c1b4e478dcccf6e521ece
+  hash: 2799c6018ae2513f19c7931f7a084c34
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
-    row_count: 11141
+    row_count: 12535
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions
@@ -212,7 +212,7 @@ resources:
       description: Title of the motion
       constraints:
         unique: false
-      example: ''
+      example: ' Alternative Pathways to Primary Care'
     - name: motion_text
       type: string
       description: Text of the motion
@@ -252,7 +252,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: d3be5b7d93b7d1af5b604e9b7741a21b
+  hash: c1eb54fc9f115d23bf0b29a133bc27d9
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---

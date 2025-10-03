@@ -1,7 +1,7 @@
 title: Agreements
 description: dataset of agreements extracted from parliamentary debates
 custom:
-  row_count: 6859
+  row_count: 7794
 path: agreements.parquet
 name: agreements
 profile: data-resource
@@ -67,7 +67,7 @@ schema:
     description: Title of the motion
     constraints:
       unique: false
-    example: ''
+    example: ' Alternative Pathways to Primary Care'
   - name: motion_gid
     type: string
     description: ID of the motion
@@ -83,4 +83,4 @@ schema:
       - house-of-commons
       - scottish-parliament
     example: house-of-commons
-hash: 70ea901d0a927f9bf674d92d208fb6e8
+hash: 273d039f85e54f8e9488e6fb9e4379c4
