@@ -139,5 +139,13 @@
     {
         "decision_gid": "uk.org.publicwhip/debate/2014-07-02b.1041.2",
         "motion_gid": "uk.org.publicwhip/debate/2014-07-02b.1023.5.1"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2025-11-05a.996.4",
+        "motion_gid": "uk.org.publicwhip/debate/2025-11-05a.953.5.5"
+    },
+    {
+        "decision_gid": "uk.org.publicwhip/debate/2025-11-05a.1000.2",
+        "motion_gid": "uk.org.publicwhip/debate/2025-11-05a.953.5.6"
     }
 ]
