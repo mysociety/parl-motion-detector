@@ -59,3 +59,45 @@ def inline_amendments():
 
 def test_lords_amendments():
     compare_date("2024-04-22")
+
+
+def test_manual_wildcard_matching():
+    """Test that manual linking supports wildcard version letters."""
+    from parl_motion_detector.mapper import find_manual_connection, gid_matches_pattern
+
+    # Test basic wildcard matching
+    assert gid_matches_pattern(
+        "uk.org.publicwhip/debate/2025-11-05e.996.4",
+        "uk.org.publicwhip/debate/2025-11-05x.996.4",
+    )
+    assert gid_matches_pattern(
+        "uk.org.publicwhip/debate/2025-11-05f.996.4",
+        "uk.org.publicwhip/debate/2025-11-05x.996.4",
+    )
+    assert gid_matches_pattern(
+        "uk.org.publicwhip/debate/2025-11-05a.996.4",
+        "uk.org.publicwhip/debate/2025-11-05x.996.4",
+    )
+
+    # Test that different parts don't match
+    assert not gid_matches_pattern(
+        "uk.org.publicwhip/debate/2025-11-06e.996.4",
+        "uk.org.publicwhip/debate/2025-11-05x.996.4",
+    )
+
+    # Test manual connection finding
+    manual_lookup = {
+        "uk.org.publicwhip/debate/2025-11-05x.953.5.6": "uk.org.publicwhip/debate/2025-11-05x.1000.2"
+    }
+
+    # Should find connection with wildcard matching
+    result = find_manual_connection(
+        "uk.org.publicwhip/debate/2025-11-05e.953.5.6", manual_lookup
+    )
+    assert result == "uk.org.publicwhip/debate/2025-11-05x.1000.2"
+
+    # Should not find connection for non-matching GID
+    result = find_manual_connection(
+        "uk.org.publicwhip/debate/2025-11-06e.953.5.6", manual_lookup
+    )
+    assert result is None

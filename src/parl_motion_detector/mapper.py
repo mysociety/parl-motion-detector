@@ -72,6 +72,89 @@ def get_manual_text(data_dir: Path) -> dict[str, Motion]:
     return {x.decision_gid: x.motion for x in items if isinstance(x, ManualText)}
 
 
+def gid_matches_pattern(gid: str, pattern: str) -> bool:
+    """
+    Check if a GID matches a pattern where 'x' in the pattern acts as a wildcard
+    for the version letter (a, b, c, d, e, etc.).
+
+    Example:
+    gid_matches_pattern("uk.org.publicwhip/debate/2025-11-05e.996.4",
+                       "uk.org.publicwhip/debate/2025-11-05x.996.4") -> True
+    """
+    # Split on 'x', escape each part, then join with [a-z]
+    parts = pattern.split("x")
+    escaped_parts = [re.escape(part) for part in parts]
+    regex_pattern = r"[a-z]".join(escaped_parts)
+    return bool(re.fullmatch(regex_pattern, gid))
+
+
+def find_manual_connection(
+    motion_gid: str, manual_lookup: dict[str, str]
+) -> str | None:
+    """
+    Find a manual connection for a motion GID, supporting wildcard matching.
+    First tries exact match, then tries wildcard matching.
+    """
+    # Try exact match first
+    if motion_gid in manual_lookup:
+        return manual_lookup[motion_gid]
+
+    # Try wildcard matching
+    for pattern, decision_gid in manual_lookup.items():
+        if "x" in pattern and gid_matches_pattern(motion_gid, pattern):
+            return decision_gid
+
+    return None
+
+
+def find_manual_decision(
+    decision_gid: str,
+    decisions: list[DivisionHolder | Agreement],
+    manual_lookup: dict[str, str],
+) -> list[DivisionHolder | Agreement]:
+    """
+    Find decisions that match a decision GID, supporting wildcard matching.
+    """
+    # Try exact match first
+    exact_matches = [x for x in decisions if x.gid == decision_gid]
+    if exact_matches:
+        return exact_matches
+
+    # Try wildcard matching if the manual decision GID contains 'x'
+    if "x" in decision_gid:
+        wildcard_matches = [
+            x for x in decisions if gid_matches_pattern(x.gid, decision_gid)
+        ]
+        if wildcard_matches:
+            return wildcard_matches
+
+    return []
+
+
+def find_manual_text_decision(
+    decisions: list, manual_motions: dict[str, Motion]
+) -> list[tuple]:
+    """
+    Find decisions that match manual text entries, supporting wildcard matching.
+    Returns list of (decision, motion) tuples.
+    """
+    matches = []
+
+    for decision in decisions:
+        # Try exact match first
+        if decision.gid in manual_motions:
+            matches.append((decision, manual_motions[decision.gid]))
+            continue
+
+        # Try wildcard matching
+        for pattern, motion in manual_motions.items():
+            if "x" in pattern and gid_matches_pattern(decision.gid, pattern):
+                matches.append((decision, motion))
+                break  # Only match first pattern to avoid duplicates
+
+    return matches
+
+
 amendment_be_made = PhraseDetector(criteria=["That the amendment be made."])
 
 amendment_check = re.compile(r"Amendment \([A-Za-z0-9]+\)", re.IGNORECASE)
@@ -897,10 +980,13 @@ class MotionMapper:
         decisions: list[DivisionHolder | Agreement] = list(
             self.found_agreements
         ) + list(self.found_divisions)
+
         for m in self.found_motions:
-            if m.gid in manual_lookup:
-                mdecision_gid = manual_lookup[m.gid]
-                mdecision = [x for x in decisions if x.gid == mdecision_gid]
+            mdecision_gid = find_manual_connection(m.gid, manual_lookup)
+            if mdecision_gid:
+                mdecision = find_manual_decision(
+                    mdecision_gid, decisions, manual_lookup
+                )
                 if len(mdecision) == 1:
                     self.assign_motion_decision(m, mdecision[0], "manual lookup")
                 elif len(mdecision) == 0:
@@ -908,10 +994,9 @@ class MotionMapper:
 
         # when motions are just missing, sometimes we specify the whole thing by hand
         manual_motions = get_manual_text(self.data_dir)
-        for decision in decisions:
-            if decision.gid in manual_motions:
-                motion = manual_motions[decision.gid]
-                self.assign_motion_decision(motion, decision, "manual text")
+        matches = find_manual_text_decision(decisions, manual_motions)
+        for decision, motion in matches:
+            self.assign_motion_decision(motion, decision, "manual text")
 
     def assign_scotland(self):
         for d in list(self.found_divisions) + list(self.found_agreements):
