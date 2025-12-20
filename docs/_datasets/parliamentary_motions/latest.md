@@ -40,7 +40,7 @@ custom:
       exclude: none
       render: true
   change_log:
-    0.1.0: 'Change in data for resource(s): agreements,division-links,motions'
+    0.1.0: 'Minor change in data for resource(s): agreements,motions'
   datasette:
     about: Info & Downloads
     about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0
@@ -134,7 +134,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 8982ebfefd12c2a1b47802b46e66529f
+  hash: f2fc066bbe4c6275a4b126d7069e612f
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
@@ -252,7 +252,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: b5da8112abe0c791350d80c6a7e5ab9b
+  hash: fafcb9f114602183071c5106097158fe
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
