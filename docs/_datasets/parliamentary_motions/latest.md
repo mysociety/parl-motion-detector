@@ -40,7 +40,7 @@ custom:
       exclude: none
       render: true
   change_log:
-    0.1.0: 'Minor change in data for resource(s): agreements,motions'
+    0.1.0: 'Change in data for resource(s): agreements,division-links,motions'
   datasette:
     about: Info & Downloads
     about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0
@@ -48,7 +48,7 @@ resources:
 - title: Agreements
   description: dataset of agreements extracted from parliamentary debates
   custom:
-    row_count: 8027
+    row_count: 6987
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#agreements
@@ -134,11 +134,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: f2fc066bbe4c6275a4b126d7069e612f
+  hash: 16013d30a02fc8a68906f142772781d0
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
-    row_count: 5125
+    row_count: 4147
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#division-links
@@ -172,11 +172,11 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: bc03709fa4b577a498aa126d60c84256
+  hash: 4ae9d88ca6f757316fee3b7c832f3b47
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
-    row_count: 13152
+    row_count: 11134
     datasette:
       about: Info & Downloads
       about_url: https://pages.mysociety.org/parl_motion_detector/datasets/parliamentary_motions/0_1_0#motions
@@ -252,7 +252,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: fafcb9f114602183071c5106097158fe
+  hash: a64c1469d8ff3aae56ab27d8e787547d
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
