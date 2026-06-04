@@ -1,7 +1,7 @@
 title: Motions
 description: Motions extracted from parliamentary debates
 custom:
-  row_count: 13791
+  row_count: 13794
 path: motions.parquet
 name: motions
 profile: data-resource
@@ -74,4 +74,4 @@ schema:
       - house-of-commons
       - scottish-parliament
     example: house-of-commons
-hash: 888c377900f4a5502e4b8f02a3645b52
+hash: e3b0b956d6eeebe2d86a1e188025947c
