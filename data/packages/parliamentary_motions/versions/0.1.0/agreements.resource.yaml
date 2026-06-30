@@ -1,7 +1,7 @@
 title: Agreements
 description: dataset of agreements extracted from parliamentary debates
 custom:
-  row_count: 8414
+  row_count: 8415
 path: agreements.parquet
 name: agreements
 profile: data-resource
@@ -83,4 +83,4 @@ schema:
       - house-of-commons
       - scottish-parliament
     example: house-of-commons
-hash: d769a9517e4fbb67a09f7af1030f7ad8
+hash: 8be7c3719c587e1369c9dd544528d82b
