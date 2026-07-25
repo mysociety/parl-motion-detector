@@ -134,7 +134,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 6cde033ee043547edc798cceb73e4fc5
+  hash: 2b6239771e9afe8f3b327573cc279d12
 - title: Division Links
   description: Lookup between GID for a division and the relevant motion
   custom:
@@ -172,7 +172,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 9d14a14604d1c59721d88290fabca01e
+  hash: bceb671c611e8047b217323fbac2327c
 - title: Motions
   description: Motions extracted from parliamentary debates
   custom:
@@ -252,7 +252,7 @@ resources:
         - house-of-commons
         - scottish-parliament
       example: house-of-commons
-  hash: 547077bea0b40ac1f9473059eb980b9f
+  hash: a48b62e582c97806f27de158055c04fb
 full_version: 0.1.0
 permalink: /datasets/parliamentary_motions/latest
 ---
