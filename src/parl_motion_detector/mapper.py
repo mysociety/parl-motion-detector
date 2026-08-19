@@ -10,7 +10,7 @@ from typing import TypeVar
 import pandas as pd
 import rich
 from mysoc_validator import Transcript
-from mysoc_validator.models.transcripts import Chamber
+from mysoc_validator.models.transcripts import Chamber, Speech
 from pydantic import BaseModel, Field, TypeAdapter
 
 from parl_motion_detector.detector import PhraseDetector
@@ -415,6 +415,13 @@ class MotionMapper:
     def __init__(
         self, transcript: Transcript, debate_date: str, chamber: Chamber, data_dir: Path
     ):
+        # empty speeches (no content items) break assumptions in the division/agreement
+        # detection that the speech before/after a division has content - so drop them
+        transcript.items = [
+            item
+            for item in transcript.items
+            if not (isinstance(item, Speech) and not item.items)
+        ]
         self.transcript = transcript
         self.speech_id_map = {
             x.id: n  # type: ignore
