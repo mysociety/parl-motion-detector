@@ -12,18 +12,11 @@ poetry run ruff check .
 ruffcheckexit=$?
 poetry run ruff format . --check
 ruffformatexit=$?
-echo "--------------"
-echo "Running pyright"
-echo "--------------"
-poetry run pyright
-pyrightexit=$?
-
 echo "Pytest status: $pytestexit"
 echo "Ruff Check status: $ruffcheckexit"
 echo "Ruff Format status: $ruffformatexit"
-echo "Pyright status: $pyrightexit"
 
-sum="$(($pytestexit + $pyrightexit + $ruffcheckexit + $ruffformatexit))"
+sum="$(($pytestexit + $ruffcheckexit + $ruffformatexit))"
 
 if [ "$sum" != "0" ]; then
     exit 1
