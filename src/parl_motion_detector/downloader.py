@@ -164,18 +164,24 @@ class TranscriptXMl(MiniEnum[XMLManager]):
 class FileExistenceResult(NamedTuple):
     url: str
     exists: bool
+    error: httpx.HTTPStatusError | None = None
 
 
 async def async_check_file_existence(
     client: httpx.AsyncClient, url: str
 ) -> FileExistenceResult:
     """
-    Check for a transcript, surfacing HTTP and network failures.
+    Check a candidate, deferring service-unavailable errors during discovery.
     """
     response = await client.head(url)
     if response.status_code == 404:
         return FileExistenceResult(url=url, exists=False)
-    response.raise_for_status()
+    try:
+        response.raise_for_status()
+    except httpx.HTTPStatusError as error:
+        if response.status_code != 503:
+            raise
+        return FileExistenceResult(url=url, exists=False, error=error)
     return FileExistenceResult(url=url, exists=True)
 
 
@@ -185,7 +191,12 @@ async def async_check_urls_exist(urls: list[str]) -> list[str]:
     ) as client:
         tasks = [async_check_file_existence(client, url) for url in urls]
         results = await asyncio.gather(*tasks)
-    return [result.url for result in results if result.exists]
+    valid_urls = [result.url for result in results if result.exists]
+    if not valid_urls:
+        for result in results:
+            if result.error is not None:
+                raise result.error
+    return valid_urls
 
 
 def check_urls_exist(urls: list[str]) -> list[str]:

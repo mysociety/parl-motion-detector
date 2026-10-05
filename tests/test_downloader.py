@@ -36,7 +36,7 @@ def test_transcript_checks_identify_client_and_follow_redirects(
     ) == ["https://example.com/redirect"]
 
 
-@pytest.mark.parametrize("status", [403, 429, 500])
+@pytest.mark.parametrize("status", [403, 429, 500, 503])
 def test_transcript_checks_surface_http_failures(
     monkeypatch: pytest.MonkeyPatch, status: int
 ) -> None:
@@ -79,3 +79,33 @@ def test_failed_download_does_not_cache_error_page(
             datetime.date(2023, 6, 27), download_path=tmp_path
         )
     assert not list(tmp_path.rglob("*.xml"))
+
+
+@pytest.mark.parametrize("available", [True, False])
+def test_transcript_discovery_continues_after_candidate_503(
+    monkeypatch: pytest.MonkeyPatch, available: bool
+) -> None:
+    """
+    Select a lettered version despite a 503, preserving errors if none exist.
+    """
+    original_client = httpx.AsyncClient
+    base_url = "https://example.com/debates2024-04-22"
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith("22.xml"):
+            return httpx.Response(503)
+        if available and request.url.path.endswith("22a.xml"):
+            return httpx.Response(200)
+        return httpx.Response(404)
+
+    def create_client(**kwargs: object) -> httpx.AsyncClient:
+        return original_client(transport=httpx.MockTransport(respond), **kwargs)
+
+    monkeypatch.setattr(httpx, "AsyncClient", create_client)
+    urls = [f"{base_url}{letter}.xml" for letter in ("", "a", "b")]
+    if available:
+        assert check_urls_exist(urls) == [f"{base_url}a.xml"]
+    else:
+        with pytest.raises(httpx.HTTPStatusError) as error:
+            check_urls_exist(urls)
+        assert error.value.response.status_code == 503
