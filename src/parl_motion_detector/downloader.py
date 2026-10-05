@@ -5,13 +5,13 @@ from pathlib import Path
 from typing import ClassVar, Optional
 
 import httpx
-import nest_asyncio
+import nest_asyncio2
 from mysoc_validator.models.popolo import Chamber
 from pydantic import BaseModel
 
 from .enum_helpers import MiniEnum, StrEnum
 
-nest_asyncio.apply()
+nest_asyncio2.apply()
 
 
 def persistent_download_path():
