@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import asyncio
 import datetime
 import tempfile
 from pathlib import Path
-from typing import ClassVar, Optional
+from typing import ClassVar, NamedTuple, Optional
 
 import httpx
 import nest_asyncio2
@@ -12,6 +14,8 @@ from pydantic import BaseModel
 from .enum_helpers import MiniEnum, StrEnum
 
 nest_asyncio2.apply()
+
+USER_AGENT = "parl-motion-detector (https://github.com/mysociety/parl-motion-detector)"
 
 
 def persistent_download_path():
@@ -78,7 +82,10 @@ class XMLManager(BaseModel):
         url_file_name = latest_url.split("/")[-1]
         file_path = base_path.parent / url_file_name
         file_path.parent.mkdir(parents=True, exist_ok=True)
-        response = httpx.get(latest_url)
+        response = httpx.get(
+            latest_url, headers={"User-Agent": USER_AGENT}, follow_redirects=True
+        )
+        response.raise_for_status()
         file_path.write_text(response.text)
         return file_path
 
@@ -154,23 +161,31 @@ class TranscriptXMl(MiniEnum[XMLManager]):
         )
 
 
-async def async_check_file_existence(client: httpx.AsyncClient, url: str):
-    try:
-        response = await client.head(url)
-        return url, response.status_code
-    except httpx.RequestError:
-        return url, None
+class FileExistenceResult(NamedTuple):
+    url: str
+    exists: bool
+
+
+async def async_check_file_existence(
+    client: httpx.AsyncClient, url: str
+) -> FileExistenceResult:
+    """
+    Check for a transcript, surfacing HTTP and network failures.
+    """
+    response = await client.head(url)
+    if response.status_code == 404:
+        return FileExistenceResult(url=url, exists=False)
+    response.raise_for_status()
+    return FileExistenceResult(url=url, exists=True)
 
 
 async def async_check_urls_exist(urls: list[str]) -> list[str]:
-    valid_urls = []
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(
+        headers={"User-Agent": USER_AGENT}, follow_redirects=True
+    ) as client:
         tasks = [async_check_file_existence(client, url) for url in urls]
         results = await asyncio.gather(*tasks)
-        for url, status_code in results:
-            if status_code == 200:
-                valid_urls.append(url)
-    return valid_urls
+    return [result.url for result in results if result.exists]
 
 
 def check_urls_exist(urls: list[str]) -> list[str]:
