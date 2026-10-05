@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * *"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -30,12 +28,8 @@ jobs:
         with:
           run: |
             script/test
-            project process-current-year --chamber house-of-commons
-            project process-current-year --chamber scottish-parliament
             dataset build --all
             dataset version auto --auto-ban major --all --publish
-            dataset publish --all
-            project remove-current-year-parquets
             dataset site build
       - name: Configure credentials for automated push
         shell: bash
@@ -56,36 +50,12 @@ jobs:
         env:
           GITHUB_SERVER_URL: ${{ github.server_url }}
         run: git config --local --unset-all "http.${GITHUB_SERVER_URL}/.extraheader" || true
-      - name: Send GitHub Action trigger data to Slack workflow
-        id: slack
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        uses: slackapi/slack-github-action@v1.19.0
-        with:
-          payload: |
-            {
-              "repo_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.HAPPY_DATABOT_SLACK_WEBHOOK }}
-
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: _site
-      - name: Send GitHub Action trigger data to Slack workflow (if failed)
-        if: ${{ failure() }}
-        id: slack-failed
-        uses: slackapi/slack-github-action@v1.19.0
-        with:
-          payload: |
-            {
-              "repo_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SAD_DATABOT_SLACK_WEBHOOK }}
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -99,10 +69,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
-
-      - name: Webhook to instruct twfyvotes to fetch new info
-        run: |
-          curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"shortcut":"refresh_motions_agreements"}' https://votes.theyworkforyou.com/webhooks/refresh
-        env:
-          TOKEN: ${{ secrets.VOTES_REFRESH_TOKEN }}
-

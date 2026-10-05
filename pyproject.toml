@@ -1,32 +1,49 @@
-[tool.poetry]
+[project]
 name = "parl_motion_detector"
 version = "0.1.0"
 description = "Processes for handling motion and agreement extraction from transcripts"
 authors = []
+requires-python = ">=3.11,<3.15"
+dependencies = [
+    "data-common[dataset]",
+    "mysoc-validator>=1.3.3,<2",
+    "httpx>=0.27.2,<0.28",
+    "nest-asyncio>=1.6,<2",
+]
+
+[project.scripts]
+project = "parl_motion_detector.__main__:main"
+
+[dependency-groups]
+test = [{ include-group = "render" }, "pytest>=8"]
+lint = ["ruff>=0.6.1"]
+type = ["pandas-stubs>=2.2", "pyright>=1.1.248"]
+notebook = ["data-common[notebook]", "jupyterlab>=4"]
+render = ["data-common[render]"]
+google = ["data-common[google]"]
+dev = [
+    { include-group = "test" },
+    { include-group = "lint" },
+    { include-group = "type" },
+]
+
+[tool.uv]
+
+[tool.uv.sources]
+data-common = { path = "src/data_common/", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "src/data_common/tests"]
+norecursedirs = [".git", ".venv", "src/data_common/tests/fixtures"]
+markers = ["notebook: exercises notebook execution and analysis bundle production"]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.dependencies]
-python = ">=3.10,<3.11"
-data_common = { path = "src/data_common/", develop = true }
-mysoc-validator = "^1.3.3"
-httpx = "^0.27.2"
-nest-asyncio = "^1.6.0"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.1.1"
-
-[tool.poetry.scripts]
-project = 'parl_motion_detector.__main__:main'
-notebook = "data_common.notebookcli.__main__:run"
-dataset = "data_common.dataset.__main__:run"
+requires = ["uv_build>=0.8.3,<0.9.0"]
+build-backend = "uv_build"
 
 [tool.pyright]
 include = ["src", "notebooks"]
-exclude=["src/data_common/typings"]
-stubPath="src/data_common/typings"
+exclude = ["src/data_common"]
 typeCheckingMode="basic"
 reportPrivateImportUsage="warning"
 
@@ -35,14 +52,13 @@ default_page_title = "Settings file defined title"
 
 [tool.dataset]
 dataset_dir = "data/packages"
-publish_dir = "docs/"
+publish_dir = "data/packages/_published"
 publish_url = "https://pages.mysociety.org/parl_motion_detector/"
 credit_text = "If you find this data useful, please let us know to help us make the case for future funding."
 credit_url = "https://survey.alchemer.com/s3/6876792/Data-usage"
 
-
 [tool.ruff]
-extend-exclude = ["migrations", "*.pyi"]
+extend-exclude = ["migrations", "*.pyi", "src/data_common"]
 
 [tool.ruff.lint]
 select = [
@@ -57,7 +73,6 @@ ignore = [
     "E501", 
 ]
 
-
 [tool.ruff.lint.isort]
 known-first-party = ["hub"]
 section-order = [
@@ -71,3 +86,25 @@ section-order = [
 
 [tool.ruff.lint.isort.sections]
 django = ["django"]
+
+[tool.dataset.site]
+title = "parl-motion-detector"
+homepage_title = "Parliamentary motion detection"
+description = "Processes for handling motion and agreement extraction from transcripts"
+intro = "Extracted motions and agreements."
+base_url = "/parl-motion-detector"
+canonical_url = "https://pages.mysociety.org/parl-motion-detector"
+source_url = "https://github.com/mysociety/parl-motion-detector"
+output_dir = "_site"
+accent_colour = "#4faded"
+
+[tool.dataset.site.downloads]
+gate = "soft"
+survey = "6876792/Data-usage"
+form_header = "Can you help us with funding by telling us more about yourself?"
+show_code_examples = true
+show_subscription = true
+
+[tool.dataset.site.analysis]
+enabled = true
+bundle_dir = "_render/site/analysis"

@@ -3,20 +3,27 @@
 echo "--------------"
 echo "Running pytest"
 echo "--------------"
-poetry run pytest
+uv run pytest
 pytestexit=$?
 echo "--------------"
 echo "Running ruff"
 echo "--------------"
-poetry run ruff check .
+uv run ruff check .
 ruffcheckexit=$?
-poetry run ruff format . --check
+uv run ruff format . --check
 ruffformatexit=$?
+echo "--------------"
+echo "Running pyright"
+echo "--------------"
+uv run pyright
+pyrightexit=$?
+
 echo "Pytest status: $pytestexit"
 echo "Ruff Check status: $ruffcheckexit"
 echo "Ruff Format status: $ruffformatexit"
+echo "Pyright status: $pyrightexit"
 
-sum="$(($pytestexit + $ruffcheckexit + $ruffformatexit))"
+sum="$(($pytestexit + $pyrightexit + $ruffcheckexit + $ruffformatexit))"
 
 if [ "$sum" != "0" ]; then
     exit 1

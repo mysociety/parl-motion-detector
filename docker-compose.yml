@@ -9,3 +9,4 @@ services:
       - VOTES_REFRESH_TOKEN=${VOTES_REFRESH_TOKEN:-xxx}
     volumes:
       - ./:/workspaces/parl_motion_detector/
+      - /workspaces/parl_motion_detector/.venv

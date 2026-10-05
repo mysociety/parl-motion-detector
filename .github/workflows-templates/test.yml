@@ -28,5 +28,5 @@ jobs:
           run: |
             script/test
             dataset build --all
-            dataset version auto --auto-ban major --all --dry-run
+            dataset version auto --auto-ban major --all
             dataset site check

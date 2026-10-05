@@ -23,7 +23,10 @@ The project uses a development container. To set up:
 script/setup
 
 # Install dependencies and configure
-poetry install
+uv sync
+
+# Serve the Flask publication site
+script/server
 
 # Run tests to verify setup
 script/test
@@ -65,7 +68,7 @@ project refresh-snapshot
 
 # Build and validate datasets
 dataset build --all
-dataset version auto --auto-ban major --all
+dataset version auto --auto-ban major --all --dry-run
 ```
 
 ## Maintenance Commands
@@ -197,3 +200,33 @@ This error occurs when the automatic motion detection algorithm finds multiple p
 1. Run `dataset build --all` to see specific errors
 2. Check for data validation issues in the logs
 3. Verify all required manual correction files are present
+
+## Publication after the template migration
+
+The repository uses uv and the shared Flask dataset site. Publication files are
+intentionally untracked under `data/packages/_published`; the generated website
+is ignored under `_site`. GitHub Pages must use GitHub Actions as its build source.
+The existing daily processing schedule, Slack secrets, and
+`VOTES_REFRESH_TOKEN` webhook remain in the publication workflow.
+
+Site configuration lives in `pyproject.toml`. The public base path remains
+`/parl-motion-detector`, with the original download survey and notebook settings.
+The site discovers analysis bundles at `_render/site/analysis`. The existing
+notebook render configuration has only a blank Google Drive upload target, so
+there is no existing site export bundle to migrate.
+
+Current-year processed Parquet files are removed by the daily workflow after
+publication. A fresh checkout therefore needs current-year processing before
+`dataset build --all` can reproduce the complete current package. Migration
+verification replayed only the missing 2026 inputs from the stored `0.1.0`
+snapshot and removed those temporary files afterwards; it did not fetch newer
+transcripts. Every rebuilt row, dtype, index, and row order matched the snapshot.
+The builder now reuses stored Parquet bytes for identical tables, preventing
+writer metadata changes from causing a release. Actual data changes are written
+normally and still trigger version detection.
+
+The migration retained dataset version `0.1.0`, all stored version files, and all
+original source data. Verification passed `uv lock`, `uv sync`, `script/test`
+(51 tests, Ruff, and Pyright), the dataset build and dry-run version check, and
+site check/build (43 pages and 40 data files). No version update or remote
+publication was performed.

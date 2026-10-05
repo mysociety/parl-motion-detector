@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum, EnumMeta, auto
 from typing import Any, Generic, Iterator, Type, TypeVar
 
@@ -12,10 +14,8 @@ TA = TypeVar("TA")
 class MiniEnum(Generic[TA]):
     _enum_type: Type[TA]
 
-    def __class_getitem__(cls, item: Type[TA]):
-        class modified_cls(cls):
-            _enum_type: Type[TA] = item
-
+    def __class_getitem__(cls, item: Type[TA]) -> type[MiniEnum[TA]]:
+        modified_cls = type("modified_cls", (cls,), {"_enum_type": item})
         return modified_cls
 
     @classmethod

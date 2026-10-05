@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import datetime
 import json
+import shutil
 from pathlib import Path
 
 import pandas as pd
@@ -9,6 +10,7 @@ from mysoc_validator import Transcript
 from mysoc_validator.models.transcripts import Chamber
 from mysoc_validator.utils.parlparse.downloader import get_latest_for_date
 from pydantic import ValidationError
+from ruamel.yaml import YAML
 from tqdm import tqdm
 
 from .mapper import MotionMapper, ResultsHolder
@@ -141,12 +143,30 @@ def delete_current_year_parquets(data_dir: Path):
         file.unlink()
 
 
+def save_package_resource(
+    frame: pd.DataFrame, output_path: Path, stored_path: Path
+) -> None:
+    """
+    Preserve published Parquet bytes when rebuilding an identical table.
+
+    Parquet writer metadata can change across dependency upgrades without a
+    dataset change. Reuse the stored version only when values, dtypes, row order,
+    and index match; changed tables are written normally.
+    """
+    if stored_path.exists() and frame.equals(pd.read_parquet(stored_path)):
+        shutil.copyfile(stored_path, output_path)
+    else:
+        frame.to_parquet(output_path)
+
+
 def move_to_package(data_dir: Path = data_dir):
     """
     Move all processed data to the package
     """
     package_dir = data_dir / "packages" / "parliamentary_motions"
     parquet_dir = data_dir / "processed" / "parquet"
+    package = YAML(typ="safe").load((package_dir / "datapackage.yaml").read_text())
+    stored_dir = package_dir / "versions" / str(package["version"])
 
     file_endings = ["agreements.parquet", "motions.parquet", "division-links.parquet"]
 
@@ -197,4 +217,4 @@ def move_to_package(data_dir: Path = data_dir):
                 f"Duplicated values in the first column for {file_ending}: {dulicate_vals}"
             )
 
-        df.to_parquet(package_dir / file_ending)
+        save_package_resource(df, package_dir / file_ending, stored_dir / file_ending)
