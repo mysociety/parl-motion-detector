@@ -1,0 +1,35 @@
+title: Division Links
+description: Lookup between GID for a division and the relevant motion
+custom:
+  row_count: 5796
+path: division-links.parquet
+name: division-links
+profile: data-resource
+scheme: file
+format: parquet
+hashing: md5
+encoding: utf-8
+schema:
+  fields:
+  - name: division_gid
+    type: string
+    description: GID of the division
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/debate/2001-10-24.325.0
+  - name: motion_gid
+    type: string
+    description: GID of the motion
+    constraints:
+      unique: true
+    example: uk.org.publicwhip/debate/2001-10-24.321.1.1
+  - name: chamber
+    type: string
+    description: Chamber in which the motion was made
+    constraints:
+      unique: false
+      enum:
+      - house-of-commons
+      - scottish-parliament
+    example: house-of-commons
+hash: 6f8ed6fb4e5d744b2dbaf4306d90b9b2
