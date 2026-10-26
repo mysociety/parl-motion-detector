@@ -6,13 +6,14 @@ import shutil
 from pathlib import Path
 
 import pandas as pd
+from lxml.etree import XMLSyntaxError
 from mysoc_validator import Transcript
 from mysoc_validator.models.transcripts import Chamber
-from mysoc_validator.utils.parlparse.downloader import get_latest_for_date
 from pydantic import ValidationError
 from ruamel.yaml import YAML
 from tqdm import tqdm
 
+from .downloader import get_latest_for_date
 from .mapper import MotionMapper, ResultsHolder
 
 data_dir = Path(__file__).parent.parent.parent / "data"
@@ -74,6 +75,9 @@ def render_year(
 
         try:
             transcript = Transcript.from_xml_path(transcript_path)
+        except XMLSyntaxError as exc:
+            exc.add_note(f"Transcript date: {debate_date}; file: {transcript_path}")
+            raise
         except ValidationError:
             print(f"Validation error for date: {debate_date}")
             continue

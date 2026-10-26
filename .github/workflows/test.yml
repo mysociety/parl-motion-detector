@@ -27,6 +27,7 @@ jobs:
         with:
           run: |
             script/test
+            script/test-rsync
             dataset build --all
             dataset version auto --auto-ban major --all --dry-run
             dataset site check

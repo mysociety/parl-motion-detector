@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Each live check downloads into a fresh pytest temporary directory.
+uv run pytest --live-rsync -m live_rsync "$@"

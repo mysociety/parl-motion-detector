@@ -1,111 +1,114 @@
 from __future__ import annotations
 
 import datetime
+import stat
 from pathlib import Path
 
-import httpx
 import pytest
 
-from parl_motion_detector.downloader import (
-    USER_AGENT,
-    TranscriptXMl,
-    check_urls_exist,
-)
+from parl_motion_detector.downloader import TranscriptXMl, XMLManager
+from parl_motion_detector.rsync import RemoteEntry, RsyncDaemonClient, RsyncError
 
 
-def test_transcript_checks_identify_client_and_follow_redirects(
-    monkeypatch: pytest.MonkeyPatch,
+@pytest.mark.parametrize("manager", list(TranscriptXMl.options()))
+def test_latest_revision_is_selected(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, manager: XMLManager
 ) -> None:
     """
-    Follow redirects and treat only missing transcripts as absent.
+    Discover only the requested date and preserve each chamber's naming scheme.
     """
-    original_client = httpx.AsyncClient
+    date = datetime.date(2024, 4, 22)
+    prefix = f"{manager.file_structure_pre_date}{date}"
 
-    def respond(request: httpx.Request) -> httpx.Response:
-        assert request.headers["User-Agent"] == USER_AGENT
-        if request.url.path == "/redirect":
-            return httpx.Response(302, headers={"Location": "/found"})
-        return httpx.Response(404 if request.url.path == "/missing" else 200)
+    def list_files(self: RsyncDaemonClient, path: str) -> list[RemoteEntry]:
+        assert path == f"{manager.relative_path}{prefix}*.xml"
+        return [
+            RemoteEntry(f"{prefix}b.xml", 4, 1, stat.S_IFREG),
+            RemoteEntry(f"{prefix}a.xml", 4, 1, stat.S_IFREG),
+            RemoteEntry(f"{prefix}z.xml", 4, 1, stat.S_IFREG),
+            RemoteEntry(f"{prefix}j.xml", 0, 1, stat.S_IFDIR),
+            RemoteEntry("../escape.xml", 4, 1, stat.S_IFREG),
+        ]
 
-    def create_client(**kwargs: object) -> httpx.AsyncClient:
-        return original_client(transport=httpx.MockTransport(respond), **kwargs)
+    def fetch(self: RsyncDaemonClient, remote: str, dest: Path) -> RemoteEntry:
+        assert remote == f"{manager.relative_path}{prefix}b.xml"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"<xml")
+        return RemoteEntry(dest.name, 4, 1, stat.S_IFREG)
 
-    monkeypatch.setattr(httpx, "AsyncClient", create_client)
-    assert check_urls_exist(
-        ["https://example.com/redirect", "https://example.com/missing"]
-    ) == ["https://example.com/redirect"]
-
-
-@pytest.mark.parametrize("status", [403, 429, 500, 503])
-def test_transcript_checks_surface_http_failures(
-    monkeypatch: pytest.MonkeyPatch, status: int
-) -> None:
-    """
-    Preserve server errors rather than reporting missing files.
-    """
-    original_client = httpx.AsyncClient
-
-    def create_client(**kwargs: object) -> httpx.AsyncClient:
-        return original_client(
-            transport=httpx.MockTransport(lambda request: httpx.Response(status)),
-            **kwargs,
-        )
-
-    monkeypatch.setattr(httpx, "AsyncClient", create_client)
-    with pytest.raises(httpx.HTTPStatusError) as error:
-        check_urls_exist(["https://example.com/transcript.xml"])
-    assert error.value.response.status_code == status
+    monkeypatch.setattr(RsyncDaemonClient, "list", list_files)
+    monkeypatch.setattr(RsyncDaemonClient, "fetch", fetch)
+    result = manager.download_for_date(date, tmp_path)
+    assert result == tmp_path / manager.relative_path / f"{prefix}b.xml"
+    assert result.read_bytes() == b"<xml"
 
 
-def test_failed_download_does_not_cache_error_page(
+def test_missing_date_and_server_errors(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     """
-    Never save an HTTP error response as a transcript.
+    Missing transcripts and daemon failures remain distinct.
     """
-    url = "https://example.com/debates2023-06-27a.xml"
-    monkeypatch.setattr(
-        "parl_motion_detector.downloader.check_urls_exist", lambda urls: [url]
-    )
+    manager = TranscriptXMl.UK_COMMONS_DEBATES
+    monkeypatch.setattr(RsyncDaemonClient, "list", lambda self, path: [])
+    with pytest.raises(FileNotFoundError, match="No files found"):
+        manager.download_for_date(datetime.date(1900, 1, 1), tmp_path)
 
-    def download(request_url: str, **kwargs: object) -> httpx.Response:
-        assert kwargs["headers"] == {"User-Agent": USER_AGENT}
-        assert kwargs["follow_redirects"] is True
-        return httpx.Response(403, request=httpx.Request("GET", request_url))
+    def fail(self: RsyncDaemonClient, path: str) -> list[RemoteEntry]:
+        raise RsyncError("permission denied")
 
-    monkeypatch.setattr(httpx, "get", download)
-    with pytest.raises(httpx.HTTPStatusError):
-        TranscriptXMl.UK_COMMONS_DEBATES.download_for_date(
-            datetime.date(2023, 6, 27), download_path=tmp_path
-        )
+    monkeypatch.setattr(RsyncDaemonClient, "list", fail)
+    with pytest.raises(RsyncError, match="permission denied"):
+        manager.download_for_date(datetime.date(2024, 4, 22), tmp_path)
     assert not list(tmp_path.rglob("*.xml"))
 
 
-@pytest.mark.parametrize("available", [True, False])
-def test_transcript_discovery_continues_after_candidate_503(
-    monkeypatch: pytest.MonkeyPatch, available: bool
+def test_cache_and_forced_refresh(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     """
-    Select a lettered version despite a 503, preserving errors if none exist.
+    Cached transcripts avoid networking unless a refresh is requested.
     """
-    original_client = httpx.AsyncClient
-    base_url = "https://example.com/debates2024-04-22"
+    manager = TranscriptXMl.UK_COMMONS_DEBATES
+    date = datetime.date(2024, 4, 22)
+    cached = manager.construct_path(date, "b", tmp_path)
+    cached.parent.mkdir(parents=True)
+    cached.write_bytes(b"cached")
+    calls: list[datetime.date] = []
 
-    def respond(request: httpx.Request) -> httpx.Response:
-        if request.url.path.endswith("22.xml"):
-            return httpx.Response(503)
-        if available and request.url.path.endswith("22a.xml"):
-            return httpx.Response(200)
-        return httpx.Response(404)
+    def download(self: XMLManager, date: datetime.date, download_path: Path) -> Path:
+        calls.append(date)
+        return cached
 
-    def create_client(**kwargs: object) -> httpx.AsyncClient:
-        return original_client(transport=httpx.MockTransport(respond), **kwargs)
+    monkeypatch.setattr(type(manager), "download_for_date", download)
+    assert manager.get_latest_for_date(date, tmp_path) == cached
+    assert calls == []
+    assert manager.get_latest_for_date(date, tmp_path, force_download=True) == cached
+    assert calls == [date]
 
-    monkeypatch.setattr(httpx, "AsyncClient", create_client)
-    urls = [f"{base_url}{letter}.xml" for letter in ("", "a", "b")]
-    if available:
-        assert check_urls_exist(urls) == [f"{base_url}a.xml"]
-    else:
-        with pytest.raises(httpx.HTTPStatusError) as error:
-            check_urls_exist(urls)
-        assert error.value.response.status_code == 503
+
+def test_scottish_meeting_identifiers_are_downloaded_and_cached(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """
+    Scottish filenames include a meeting ID rather than a revision letter.
+    """
+    manager = TranscriptXMl.SCOTTISH_PARLIAMENT_DEBATES
+    date = datetime.date(2024, 4, 23)
+    entry = RemoteEntry("2024-04-23_15813.xml", 4, 1, stat.S_IFREG)
+    monkeypatch.setattr(RsyncDaemonClient, "list", lambda self, path: [entry])
+
+    def fetch(self: RsyncDaemonClient, remote: str, dest: Path) -> RemoteEntry:
+        assert remote == manager.relative_path + entry.name
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"<xml")
+        return entry
+
+    monkeypatch.setattr(RsyncDaemonClient, "fetch", fetch)
+    result = manager.get_latest_for_date(date, tmp_path)
+    assert result.name == entry.name
+    monkeypatch.setattr(
+        RsyncDaemonClient, "list", lambda self, path: pytest.fail("cache missed")
+    )
+    assert manager.get_latest_for_date(date, tmp_path) == result
+    assert not manager.is_transcript_for_date("2024-04-23_15813.xml/../escape", date)

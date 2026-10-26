@@ -1,24 +1,22 @@
 from __future__ import annotations
 
-import asyncio
 import datetime
+import re
 import tempfile
 from pathlib import Path
-from typing import ClassVar, NamedTuple, Optional
+from typing import ClassVar, Optional
 
-import httpx
-import nest_asyncio2
 from mysoc_validator.models.popolo import Chamber
 from pydantic import BaseModel
 
 from .enum_helpers import MiniEnum, StrEnum
+from .rsync import RsyncDaemonClient
 
-nest_asyncio2.apply()
+RSYNC_HOST = "data.theyworkforyou.com"
+RSYNC_MODULE = "parldata"
 
-USER_AGENT = "parl-motion-detector (https://github.com/mysociety/parl-motion-detector)"
 
-
-def persistent_download_path():
+def persistent_download_path() -> Path:
     return Path(tempfile.gettempdir()) / "parl_motion_detector"
 
 
@@ -29,7 +27,6 @@ class TranscriptType(StrEnum):
 
 
 class XMLManager(BaseModel):
-    twfy_base_url: ClassVar[str] = "https://www.theyworkforyou.com/pwdata/"
     letter_options: ClassVar[list[str]] = [
         "",
         "a",
@@ -54,39 +51,45 @@ class XMLManager(BaseModel):
         date: datetime.date,
         letter: str = "",
         download_path: Optional[Path] = None,
-    ):
+    ) -> Path:
         if not download_path:
             download_path = persistent_download_path()
         download_path.mkdir(parents=True, exist_ok=True)
         file_name = f"{self.file_structure_pre_date}{date.isoformat()}{letter}.xml"
         return download_path / self.relative_path / file_name
 
-    def construct_url(self, date: datetime.date, letter: str = ""):
-        return f"{self.twfy_base_url}{self.relative_path}{self.file_structure_pre_date}{date.isoformat()}{letter}.xml"
+    def is_transcript_for_date(self, name: str, date: datetime.date) -> bool:
+        """
+        Match revision letters and Scottish Parliament meeting identifiers.
+        """
+        prefix = f"{self.file_structure_pre_date}{date.isoformat()}"
+        if name in {f"{prefix}{letter}.xml" for letter in self.letter_options}:
+            return True
+        return (
+            self.chamber_type == Chamber.SCOTLAND
+            and re.fullmatch(rf"{re.escape(prefix)}_[0-9]+\.xml", name) is not None
+        )
 
     def download_for_date(
         self, date: datetime.date, download_path: Optional[Path] = None
     ) -> Path:
-        if not download_path:
-            download_path = persistent_download_path()
-        download_path.mkdir(parents=True, exist_ok=True)
-        all_urls = [self.construct_url(date, letter) for letter in self.letter_options]
-        valid_urls = check_urls_exist(all_urls)
-        if not valid_urls:
+        """
+        Discover the latest revision and download it from the rsync daemon.
+        """
+        client = RsyncDaemonClient(RSYNC_HOST, RSYNC_MODULE)
+        prefix = f"{self.file_structure_pre_date}{date.isoformat()}"
+        candidates = client.list(f"{self.relative_path}{prefix}*.xml")
+        available = [
+            entry
+            for entry in candidates
+            if entry.is_file and self.is_transcript_for_date(entry.name, date)
+        ]
+        if not available:
             raise FileNotFoundError(f"No files found for {date}")
-        valid_urls.sort()
-        latest_url = valid_urls[-1]
-        # download file to download_path
+        latest = max(available, key=lambda entry: entry.name)
         base_path = self.construct_path(date, download_path=download_path)
-        # need to figure out the file name of the url
-        url_file_name = latest_url.split("/")[-1]
-        file_path = base_path.parent / url_file_name
-        file_path.parent.mkdir(parents=True, exist_ok=True)
-        response = httpx.get(
-            latest_url, headers={"User-Agent": USER_AGENT}, follow_redirects=True
-        )
-        response.raise_for_status()
-        file_path.write_text(response.text)
+        file_path = base_path.parent / latest.name
+        client.fetch(f"{self.relative_path}{latest.name}", file_path)
         return file_path
 
     def get_latest_for_date(
@@ -96,12 +99,13 @@ class XMLManager(BaseModel):
         *,
         force_download: bool = False,
     ) -> Path:
-        get_local = [
-            self.construct_path(date, letter, download_path)
-            for letter in self.letter_options
+        base_path = self.construct_path(date, download_path=download_path)
+        prefix = f"{self.file_structure_pre_date}{date.isoformat()}"
+        existing = [
+            path
+            for path in base_path.parent.glob(f"{prefix}*.xml")
+            if path.is_file() and self.is_transcript_for_date(path.name, date)
         ]
-        # limit down to just those that exist
-        existing = [x for x in get_local if x.exists()]
         if existing and not force_download:
             # sort and return the latest
             existing.sort()
@@ -152,55 +156,13 @@ class TranscriptXMl(MiniEnum[XMLManager]):
         cls,
         chamber: Chamber,
         transcript: TranscriptType,
-    ):
+    ) -> XMLManager:
         for option in cls.options():
             if option.chamber_type == chamber and option.transcript_type == transcript:
                 return option
         raise ValueError(
             f"No option found for chamber {chamber} and transcript {transcript}"
         )
-
-
-class FileExistenceResult(NamedTuple):
-    url: str
-    exists: bool
-    error: httpx.HTTPStatusError | None = None
-
-
-async def async_check_file_existence(
-    client: httpx.AsyncClient, url: str
-) -> FileExistenceResult:
-    """
-    Check a candidate, deferring service-unavailable errors during discovery.
-    """
-    response = await client.head(url)
-    if response.status_code == 404:
-        return FileExistenceResult(url=url, exists=False)
-    try:
-        response.raise_for_status()
-    except httpx.HTTPStatusError as error:
-        if response.status_code != 503:
-            raise
-        return FileExistenceResult(url=url, exists=False, error=error)
-    return FileExistenceResult(url=url, exists=True)
-
-
-async def async_check_urls_exist(urls: list[str]) -> list[str]:
-    async with httpx.AsyncClient(
-        headers={"User-Agent": USER_AGENT}, follow_redirects=True
-    ) as client:
-        tasks = [async_check_file_existence(client, url) for url in urls]
-        results = await asyncio.gather(*tasks)
-    valid_urls = [result.url for result in results if result.exists]
-    if not valid_urls:
-        for result in results:
-            if result.error is not None:
-                raise result.error
-    return valid_urls
-
-
-def check_urls_exist(urls: list[str]) -> list[str]:
-    return asyncio.run(async_check_urls_exist(urls))
 
 
 def get_latest_for_date(
@@ -210,7 +172,7 @@ def get_latest_for_date(
     transcript_type: TranscriptType = TranscriptType.DEBATES,
     download_path: Optional[Path] = None,
     force_download: bool = False,
-):
+) -> Path:
     transcript_manager = TranscriptXMl.get_transcript_manager(
         chamber=chamber, transcript=transcript_type
     )
