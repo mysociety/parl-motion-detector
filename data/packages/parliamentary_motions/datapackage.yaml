@@ -1,7 +1,7 @@
 name: parliamentary_motions
 title: Parliamentary motions
 description: "Motions and agreements extracted from parliamentary debates\n"
-version: 0.24.1
+version: 0.25.0
 licenses:
 - name: CC-BY-4.0
   path: https://creativecommons.org/licenses/by/4.0/
@@ -67,3 +67,4 @@ custom:
     0.23.0: 'Change in data for resource(s): agreements,division-links,motions'
     0.24.0: 'Change in data for resource(s): agreements,division-links,motions'
     0.24.1: 'Minor change in data for resource(s): agreements,division-links,motions'
+    0.25.0: 'Change in data for resource(s): agreements,motions'
